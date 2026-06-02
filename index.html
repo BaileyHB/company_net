@@ -6,309 +6,508 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>汇元科技 - AI驱动的企业数字化转型</title>
 <style>
-  :root {
-    --primary: #dc2626;
-    --primary-dark: #991b1b;
-    --accent: #f97316;
-    --dark: #1a1a1a;
-    --gray-50: #fafafa;
-    --gray-100: #f4f4f5;
-    --gray-200: #e5e5e5;
-    --gray-600: #71717a;
-    --gray-700: #3f3f46;
-    --gray-800: #1a1a1a;
-    --white: #ffffff;
-    --radius: 12px;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; color: #3f3f46; color: var(--gray-700); line-height: 1.7; background: #fcfcfc; background: var(--white); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+:root {
+  --g: #f97316;
+  --d: #1c1814;
+  --dl: #26211c;
+  --w: #ffffff;
+  --gr: #f4f4f5;
+  --gr2: #e5e5e5;
+  --tx: #1a1a1a;
+  --st: #71717a;
+  --lt: #a1a1aa;
+  --r: #dc2626;
+  --rd: #991b1b;
+  --rad: 6px;
+  --t: all .3s ease;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 16px; color: var(--tx); background: var(--w); -webkit-font-smoothing: antialiased; padding: 72px 0 0 0; margin: 0; }
 
-  /* ── Nav ── */
-  .nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #e5e5e5; border-bottom: 1px solid var(--gray-200); transition: box-shadow .3s; }
-  .nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.08); }
-  .nav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 72px; }
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo img { height: 40px; }
-  .nav-logo span { font-size: 20px; font-weight: 700; color: #1a1a1a; color: var(--dark); letter-spacing: -.5px; }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a { text-decoration: none; color: #3f3f46; color: var(--gray-700); font-size: 15px; font-weight: 500; transition: color .2s; position: relative; }
-  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #dc2626; background: var(--primary); border-radius: 1px; transition: width .25s; }
-  .nav-links a:hover { color: #dc2626; color: var(--primary); }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-  .nav-toggle span { display: block; width: 24px; height: 2px; background: #1a1a1a; background: var(--dark); border-radius: 2px; transition: .3s; }
-  @media (max-width: 900px) {
-    .nav-links { position: fixed; top: 72px; left: 0; width: 100%; flex-direction: column; gap: 0; background: #ffffff; background: var(--white); border-bottom: 1px solid #e5e5e5; border-bottom: 1px solid var(--gray-200); transform: translateY(-120%); transition: transform .35s; padding: 16px 40px; }
-    .nav-links.open { transform: translateY(0); }
-    .nav-links a { display: block; padding: 14px 0; border-bottom: 1px solid #f4f4f5; border-bottom: 1px solid var(--gray-100); }
-    .nav-toggle { display: flex; }
-    .nav-inner { padding: 0 24px; }
-  }
+.nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--gr); height: 72px; display: flex; align-items: center; }
+.nav-inner { max-width: 1400px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.nav-logo img { height: 36px; }
+.nav-logo span { font-size: 20px; font-weight: 700; color: var(--d); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { text-decoration: none; color: #1a1a1a; font-size: 15px; font-weight: 700; transition: color .2s; }
+.nav-links a:hover { color: var(--r); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.nav-toggle span { width: 22px; height: 2px; background: var(--d); border-radius: 2px; transition: .3s; }
+.nav-dropdown { position: relative; }
+.nav-dropdown .arrow { display: inline-flex; align-items: center; margin-left: 5px; vertical-align: middle; }
+.nav-dropdown .arrow svg { width: 12px; height: 7px; }
+.dropdown-menu { display: none; position: absolute; top: 100%; left: -12px; background: #fff; border: 1px solid #f0f0f0; border-radius: 6px; min-width: 150px; padding: 8px 0; box-shadow: 0 8px 30px rgba(0,0,0,.08); z-index: 200; list-style: none; }
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu li a { display: block; padding: 10px 20px; color: var(--st); font-size: 14px; text-decoration: none; transition: var(--t); }
+.dropdown-menu li a:hover { background: #fdf6f0; color: #f97316; }
 
-  /* ── Hero ── */
-  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: #0a0a0a; padding: 120px 24px 80px; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(220,38,38,.08) 0%, transparent 70%); top: -200px; right: -200px; }
-  .hero::after { content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(249,115,22,.06) 0%, transparent 70%); bottom: -100px; left: -100px; }
-  .hero-content { position: relative; z-index: 1; max-width: 800px; }
-  .hero h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 24px; letter-spacing: -1px; }
-  .hero h1 span { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero p { font-size: 18px; color: #888; max-width: 560px; margin: 0 auto 40px; }
-  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: 50px; font-size: 16px; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: all .25s; }
-  .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #ffffff; box-shadow: 0 4px 20px rgba(220,38,38,.3); }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(220,38,38,.45); }
-  .btn-outline { background: #ffffff; background: var(--white); color: #dc2626; color: var(--primary); border: 2px solid #e5e5e5; border: 2px solid var(--gray-200); }
-  .btn-outline:hover { border-color: #dc2626; color: #dc2626; }
+@media (max-width: 900px) {
+  .nav-links { position: fixed; top: 72px; left: 0; width: 100%; flex-direction: column; gap: 0; background: var(--w); border-bottom: 1px solid var(--gr); transform: translateY(-120%); transition: transform .35s; padding: 12px 40px; max-height: 80vh; overflow-y: auto; }
+  .nav-links.open { transform: translateY(0); }
+  .nav-links a { display: block; padding: 14px 0; border-bottom: 1px solid var(--gr); }
+  .nav-toggle { display: flex; }
+  .nav-inner { padding: 0 24px; }
+  .nav-dropdown .dropdown-menu { display: none; position: static; border: none; box-shadow: none; padding: 0; min-width: 0; }
+  .nav-dropdown.open .dropdown-menu { display: block; }
+  .dropdown-menu li a { padding: 10px 20px; font-size: 13px; }
+}
 
-  /* ── Sections ── */
-  section { padding: 100px 24px; }
-  .section-header { text-align: center; margin-bottom: 64px; }
-  .section-header .tag { display: inline-block; padding: 6px 16px; background: rgba(220,38,38,.08); color: #dc2626; color: var(--primary); border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; }
-  .section-header h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; color: #1a1a1a; color: var(--dark); margin-bottom: 12px; }
-  .section-header p { color: #71717a; color: var(--gray-600); max-width: 600px; margin: 0 auto; font-size: 16px; }
-  .container { max-width: 1200px; margin: 0 auto; }
+.home-video { width: 100%; max-height: 70vh; overflow: hidden; position: relative; }
+.home-video video { width: 100%; height: auto; display: block; }
+.home-video-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; z-index: 1; }
+.home-video-text h2 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; color: #fff; text-shadow: 0 4px 20px rgba(0,0,0,.5); margin-bottom: 12px; }
+.home-video-text p { font-size: clamp(16px, 2.5vw, 22px); color: #f97316; font-weight: 600; text-shadow: 0 2px 10px rgba(0,0,0,.5); }
+.hero { min-height: calc(100vh - 72px); display: flex; align-items: center; justify-content: center; text-align: center; background: #1a1410; padding: 80px 0; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(249,115,22,.12) 0%, transparent 70%); top: -300px; right: -200px; }
+.hero::after { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(220,38,38,.06) 0%, transparent 70%); bottom: -200px; left: -150px; }
+.hero-content { position: relative; z-index: 1; max-width: 800px; }
+.hero h1 { font-size: clamp(34px, 5.5vw, 58px); font-weight: 800; color: var(--w); line-height: 1.15; margin-bottom: 20px; }
+.hero h1 span { background: linear-gradient(135deg, var(--r), var(--g)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { font-size: 18px; color: var(--lt); max-width: 560px; margin: 0 auto 36px; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-  /* ── AI研究院 ── */
-  #research { background: #0a0a0a; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 24px; position: relative; overflow: hidden; }
-  #research::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(220,38,38,.06) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); }
-  .research-content { position: relative; z-index: 1; max-width: 800px; }
-  .research-content .tag { display: inline-block; padding: 6px 20px; border: 1px solid rgba(249,115,22,.4); color: #f97316; color: var(--accent); border-radius: 50px; font-size: 13px; font-weight: 600; letter-spacing: 2px; margin-bottom: 32px; }
-  .research-content h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: #ffffff; line-height: 1.25; margin-bottom: 24px; }
-  .research-content h2 span { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .research-content p { color: #888; font-size: 18px; max-width: 560px; margin: 0 auto 48px; line-height: 1.8; }
-  .research-arrow { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; border: 2px solid #f97316; border: 2px solid var(--accent); color: #f97316; color: var(--accent); font-size: 24px; cursor: pointer; transition: all .3s; animation: bounce 2s infinite; text-decoration: none; }
-  .research-arrow:hover { background: #f97316; background: var(--accent); color: #ffffff; }
-  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
-  .research-industries-section { background: #ffffff; background: var(--white); padding: 80px 24px; }
-  .research-industries-title { text-align: center; font-size: 14px; color: #3f3f46; color: var(--gray-700); letter-spacing: 2px; margin-bottom: 36px; font-weight: 700; }
-  .research-industries { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; max-width: 1100px; margin: 0 auto; }
-  .research-industry { display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; border-radius: 50px; border: 1px solid #e5e5e5; border: 1px solid var(--gray-200); background: #f5f5f5; color: #3f3f46; color: var(--gray-700); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .3s; user-select: none; }
-  .research-industry .industry-icon { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .research-industry .industry-icon svg { width: 18px; height: 18px; stroke: #333; fill: none; stroke-width: 2; transition: stroke .3s; }
-  .research-industry:hover,
-  .research-industry.active { background: #f97316; background: var(--accent); color: #ffffff; border-color: #f97316; color: var(--accent); }
-  .research-industry:hover .industry-icon svg,
-  .research-industry.active .industry-icon svg { stroke: #fff; }
-  .research-industry-more { border-style: dashed; }
-  .research-industry-more:hover,
-  .research-industry-more.active { background: #1a1a1a; background: var(--dark); color: #ffffff; border-color: #1a1a1a; color: var(--dark); border-style: solid; }
+.ai-data-section { background: #0a0a0a; padding: 0; }
+.ai-data-top { display: flex; gap: 0; align-items: stretch; margin-bottom: 0; }
+.ai-data-image { flex: 1; }
+.ai-data-image img { width: 100%; height: 100%; object-fit: cover; display: block; mix-blend-mode: lighten; }
+.ai-data-right { flex: 1; padding: 60px 60px 60px 48px; display: flex; flex-direction: column; justify-content: center; margin-left: -100px; position: relative; z-index: 1; }
+.ai-data-title { text-align: left; font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 20px; }
+.ai-data-subtitle { text-align: left; max-width: 100%; margin: 0; font-size: 24px; color: #8a9ba8; line-height: 2.1; }
+.ai-stats-title { text-align: left; font-size: 34px; font-weight: 800; color: #fff; padding-top: 40px; margin-bottom: 16px; padding-left: 60px; }
+.ai-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 100%; margin: 0; padding: 0 40px 80px; }
+.ai-stat { text-align: left; padding: 32px 20px; transition: transform .4s ease; }
+.ai-stat:hover { transform: translateY(-4px); }
+.ai-stat-num { font-size: 48px; font-weight: 800; color: #f97316; margin-bottom: 14px; opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.ai-stat-num.visible { opacity: 1; transform: translateY(0); }
+.ai-stat p { font-size: 15px; color: #8a9ba8; line-height: 1.8; opacity: 0; transition: opacity .6s ease .2s; }
+.ai-stat p.visible { opacity: 1; }
+@media (max-width: 768px) {
+  .ai-data-top { flex-direction: column; gap: 0; }
+  .ai-data-right { padding: 40px 24px; }
+  .ai-data-title, .ai-data-subtitle { text-align: center; }
+  .ai-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 20px 60px; }
+  .ai-stat-num { font-size: 36px; }
+}
+@media (max-width: 480px) {
+  .ai-stats-grid { grid-template-columns: 1fr; }
+}
 
-  /* ── AI应用广场 ── */
-  #apps { background: #fafafa; background: var(--gray-50); }
-  .apps-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; }
-  .apps-tab { padding: 10px 28px; border-radius: 50px; font-size: 15px; font-weight: 600; cursor: pointer; border: 2px solid #e5e5e5; border: 2px solid var(--gray-200); background: #ffffff; background: var(--white); color: #3f3f46; color: var(--gray-700); transition: all .25s; }
-  .apps-tab.active { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #ffffff; border-color: transparent; }
-  .apps-tab:hover:not(.active) { border-color: #dc2626; color: var(--primary); color: #dc2626; color: var(--primary); }
-  .apps-tab-more { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 2px dashed var(--gray-200); color: #71717a; color: var(--gray-600); font-size: 18px; cursor: default; user-select: none; transition: all .25s; }
-  .apps-tab-more:hover { border-color: #dc2626; color: var(--primary); color: #dc2626; color: var(--primary); background: rgba(220,38,38,.04); }
-  .apps-panel { display: none; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-  .apps-panel.active { display: grid; }
-  .app-card { background: #ffffff; background: var(--white); border-radius: var(--radius); padding: 28px; border: 1px solid #e5e5e5; border: 1px solid var(--gray-200); transition: .25s; }
-  .app-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.05); border-color: transparent; }
-  .app-card .num { font-size: 36px; font-weight: 800; color: rgba(220,38,38,.1); line-height: 1; }
-  .app-card h4 { font-size: 18px; margin: 12px 0 8px; color: #1a1a1a; color: var(--dark); }
-  .app-card p { color: #71717a; color: var(--gray-600); font-size: 14px; }
-  .app-card-more { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 140px; cursor: default; background: transparent; border: 2px dashed var(--gray-200); }
-  .app-card-more:hover { border-color: #dc2626; color: var(--primary); background: rgba(220,38,38,.02); }
-  .app-card-more .more-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(220,38,38,.06); color: #dc2626; color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 300; margin-bottom: 8px; }
-  .app-card-more .more-text { font-size: 13px; color: #71717a; color: var(--gray-600); }
+.partners-strip { background: #fff; padding: 48px 0; border-bottom: 1px solid #f0f0f0; overflow: hidden; }
+.partners-track { display: flex; align-items: center; gap: 72px; width: max-content; transition: transform 1.5s ease; }
+.partners-track img { height: 40px; width: auto; object-fit: contain; border: none; background: none; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: 6px; font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: var(--t); }
+.btn-primary { background: #f97316; color: #fff; }
+.btn-primary:hover { background: #e8650a; transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--w); border: 1.5px solid rgba(255,255,255,.25); }
+.btn-outline:hover { border-color: #f97316; color: #f97316; }
 
-  /* ── 方案 ── */
-  #solutions { background: #ffffff; background: var(--white); }
-  .solutions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
-  .solution-card { background: #ffffff; background: var(--white); border: 1px solid #f0f0f0; border-radius: var(--radius); padding: 36px 32px; transition: all .3s; }
-  .solution-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.06); transform: translateY(-2px); }
-  .solution-card h3 { font-size: 20px; color: #1a1a1a; color: var(--dark); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
-  .solution-card h3 .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-  .solution-card .subtitle { font-size: 13px; color: #dc2626; color: var(--primary); font-weight: 600; margin-bottom: 12px; }
-  .solution-card ul { list-style: none; }
-  .solution-card ul li { padding: 8px 0; color: #71717a; color: var(--gray-600); font-size: 14px; border-bottom: 1px solid #f4f4f5; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; gap: 8px; }
-  .solution-card ul li::before { content: '→'; color: #dc2626; color: var(--primary); font-weight: 600; font-size: 12px; }
+section { padding: 0; }
+.container { max-width: 100%; margin: 0; padding: 0; }
+.home-process .container { padding: 0; }
+.home-process-dark .container { padding: 0; }
+.section-header { text-align: center; margin: 0 0 60px 0; padding: 0; }
+.landing-banner { position: relative; padding: 60px 0; text-align: center; overflow: hidden; }
+.landing-banner .banner-bg { position: absolute; inset: 0; background: url('industry/制造业.png') center/cover no-repeat; }
+.landing-banner .banner-mask { position: absolute; inset: 0; background: rgba(255,255,255,.85); }
+.landing-banner .tag { display: block; font-size: 32px; font-weight: 800; color: #1a1a1a; letter-spacing: 8px; margin-bottom: 14px; opacity: 0; transform: translateY(30px); transition: opacity .8s ease .1s, transform .8s ease .1s; }
+.landing-banner .tag.visible { opacity: 1; transform: translateY(0); }
+.landing-banner .banner-icon { display: block; opacity: 0; transform: scale(0); transition: opacity .5s ease .4s, transform .5s cubic-bezier(.17,.67,.36,1.3) .4s; }
+.landing-banner .banner-icon.visible { opacity: 1; transform: scale(1); }
+.landing-banner .banner-icon svg { width: 28px; height: 28px; color: #f97316; }
+.landing-banner .consult-btn { display: inline-block; margin-top: 16px; font-size: 14px; color: #f97316; text-decoration: none; font-weight: 600; opacity: 0; transform: translateY(20px); transition: opacity .6s ease .7s, transform .6s ease .7s; }
+.landing-banner .consult-btn.visible { opacity: 1; transform: translateY(0); }
+.landing-banner .consult-btn:hover { color: #e8650a; }
+.landing-banner .banner-line-left, .landing-banner .banner-line-right { position: absolute; top: 50%; height: 1px; background: #e5e5e5; width: 0; transition: width .8s cubic-bezier(.25,.46,.45,.94) .2s; }
+.landing-banner .banner-line-left.visible { width: 120px; } .landing-banner .banner-line-right.visible { width: 120px; }
+.landing-banner .banner-line-left { left: 40px; } .landing-banner .banner-line-right { right: 40px; }
+.section-header h2 { font-size: 22px; font-weight: 700; color: var(--d); margin-bottom: 12px; margin-top: 8px; }
+.section-header p { color: var(--st); max-width: 560px; margin: 0 auto; font-size: 16px; }
 
-  /* ── 人才 ── */
-  #talent { background: #fafafa; background: var(--gray-50); }
-  .talent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; text-align: center; }
-  .talent-card { background: #ffffff; background: var(--white); border-radius: var(--radius); padding: 40px 24px; border: 1px solid #e5e5e5; border: 1px solid var(--gray-200); transition: .25s; }
-  .talent-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.06); }
-  .talent-icon { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
-  .talent-icon svg { width: 28px; height: 28px; }
-  .talent-icon.blue { background: #fef2f2; color: #dc2626; }
-  .talent-icon.purple { background: #fff7ed; color: #f97316; }
-  .talent-card h4 { font-size: 18px; color: #1a1a1a; color: var(--dark); margin-bottom: 8px; }
-  .talent-card p { color: #71717a; color: var(--gray-600); font-size: 14px; }
+#research { background: #1a1410; min-height: auto; display: flex; align-items: center; justify-content: center; text-align: center; padding: 60px 0; }
+#research::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(249,115,22,.06) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.research-content { position: relative; z-index: 1; max-width: 800px; }
+.research-content .tag { display: inline-block; padding: 5px 16px; border: 1px solid rgba(249,115,22,.3); color: var(--g); border-radius: 50px; font-size: 12px; font-weight: 600; letter-spacing: 2px; margin-bottom: 28px; }
+.research-content h2 { font-size: clamp(28px, 4.5vw, 50px); font-weight: 800; color: var(--w); line-height: 1.2; margin-bottom: 20px; }
+.research-content h2 span { background: linear-gradient(135deg, var(--r), var(--g)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.research-content p { color: var(--lt); font-size: 18px; max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
+.research-arrow { display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 1.5px solid rgba(0,200,150,.4); color: var(--g); font-size: 20px; cursor: pointer; transition: var(--t); animation: bounce 2s infinite; text-decoration: none; }
+.research-arrow:hover { background: var(--g); color: var(--d); }
+@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+.research-industries-section { padding: 80px 0; }
+.research-industries-title { text-align: center; font-size: 13px; color: var(--st); letter-spacing: 2px; margin-bottom: 32px; font-weight: 700; }
+.research-industries { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.research-industry { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 6px; border: 1px solid var(--gr2); background: var(--w); color: var(--st); font-size: 14px; font-weight: 600; cursor: pointer; transition: var(--t); }
+.research-industry:hover, .research-industry.active { border-color: var(--g); color: var(--g); }
+.research-industry .industry-icon svg { width: 17px; height: 17px; stroke: var(--st); transition: stroke .3s; }
+.research-industry:hover .industry-icon svg, .research-industry.active .industry-icon svg { stroke: var(--g); }
+.research-industry-more { border-style: dashed; }
+.research-industry-more:hover { border-color: var(--d); color: var(--d); border-style: solid; }
 
-  /* ── 关于我们 ── */
-  #about { background: #ffffff; background: var(--white); }
-  .about-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 32px; margin-bottom: 64px; }
-  .about-service { padding: 32px; border-radius: var(--radius); border: 1px solid #f0f0f0; transition: all .3s; }
-  .about-service:hover { box-shadow: 0 12px 36px rgba(0,0,0,.05); transform: translateY(-2px); }
-  .about-service h3 { font-size: 18px; font-weight: 700; color: #1a1a1a; color: var(--dark); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-  .about-service h3 .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .about-service p { color: #71717a; color: var(--gray-600); font-size: 14px; line-height: 1.8; }
-  .about-advantages { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-bottom: 48px; }
-  .about-adv { padding: 24px; border-radius: var(--radius); background: #fafafa; background: var(--gray-50); }
-  .about-adv h4 { font-size: 16px; font-weight: 700; color: #1a1a1a; color: var(--dark); margin-bottom: 8px; }
-  .about-adv p { color: #71717a; color: var(--gray-600); font-size: 13px; line-height: 1.7; }
-  .about-philosophy { text-align: center; max-width: 800px; margin: 0 auto; padding: 32px; background: linear-gradient(135deg, rgba(220,38,38,.04), rgba(249,115,22,.04)); border-radius: var(--radius); }
-  .about-philosophy p { color: #3f3f46; color: var(--gray-700); font-size: 14px; line-height: 2; }
+#research .section-header h2 { color: var(--w); }
+#research .section-header p { color: var(--lt); }
 
-  /* ── Footer ── */
-  footer { background: #1a1a1a; background: var(--dark); color: #a1a1aa; padding: 60px 24px 32px; }
-  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
-  @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
-  .footer-brand img { height: 36px; margin-bottom: 16px; }
-  .footer-brand p { font-size: 14px; line-height: 1.8; }
-  .footer-col h4 { color: #fafafa; font-size: 15px; margin-bottom: 16px; }
-  .footer-col a { display: block; color: #a1a1aa; text-decoration: none; font-size: 14px; padding: 4px 0; transition: color .2s; }
-  .footer-col a:hover { color: #f97316; color: var(--accent); }
-  .footer-wechat { text-align: center; }
-  .footer-wechat .qr-placeholder { width: 100px; height: 100px; background: #27272a; border-radius: 8px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #71717a; }
-  .footer-wechat span { font-size: 12px; }
-  .footer-bottom { max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid #27272a; display: flex; justify-content: space-between; font-size: 13px; flex-wrap: wrap; gap: 12px; }
-  .footer-bottom a { color: #a1a1aa; text-decoration: none; }
-  .footer-bottom a:hover { color: #f97316; color: var(--accent); }
+.home-process { background: #0a1628; padding: 80px 0 0; }
+.home-process .process-timeline { margin-bottom: 80px; }
+.home-process .section-header h2 { color: #fff; }
+.home-process .section-header p { color: #8a9ba8; }
+.home-process .process-step { background: #0f1f36; border-color: #1a3050; }
+.home-process .process-step:hover { border-color: #f97316; box-shadow: 0 12px 40px rgba(249,115,22,.1); }
+.home-process .process-card h4 { color: #e5e5e5; }
+.home-process .process-card ul li { color: #8899aa; }
+.home-process .process-card .stage { color: #f97316; background: rgba(249,115,22,.1); }
+.home-process .process-step.activated { border-color: #f97316; box-shadow: 0 0 20px rgba(249,115,22,.2); }
+.home-process .process-step.activated .process-card h4 { color: #fff; }
+.home-process .process-step.activated .process-card .stage { color: #fff; background: #f97316; }
+.home-process .pipeline-track { background: #1a3050; }
+.home-process .section-header { margin-bottom: 60px; }
+.process-pipeline { max-width: 100%; margin: 0 16px 20px; position: relative; height: 4px; }
+.pipeline-track { position: relative; width: 100%; height: 4px; background: #2a2a2a; border-radius: 2px; overflow: visible; }
+.pipeline-fill { position: absolute; left: 0; top: 0; height: 100%; width: 0; background: linear-gradient(90deg, #dc2626, #f97316, #f59e0b); border-radius: 2px; transition: width .4s ease; }
+.pipeline-dot { position: absolute; top: -4px; width: 10px; height: 10px; border-radius: 50%; background: #f97316; left: 0; transform: translateX(-50%); transition: left 1.5s ease; }
+.process-step.activated { border-color: #f97316; box-shadow: 0 0 20px rgba(249,115,22,.15); }
+.process-step.activated .process-card h4 { color: #fff; }
+.process-step.activated .process-card .stage { color: #fff; background: rgba(249,115,22,.25); }
 
-  /* ── Home Partners ── */
-  .home-partners { background: #fafafa; background: var(--gray-50); padding: 60px 24px; text-align: center; }
-  .home-partners h3 { font-size: 13px; font-weight: 700; color: #71717a; color: var(--gray-600); letter-spacing: 2px; margin-bottom: 32px; }
-  .partners-track { overflow: hidden; max-width: 1100px; margin: 0 auto; position: relative; }
-  .partners-track::before, .partners-track::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
-  .partners-track::before { left: 0; background: linear-gradient(to right, var(--gray-50), transparent); }
-  .partners-track::after { right: 0; background: linear-gradient(to left, var(--gray-50), transparent); }
-  .partners-slide { display: flex; gap: 48px; animation: scrollPartners 25s linear infinite; width: max-content; }
-  .partners-slide span { flex-shrink: 0; font-size: 15px; font-weight: 600; color: #999; white-space: nowrap; transition: color .3s; }
-  .partners-slide span:hover { color: #dc2626; color: var(--primary); }
-  @keyframes scrollPartners { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.process-timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; max-width: 100%; margin: 0; padding: 0 16px; }
+.process-timeline::before { display: none; }
+.process-step { display: flex; flex-direction: column; align-items: center; text-align: center; background: #111; border: 1px solid #2a2a2a; border-radius: 10px; padding: 32px 20px 28px; transition: all .4s ease; }
+.process-step:hover { border-color: #f97316; transform: translateY(-6px); box-shadow: 0 12px 40px rgba(249,115,22,.1); }
+.process-dot { margin-bottom: 8px; }
+.process-dot .outer { width: 12px; height: 12px; border-radius: 50%; display: block; }
+.process-dot .inner { display: none; }
+.process-step:nth-child(1) .process-dot .outer { background: #dc2626; }
+.process-step:nth-child(2) .process-dot .outer { background: #f97316; }
+.process-step:nth-child(3) .process-dot .outer { background: #f59e0b; }
+.process-step:nth-child(4) .process-dot .outer { background: #ef4444; }
+.process-step:nth-child(5) .process-dot .outer { background: #fb923c; }
+.process-visual { width: 100%; height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; color: #f97316; overflow: visible; }
+.process-visual img { width: 80px; height: 80px; object-fit: contain; }
+.process-card { padding: 0; background: none; border: none; }
+.process-card .stage { display: inline-block; padding: 3px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-bottom: 10px; color: #f97316; background: rgba(249,115,22,.1); }
+.process-card h4 { font-size: 18px; font-weight: 700; color: #e5e5e5; margin-bottom: 8px; }
+.process-card ul { list-style: none; padding: 0; }
+.process-card ul li { color: #888; font-size: 12px; padding: 3px 0; line-height: 1.6; }
+.process-step:nth-child(1) { animation: fadeInUp .6s ease .1s both; }
+.process-step:nth-child(2) { animation: fadeInUp .6s ease .2s both; }
+.process-step:nth-child(3) { animation: fadeInUp .6s ease .3s both; }
+.process-step:nth-child(4) { animation: fadeInUp .6s ease .4s both; }
+.process-step:nth-child(5) { animation: fadeInUp .6s ease .5s both; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 900px) {
+  .process-timeline { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) { .process-timeline { grid-template-columns: 1fr; } }
 
-  /* ── Home Process ── */
-  .home-process { background: #ffffff; padding: 100px 24px; }
-  .home-process .section-header { margin-bottom: 72px; }
-  .process-timeline { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: center; gap: 0; position: relative; overflow-x: auto; padding-bottom: 20px; }
-  .process-timeline::before { content: ''; position: absolute; left: 60px; right: 60px; top: 88px; height: 1px; background: #e5e5e5; }
-  .process-step { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; min-width: 160px; position: relative; z-index: 1; }
-  .process-dot { margin-bottom: 16px; position: relative; z-index: 2; }
-  .process-dot .outer { width: 28px; height: 28px; border-radius: 50%; background: #ffffff; border: 2px solid #e5e5e5; display: flex; align-items: center; justify-content: center; }
-  .process-dot .inner { width: 8px; height: 8px; border-radius: 50%; }
-  .process-step:nth-child(1) .process-dot .outer { border-color: #ef4444; } .process-step:nth-child(1) .process-dot .inner { background: #ef4444; }
-  .process-step:nth-child(2) .process-dot .outer { border-color: #f97316; } .process-step:nth-child(2) .process-dot .inner { background: #f97316; }
-  .process-step:nth-child(3) .process-dot .outer { border-color: #3b82f6; } .process-step:nth-child(3) .process-dot .inner { background: #3b82f6; }
-  .process-step:nth-child(4) .process-dot .outer { border-color: #10b981; } .process-step:nth-child(4) .process-dot .inner { background: #10b981; }
-  .process-step:nth-child(5) .process-dot .outer { border-color: #f59e0b; } .process-step:nth-child(5) .process-dot .inner { background: #f59e0b; }
-  .process-visual { width: 100%; height: 120px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; border: 1px solid #f0f0f0; }
-  .pv-1 { background: #fef2f2; } .pv-2 { background: #fff7ed; } .pv-3 { background: #eff6ff; } .pv-4 { background: #ecfdf5; } .pv-5 { background: #fefce8; }
-  .process-card { padding: 24px 20px; border-radius: var(--radius); border: 1px solid #f0f0f0; background: #ffffff; transition: all .3s; }
-  .process-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.05); transform: translateY(-2px); }
-  .process-card .stage { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-bottom: 8px; color: #dc2626; }
-  .process-step:nth-child(1) .process-card .stage { background: #fef2f2; color: #dc2626; }
-  .process-step:nth-child(2) .process-card .stage { background: #fff7ed; color: #f97316; }
-  .process-step:nth-child(3) .process-card .stage { background: #eff6ff; color: #2563eb; }
-  .process-step:nth-child(4) .process-card .stage { background: #ecfdf5; color: #059669; }
-  .process-step:nth-child(5) .process-card .stage { background: #fefce8; color: #d97706; }
-  .process-card h4 { font-size: 17px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
-  .process-card ul { list-style: none; padding: 0; }
-  .process-card ul li { color: #71717a; font-size: 12px; padding: 2px 0; line-height: 1.6; }
-  @media (max-width: 900px) {
-    .process-timeline { flex-wrap: wrap; gap: 24px; }
-    .process-timeline::before { display: none; }
-    .process-step { min-width: 140px; flex: 0 0 calc(50% - 12px); }
-  }
-  @media (max-width: 500px) {
-    .process-step { flex: 1 1 100%; }
-  }
+.home-process-dark { background: #f4f4f5; }
+.home-process-dark .section-header h2 { color: #1a1a1a; }
+.home-process-dark .section-header p { color: #71717a; }
+.home-process-dark .process-step { background: #fff; border-color: #e5e5e5; }
+.home-process-dark .process-step:hover { border-color: #f97316; box-shadow: 0 12px 40px rgba(0,0,0,.08); }
+.home-process-dark .process-card h4 { color: #1a1a1a; }
+.home-process-dark .process-card ul li { color: #71717a; }
+.home-process-dark .process-visual { color: #fbbf8c; }
+.home-process-dark .process-card .stage { color: #f97316; background: rgba(249,115,22,.08); }
+.home-process-dark .process-step.activated { border-color: #f97316; box-shadow: 0 0 20px rgba(249,115,22,.2); }
+.home-process-dark .process-step.activated .process-card h4 { color: #1a1a1a; }
+.home-process-dark .process-step.activated .process-card .stage { color: #fff; background: #f97316; }
+.home-process-dark .pipeline-track { background: #e5e5e5; }
 
-  /* ── Home Cases ── */
-  .home-cases { background: #fafafa; padding: 100px 24px; }
-  .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
-  .case-card { border-radius: var(--radius); overflow: hidden; display: flex; transition: .25s; }
-  .case-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.08); }
-  .case-card .case-info { flex: 1; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; }
-  .case-card .case-info .case-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-  .case-card .case-info h4 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-  .case-card .case-info p { font-size: 13px; line-height: 1.7; margin-bottom: 16px; }
-  .case-card .case-info .case-link { font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
-  .case-card .case-img { width: 180px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-  .case-1 { background: #fef2f2; } .case-1 .case-info h4 { color: #7f1d1d; } .case-1 .case-info p { color: #b91c1c; } .case-1 .case-link { color: #dc2626; } .case-1 .case-icon { background: #fee2e2; color: #ef4444; } .case-1 .case-img { background: #fecaca; }
-  .case-2 { background: #fff7ed; } .case-2 .case-info h4 { color: #7c2d12; } .case-2 .case-info p { color: #c2410c; } .case-2 .case-link { color: #f97316; } .case-2 .case-icon { background: #ffedd5; color: #f97316; } .case-2 .case-img { background: #fed7aa; }
-  .case-3 { background: #eff6ff; } .case-3 .case-info h4 { color: #1e3a5f; } .case-3 .case-info p { color: #1d4ed8; } .case-3 .case-link { color: #2563eb; } .case-3 .case-icon { background: #dbeafe; color: #3b82f6; } .case-3 .case-img { background: #bfdbfe; }
-  .case-4 { background: #ecfdf5; } .case-4 .case-info h4 { color: #064e3b; } .case-4 .case-info p { color: #047857; } .case-4 .case-link { color: #059669; } .case-4 .case-icon { background: #d1fae5; color: #10b981; } .case-4 .case-img { background: #a7f3d0; }
-  .case-5 { background: #f5f3ff; } .case-5 .case-info h4 { color: #4c1d95; } .case-5 .case-info p { color: #6d28d9; } .case-5 .case-link { color: #7c3aed; } .case-5 .case-icon { background: #ede9fe; color: #8b5cf6; } .case-5 .case-img { background: #ddd6fe; }
-  .case-6 { background: #f0fdfa; } .case-6 .case-info h4 { color: #134e4a; } .case-6 .case-info p { color: #0f766e; } .case-6 .case-link { color: #0d9488; } .case-6 .case-icon { background: #ccfbf1; color: #14b8a6; } .case-6 .case-img { background: #99f6e4; }
-  @media (max-width: 768px) { .case-card { flex-direction: column; } .case-card .case-img { width: 100%; height: 120px; } }
+.home-cases { background: #0f1923; padding: 80px 0 60px; }
+.home-cases .section-header h2 { color: #fff; }
+.home-cases .section-header p { color: #8a9ba8; }
+.cases-carousel { max-width: 100%; margin: 0; position: relative; padding: 0 20px; }
+.cases-track { display: flex; gap: 36px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; padding: 12px 0; }
+.cases-track::-webkit-scrollbar { display: none; }
+.case-card { flex: 0 0 calc(28% - 24px); min-width: 260px; border-radius: 12px; overflow: hidden; cursor: pointer; text-decoration: none; scroll-snap-align: start; background: #151d25; transition: background .4s ease; display: flex; flex-direction: column; }
+.case-card:hover { background: #1c2630; }
+.case-card .case-bg { width: 100%; height: 240px; object-fit: cover; display: block; flex-shrink: 0; }
+.case-card .case-overlay { display: none; }
+.case-card .case-info { padding: 20px 20px 24px; flex: 1; opacity: .85; transition: opacity .35s ease; }
+.case-card:hover .case-info { opacity: 1; }
+.case-card .case-info .case-tag { display: inline-block; padding: 3px 10px; background: rgba(249,115,22,.2); color: #f97316; border-radius: 4px; font-size: 11px; font-weight: 600; margin-bottom: 8px; letter-spacing: 1px; }
+.case-card .case-info h4 { font-size: 18px; font-weight: 800; color: #e5e5e5; margin-bottom: 8px; }
+.case-card .case-info p { font-size: 13px; line-height: 1.7; color: #8a9ba8; }
+.case-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #f97316; margin-top: 8px; opacity: 0; transform: translateY(4px); transition: opacity .3s ease .2s, transform .3s ease .2s; }
+.case-card:hover .case-link { opacity: 1; transform: translateY(0); }
+@media (max-width: 900px) {
+  .case-card { flex: 0 0 calc(50% - 10px); min-width: 240px; }
+  .cases-carousel { padding: 0 40px; }
+}
+@media (max-width: 600px) {
+  .case-card { flex: 0 0 85%; min-width: 0; }
+  .cases-carousel { padding: 0 16px; }
+  .case-nav { display: none; }
+}
 
-  /* ── Home News ── */
-  .home-news { background: #fafafa; padding: 100px 24px; }
-  .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto 40px; }
-  .news-card { padding: 28px; border-radius: var(--radius); border: 1px solid #f0f0f0; background: #ffffff; transition: all .3s; cursor: pointer; text-decoration: none; display: block; }
-  .news-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,.06); transform: translateY(-2px); }
-  .news-card .news-tag { font-size: 11px; color: #dc2626; font-weight: 600; margin-bottom: 8px; }
-  .news-card h4 { font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.4; }
-  .news-card p { font-size: 13px; color: #71717a; line-height: 1.6; margin-bottom: 12px; }
-  .news-card .news-date { font-size: 12px; color: #adadad; }
-  .news-more { text-align: center; }
-  .news-more a { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 50px; border: 1px solid #e5e5e5; color: #3f3f46; text-decoration: none; font-size: 14px; font-weight: 600; transition: all .25s; }
-  .news-more a:hover { border-color: #dc2626; color: #dc2626; }
+.home-news { background: #0a0a0a; padding: 60px 0; }
+.home-news .section-header h2 { color: #fff; }
+.home-news .section-header p { color: #8a9ba8; }
+.news-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 36px; padding: 0 16px; }
+.news-card { border-radius: 16px; overflow: hidden; transition: all .35s ease; display: flex; flex-direction: column; background: #fff; cursor: pointer; text-decoration: none; }
+.news-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(255,119,34,.15); }
+.news-card .news-img { height: 200px; background-size: cover; background-position: center; position: relative; }
+.news-card .news-tag { position: absolute; top: 14px; left: 14px; padding: 5px 12px; background: rgba(255,255,255,.9); color: #121212; border-radius: 20px; font-size: 11px; font-weight: 600; margin: 0; }
+.news-card h4 { font-size: 15px; font-weight: 700; color: #121212; padding: 18px 20px 14px; line-height: 1.45; background: #f5f5f5; margin: 0; }
+.news-card p { display: none; }
+.news-card .news-date { font-size: 12px; color: #999; padding: 0 20px 16px; background: #f5f5f5; margin: 0; }
+.news-more { text-align: center; padding: 16px 0 40px; }
+.news-more a { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 6px; border: 1px solid #444; color: #999; text-decoration: none; font-size: 14px; font-weight: 600; transition: var(--t); }
+.news-more a:hover { border-color: #f97316; color: #f97316; }
+@media (max-width: 900px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .news-grid { grid-template-columns: 1fr; } }
 
-  /* ── Page (router) ── */
-  .page { display: none; }
-  .page.active { display: block; }
+/* Solutions */
+#solutions { background: #0F121A; position: relative; padding-top: 60px; }
+#solutions::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle, rgba(255,119,34,.03) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
+#solutions .section-header h2 { color: #fff; font-size: 36px; margin-bottom: 12px; margin-top: 8px; }
+#solutions .section-header h2::after { content: ''; display: block; width: 60px; height: 3px; background: linear-gradient(90deg, #FF7722, #FF9944); margin: 16px auto 0; border-radius: 2px; }
+#solutions .section-header p { color: #99A3B8; }
+#solutions .section-header .tag { color: #FF7722; border-color: rgba(255,119,34,.3); background: rgba(255,119,34,.08); }
+.solution-arch { text-align: center; margin-bottom: 60px; }
+.solution-arch img { max-width: 85%; height: auto; border-radius: 8px; }
+.solutions-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px; max-width: 100%; padding: 0 20px; }
+.solution-card { background: #171C29; border: 1px solid rgba(255,119,34,.18); border-radius: 18px; padding: 32px 24px; transition: all .35s ease; text-align: center; position: relative; overflow: hidden; opacity: 0; transform: translateY(30px); }
+.solution-card.visible { opacity: 1; transform: translateY(0); }
+.solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #FF7722, #FF9944, #FF7722); background-size: 200% 100%; transition: background-position .5s ease; }
+.solution-card:hover::before { background-position: 100% 0; }
+.solution-card:hover { transform: translateY(-4px); border-color: #FF7722; box-shadow: 0 8px 30px rgba(255,119,34,.22), inset 0 -40px 40px rgba(255,119,34,.03); }
+.solution-card h3 { font-size: 19px; color: #fff; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.solution-card h3 .dot { width: 8px; height: 8px; border-radius: 50%; background: #FF7722 !important; }
+.solution-card .subtitle { font-size: 12px; color: #99A3B8; font-weight: 600; margin-bottom: 14px; }
+.solution-card ul { list-style: none; }
+.solution-card ul li { padding: 8px 0; color: #B0B9C9; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .2s; }
+.solution-card ul li:hover { color: #FF7722; cursor: default; }
+@media (max-width: 900px) {
+  .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+  .solution-card:nth-child(6) { grid-column: auto; max-width: none; }
+}
+@media (max-width: 500px) {
+  .solutions-grid { grid-template-columns: 1fr; }
+}
 
-  /* ── Scroll Animations ── */
-  .fade-up { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
-  .fade-in { opacity: 0; transition: opacity .8s ease; }
-  .fade-in.visible { opacity: 1; }
-  .case-card:nth-child(1) { transition-delay: 0s; } .case-card:nth-child(2) { transition-delay: .1s; }
-  .case-card:nth-child(3) { transition-delay: .2s; } .case-card:nth-child(4) { transition-delay: .3s; }
-  .case-card:nth-child(5) { transition-delay: .4s; } .case-card:nth-child(6) { transition-delay: .5s; }
-  .process-step:nth-child(1) { transition-delay: 0s; } .process-step:nth-child(2) { transition-delay: .1s; }
-  .process-step:nth-child(3) { transition-delay: .2s; } .process-step:nth-child(4) { transition-delay: .3s; }
-  .process-step:nth-child(5) { transition-delay: .4s; }
+/* Talent */
+.talent-hero { position: relative; text-align: center; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.talent-hero-bg { width: 100%; height: auto; display: block; }
+.talent-hero-content { position: absolute; z-index: 1; padding: 40px; }
+.talent-hero-content h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 800; color: #fff; margin-bottom: 12px; position: relative; }
+.talent-hero-content p { font-size: 16px; color: rgba(255,255,255,.75); max-width: 500px; margin: 0 auto; line-height: 1.7; position: relative; }
+.career-section { padding: 80px 0; border-bottom: 1px solid #f0f0f0; }
+.career-section:last-child { border-bottom: none; }
+.career-title { text-align: center; font-size: 26px; font-weight: 800; color: var(--d); margin-bottom: 48px; }
+.career-title .title-underline { border-bottom: 3px solid #dc2626; padding-bottom: 4px; }
+.career-vision-wrap { display: flex; align-items: center; gap: 48px; padding-left: 120px; }
+.career-vision-title { font-size: 24px; font-weight: 800; color: #1a1a1a; flex-shrink: 0; padding-left: 48px; line-height: 1.8; }
+.career-vision-title span { font-size: 24px; font-weight: 800; color: #1a1a1a; }
+.career-vision-title .vision-sub { border-bottom: 3px solid #dc2626; padding-bottom: 6px; }
+.career-values { display: flex; gap: 20px; flex: 1; justify-content: center; }
+.career-value { width: 280px; flex-shrink: 0; border-radius: 8px; overflow: hidden; cursor: pointer; transition: all .6s ease; min-height: 480px; display: flex; align-items: flex-end; padding: 36px 28px; }
+.career-value:hover { width: 380px; box-shadow: 0 24px 72px rgba(0,0,0,.35); z-index: 10; }
+.career-img-title { font-size: 20px; font-weight: 700; color: #fff; }
+.career-desc { font-size: 13px; color: rgba(255,255,255,.85); line-height: 1.8; max-height: 0; overflow: hidden; opacity: 0; margin-top: 0; transition: max-height .5s ease, opacity .3s ease .1s, margin .5s ease; }
+.career-value:hover .career-desc,
+.career-value.active .career-desc { max-height: 200px; opacity: 1; margin-top: 14px; }
+.career-value:hover .career-img-title,
+.career-value.active .career-img-title { padding-bottom: 10px; border-bottom: 2px solid rgba(255,255,255,.3); margin-bottom: 2px; }
+@media (max-width: 768px) {
+  .career-vision-wrap { flex-direction: column; gap: 24px; }
+  .career-values { grid-template-columns: 1fr; }
+}
+.job-tabs { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; }
+.job-tab { padding: 12px 36px; border-radius: 6px; border: 1px solid #e5e5e5; background: #fff; font-size: 15px; font-weight: 600; color: #71717a; cursor: pointer; transition: var(--t); }
+.job-tab.active { background: #f97316; color: #fff; border-color: #f97316; }
+.job-tab:hover:not(.active) { border-color: #f97316; color: #f97316; }
+.jobs-panel { display: none; }
+.jobs-panel.active { display: block; }
+.jobs-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
+.jobs-list-grid { display: grid; grid-template-columns: repeat(3, 1fr); justify-content: unset; }
+.job-card { padding: 32px; border-radius: 8px; border: 1px solid #f0f0f0; background: #fff; transition: var(--t); }
+.job-card h4 { font-size: 20px; font-weight: 700; color: var(--d); margin-bottom: 8px; text-align: center; }
+.job-meta { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; }
+.job-section h5 { font-size: 14px; font-weight: 700; color: var(--d); margin-bottom: 8px; }
+.job-section ul { list-style: disc; padding-left: 20px; text-align: left; }
+.job-section ul li { font-size: 13px; color: var(--st); padding: 3px 0; line-height: 1.7; }
+.jobs-list-grid .job-card { width: auto; }
+.job-meta { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; }
+.job-section ul { list-style: none; padding: 0; }
+.job-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,.04); border-color: #f97316; }
+.job-card h4 { font-size: 20px; font-weight: 700; color: var(--d); margin-bottom: 8px; }
+.job-meta span { display: inline-block; padding: 4px 12px; background: #fff5ee; color: #f97316; border-radius: 4px; font-size: 13px; font-weight: 600; }
+.job-section { margin-bottom: 16px; }
+.job-section:last-child { margin-bottom: 0; }
+.job-section h5 { font-size: 14px; font-weight: 700; color: var(--d); margin-bottom: 8px; }
+.job-section ul { list-style: disc; padding-left: 20px; }
+.job-section ul li { font-size: 13px; color: var(--st); padding: 3px 0; line-height: 1.7; }
+.career-train-wrap { display: flex; align-items: flex-start; justify-content: flex-start; padding-left: 120px; position: relative; }
+.career-train-left { position: relative; z-index: 2; }
+.career-train-left .career-title { text-align: left; margin-bottom: 32px; padding-left: 0; }
+.career-growth { display: flex; gap: 20px; position: relative; z-index: 2; }
+.career-grow { width: 280px; padding: 36px 28px; border-radius: 6px; border: 1px solid #f0f0f0; min-height: 280px; background: rgba(255,255,255,.95); transition: var(--t); flex-shrink: 0; }
+.career-grow:hover { box-shadow: 0 8px 30px rgba(0,0,0,.04); background: #fff; }
+.career-grow h3 { font-size: 18px; font-weight: 700; color: #f97316; margin-bottom: 16px; padding-left: 14px; border-left: 3px solid #f97316; }
+.career-grow p { font-size: 14px; color: var(--st); line-height: 1.9; }
+.career-train-img { position: absolute; right: -40px; top: 50%; transform: translateY(-50%); z-index: 1; border-radius: 12px; overflow: hidden; }
+.career-train-img img { max-height: 500px; width: auto; display: block; }
+@media (max-width: 768px) {
+  .career-train-wrap { flex-direction: column; }
+  .career-train-img { width: 100%; }
+}
+.career-life { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.career-life-card { border-radius: 8px; overflow: hidden; text-align: center; transition: var(--t); position: relative; }
+.career-life-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.08); }
+.career-life-card img { width: 100%; height: 300px; object-fit: cover; display: block; }
+.career-life-card h4 { position: absolute; bottom: 0; left: 0; font-size: 17px; font-weight: 700; color: #fff; padding: 12px 20px; background: linear-gradient(transparent, rgba(0,0,0,.6)); width: 100%; text-align: left; }
+@media (max-width: 768px) {
+  .career-values, .career-growth, .career-life { grid-template-columns: 1fr 1fr; }
+  .career-life { grid-template-columns: repeat(2, 1fr); }
+  .career-jobs { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .career-values, .career-growth, .career-life { grid-template-columns: 1fr; }
+}
 
-  /* ── Mobile & Cross-browser fixes ── */
-  @media (max-width: 768px) {
-    section { padding: 60px 16px; }
-    .hero { padding: 100px 16px 60px; min-height: 90vh; }
-    .hero h1 { font-size: 28px; }
-    .hero p { font-size: 15px; }
-    .btn { padding: 12px 24px; font-size: 14px; }
-    .section-header { margin-bottom: 40px; }
-    .section-header h2 { font-size: 24px; }
-    .section-header p { font-size: 14px; }
-    .research-content h2 { font-size: 24px; }
-    .research-content p { font-size: 15px; }
-    .research-industries { gap: 10px; }
-    .research-industry { padding: 10px 18px; font-size: 13px; gap: 6px; }
-    .research-industry .industry-icon svg { width: 15px; height: 15px; }
-    .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
-    .footer-brand { grid-column: 1 / -1; }
-    .footer-wechat { grid-column: 1 / -1; }
-    .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
-    .about-services { grid-template-columns: 1fr; }
-    .about-advantages { grid-template-columns: 1fr; }
-    .solutions-grid { grid-template-columns: 1fr; }
-    .talent-grid { grid-template-columns: 1fr 1fr; }
-    .news-grid { grid-template-columns: 1fr; }
-    .cases-grid { grid-template-columns: 1fr; }
-    .partners-slide { gap: 32px; }
-    .home-process { padding: 60px 16px; }
-    .home-cases { padding: 60px 16px; }
-    .home-news { padding: 60px 16px; }
-    .home-partners { padding: 40px 16px; }
-  }
+/* Apps new */
+.apps-new { background: #f5f5f5; padding: 0; min-height: calc(100vh - 72px); }
+.apps-hero { display: flex; max-width: 100%; margin: 0 auto; align-items: stretch; }
+.apps-hero-left { flex: 1; background: #0a0a0a; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 160px 80px; text-align: center; }
+.apps-hero-left h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: #fff; margin-bottom: 24px; }
+.apps-hero-left p { font-size: 26px; color: #f97316; font-weight: 600; line-height: 1.8; }
+.apps-hero-right { flex: 1; }
+.apps-hero-right { overflow: hidden; }
+.apps-hero-right video { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 768px) {
+  .apps-hero { flex-direction: column; min-height: auto; }
+  .apps-hero-left { padding: 40px 24px; }
+  .apps-hero-right { height: 250px; }
+}
+.apps-category-wrap { background: #f0f0f0; padding: 4px; }
+.apps-category-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; max-width: 1400px; margin: 0 auto; padding: 0; background: url('ying_yong/2_应用分类.png') center/cover no-repeat; min-height: 500px; }
+.apps-cat-item { position: relative; cursor: pointer; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 20px 12px; background: rgba(255,255,255,.45); }
+.apps-cat-item:hover { background: rgba(0,0,0,.2); }
+.apps-cat-hover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .4s ease; }
+.apps-cat-item:hover .apps-cat-hover { opacity: 1; }
+.apps-cat-text { position: relative; z-index: 1; text-align: center; transition: color .3s; }
+.apps-cat-label { display: block; font-size: 20px; font-weight: 800; color: #1a1a1a; margin-bottom: 4px; }
+.apps-cat-en { display: block; font-size: 11px; font-weight: 500; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+.apps-cat-scene { display: block; font-size: 13px; font-weight: 600; color: #fff; margin-top: 8px; opacity: 0; transform: translateX(-10px); transition: opacity .3s ease, transform .3s ease; }
+.apps-cat-scene .arrow { display: inline-block; margin-left: 4px; transition: transform .3s; }
+.apps-cat-item:hover .apps-cat-scene { opacity: 1; transform: translateX(0); }
+.apps-cat-item:hover .apps-cat-scene .arrow { transform: translateX(3px); }
+.apps-cat-item:hover .apps-cat-label,
+.apps-cat-item:hover .apps-cat-en { color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.5); }
+@media (max-width: 768px) {
+  .apps-category-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .apps-category-grid { grid-template-columns: 1fr; }
+}
 
-  @media (max-width: 480px) {
-    .nav-logo img { height: 32px; }
-    .hero h1 { font-size: 24px; }
-    .hero p { font-size: 14px; }
-    .talent-grid { grid-template-columns: 1fr; }
-    .research-industry { padding: 8px 14px; font-size: 12px; }
-    .process-card h4 { font-size: 15px; }
-    .process-card ul li { font-size: 11px; }
-    .case-card .case-info { padding: 20px; }
-    .case-card .case-info h4 { font-size: 17px; }
-  }
+.scene-panel { display: none; padding: 0 0 40px; }
+.scene-panel.open { display: block; }
+.scene-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 0 16px; max-width: 100%; margin: 0 auto; }
+.scene-card { border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #f0f0f0; display: flex; flex-direction: column; }
+.scene-card .scene-img { width: 100%; height: 220px; object-fit: cover; display: block; border-radius: 12px 12px 0 0; }
+.scene-card .scene-body { padding: 24px 24px 28px; text-align: left; }
+.scene-card .scene-num { font-size: 12px; font-weight: 600; color: #f97316; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+.scene-card h4 { font-size: 18px; font-weight: 800; color: #0f1a24; margin-bottom: 10px; line-height: 1.3; }
+.scene-card p { font-size: 13px; color: #555; line-height: 1.7; margin-bottom: 0; }
+@media (max-width: 768px) {
+  .scene-track { grid-template-columns: repeat(2, 1fr); padding: 0 20px; }
+}
+@media (max-width: 480px) {
+  .scene-track { grid-template-columns: 1fr; }
+}
+
+/* About */
+#about { background: var(--w); }
+.about-hero { background: url('company_instro/company_intro_image_副本.png') center/cover no-repeat; padding: 0; text-align: center; min-height: 380px; display: flex; align-items: center; justify-content: center; position: relative; }
+.about-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.5); }
+.about-hero-content { position: relative; z-index: 1; padding: 80px 0; }
+.about-hero-content h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; color: #fff; margin-bottom: 12px; }
+.about-hero-content p { font-size: 16px; color: rgba(255,255,255,.85); font-weight: 500; max-width: 480px; margin: 0 auto; line-height: 1.8; }
+.about-timeline-section { padding: 60px 0 80px; }
+.about-timeline-wrap { max-width: 1000px; margin: 0 auto; display: flex; gap: 80px; align-items: center; }
+.about-timeline-title { font-size: 28px; font-weight: 800; color: var(--d); flex-shrink: 0; position: sticky; top: 100px; align-self: flex-start; }
+.about-timeline { flex: 1; position: relative; }
+.about-timeline::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: #f0f0f0; }
+.timeline-item { position: relative; padding-left: 40px; margin-bottom: 48px; }
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-dot { position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 3px solid #f97316; }
+.timeline-year { font-size: 14px; font-weight: 700; color: #f97316; margin-bottom: 8px; letter-spacing: 1px; }
+.timeline-card h3 { font-size: 18px; font-weight: 700; color: var(--d); margin-bottom: 8px; }
+.timeline-card p { font-size: 14px; color: var(--st); line-height: 1.8; }
+@media (max-width: 768px) {
+  .about-timeline-wrap { flex-direction: column; gap: 32px; }
+  .timeline-item { padding-left: 32px; }
+}
+
+/* Research cards (old style cleanup) */
+.research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.research-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 6px; padding: 32px 28px; transition: var(--t); }
+.research-card:hover { background: rgba(255,255,255,.06); transform: translateY(-2px); }
+.research-icon { width: 48px; height: 48px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+.research-icon.blue { background: rgba(249,115,22,.12); color: var(--g); }
+.research-icon.purple { background: rgba(232,93,58,.12); color: var(--r); }
+.research-icon.green { background: rgba(249,115,22,.08); color: #34d399; }
+.research-card h3 { font-size: 18px; margin-bottom: 8px; color: var(--w); }
+.research-card p { color: var(--lt); font-size: 14px; }
+
+/* Footer */
+footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 80px; padding: 0 40px; }
+.footer-brand img { height: 56px; margin-bottom: 24px; filter: brightness(0) saturate(100%) invert(55%) sepia(98%) saturate(1800%) hue-rotate(355deg); }
+.footer-brand p { font-size: 18px; line-height: 2.1; color: var(--st); }
+.footer-col h4 { color: var(--w); font-size: 20px; margin-bottom: 24px; }
+.footer-col a { display: block; color: var(--lt); text-decoration: none; font-size: 16px; padding: 10px 0; transition: color .2s; }
+.footer-col a:hover { color: var(--g); }
+.footer-wechat { text-align: center; }
+.footer-wechat h4 { color: var(--w); font-size: 20px; margin-bottom: 16px; }
+.footer-wechat img { width: 140px; height: 140px; border-radius: 8px; display: block; margin: 0 auto 12px; }
+.footer-wechat span { font-size: 15px; color: var(--st); }
+.footer-bottom { margin-top: 60px; padding: 32px 40px 0; border-top: 1px solid rgba(255,255,255,.08); display: flex; justify-content: space-between; font-size: 15px; flex-wrap: wrap; gap: 16px; }
+.footer-bottom a { color: var(--lt); text-decoration: none; }
+.footer-bottom a:hover { color: var(--g); }
+
+.page { display: none; } .page.active { display: block; }
+
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.case-card:nth-child(1) { transition-delay: 0s; } .case-card:nth-child(2) { transition-delay: .08s; }
+.case-card:nth-child(3) { transition-delay: .16s; } .case-card:nth-child(4) { transition-delay: .24s; }
+.case-card:nth-child(5) { transition-delay: .32s; } .case-card:nth-child(6) { transition-delay: .4s; }
+.process-step:nth-child(1) { transition-delay: 0s; } .process-step:nth-child(2) { transition-delay: .08s; }
+.process-step:nth-child(3) { transition-delay: .16s; } .process-step:nth-child(4) { transition-delay: .24s; }
+.process-step:nth-child(5) { transition-delay: .32s; }
+
+@media (max-width: 768px) {
+  section { padding: 60px 20px; }
+  .hero { padding: 60px 20px; }
+  .hero h1 { font-size: 26px; }
+  .hero p { font-size: 15px; }
+  .btn { padding: 12px 24px; font-size: 14px; }
+  .section-header h2 { font-size: 18px; }
+  .section-header p { font-size: 14px; }
+  .research-content h2 { font-size: 22px; }
+  .research-content p { font-size: 15px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-wechat { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .solutions-grid, .talent-grid, .news-grid, .cases-grid, .about-services, .about-advantages { grid-template-columns: 1fr; }
+  .about-stats-bar { flex-wrap: wrap; }
+  .about-stat { flex: 1 1 50%; border-bottom: 1px solid #f0f0f0; }
+  .case-card { padding: 24px; }
+}
+
+@media (max-width: 480px) {
+  .nav-logo img { height: 28px; }
+  .hero h1 { font-size: 22px; }
+  .talent-grid { grid-template-columns: 1fr; }
+  .research-industry { padding: 8px 14px; font-size: 12px; }
+}
 </style>
+
 </head>
 <body>
 
@@ -316,7 +515,7 @@
 <nav class="nav" id="navbar">
   <div class="nav-inner">
     <a href="#" class="nav-logo" data-page="home">
-      <img src="微信图片_20260528133247_1_166.png" alt="汇元科技" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+      <img src="huiyuan_logo.png" alt="汇元科技">
       <span style="display:none">汇元科技</span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="菜单">
@@ -324,9 +523,33 @@
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#" data-page="research">AI研究院</a></li>
-      <li><a href="#" data-page="apps">AI应用广场</a></li>
-      <li><a href="#" data-page="solutions">方案</a></li>
-      <li><a href="#" data-page="talent">人才</a></li>
+      <li class="nav-dropdown">
+        <a href="#" data-page="apps">AI应用广场 <span class="arrow"><svg width="12" height="7" viewBox="0 0 12 7"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#" data-page="apps" data-tab="rd">研发部</a></li>
+          <li><a href="#" data-page="apps" data-tab="prod">生产部</a></li>
+          <li><a href="#" data-page="apps" data-tab="sales">销售部</a></li>
+          <li><a href="#" data-page="apps" data-tab="cs">客服部</a></li>
+          <li><a href="#" data-page="apps" data-tab="hr">HR部</a></li>
+          <li><a href="#" data-page="apps" data-tab="media">新媒体部</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" data-page="solutions">方案 <span class="arrow"><svg width="12" height="7" viewBox="0 0 12 7"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#" data-page="solutions" data-scroll="solution-arch">AI落地整体技术架构</a></li>
+          <li><a href="#" data-page="solutions" data-scroll="solutions-header">解决方案</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" data-page="talent">职业生涯 <span class="arrow"><svg width="12" height="7" viewBox="0 0 12 7"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#" data-page="talent" data-scroll="career-vision">未来</a></li>
+          <li><a href="#" data-page="talent" data-scroll="career-jobs">岗位</a></li>
+          <li><a href="#" data-page="talent" data-scroll="career-train">培训</a></li>
+          <li><a href="#" data-page="talent" data-scroll="career-life">活动</a></li>
+        </ul>
+      </li>
       <li><a href="#" data-page="about">关于我们</a></li>
     </ul>
   </div>
@@ -336,29 +559,81 @@
 <div id="pages">
   <!-- Home -->
   <div class="page active" id="page-home">
-    <section class="hero">
-      <div class="hero-content">
-        <h1>为各行业<span>量身定制</span><br>AI解决方案</h1>
-        <p>汇元科技深度融合数据智能与行业know-how，覆盖制造、能源、汽车、医药等领域，提供从诊断咨询到落地实施的一站式AI解决方案。</p>
-        <div class="hero-btns">
-          <a href="#" class="btn btn-primary" data-page="solutions">探索方案</a>
-          <a href="#" class="btn btn-outline" data-page="about">了解我们</a>
+    <div class="home-video">
+      <video src="shou_ye/首页第一部介绍.mp4" autoplay muted loop playsinline></video>
+      <div class="home-video-text">
+        <h2>深耕行业专业能力</h2>
+        <p>汇元以数据 + AI 赋能业务落地</p>
+      </div>
+    </div>
+    <!-- 合作伙伴轮播 -->
+    <section class="partners-strip">
+      <div class="partners-marquee">
+        <div class="partners-track">
+          <img src="logo/ey.png" alt="安永">
+          <img src="logo/inspur.png" alt="浪潮">
+          <img src="logo/h3c.png" alt="华三">
+          <img src="logo/sxf.png" alt="深信服">
+          <img src="logo/yxhc.png" alt="亿信华辰">
+          <img src="logo/hs.png" alt="火山引擎">
+          <img src="logo/yh.png" alt="永洪">
+          <img src="logo/ey.png" alt="安永">
+          <img src="logo/inspur.png" alt="浪潮">
+          <img src="logo/h3c.png" alt="华三">
+          <img src="logo/sxf.png" alt="深信服">
+          <img src="logo/yxhc.png" alt="亿信华辰">
+          <img src="logo/hs.png" alt="火山引擎">
+          <img src="logo/yh.png" alt="永洪">
         </div>
       </div>
     </section>
-
+    <!-- AI与数据 -->
+    <section class="ai-data-section">
+      <div class="container">
+        <div class="ai-data-top">
+          <div class="ai-data-image">
+            <img src="shou_ye/AI现状.png" alt="AI现状">
+          </div>
+          <div class="ai-data-right">
+            <h2 class="ai-data-title">AI 与数据</h2>
+            <p class="ai-data-subtitle">过去 30 年，直至生成式 AI 问世前，尚无技术能全面重塑企业。如今，AI 已成为企业重塑的核心驱动力。完备的数据基础是 AI 成功的关键基石。</p>
+          </div>
+        </div>
+        <h3 class="ai-stats-title">AI 与数据的现状</h3>
+        <div class="ai-stats-grid">
+          <div class="ai-stat">
+            <div class="ai-stat-num">97%</div>
+            <p>的高管表示，生成式 AI 将改变他们的企业和行业</p>
+          </div>
+          <div class="ai-stat">
+            <div class="ai-stat-num">67%</div>
+            <p>的企业计划增加技术支出，并优先考虑数据和人工智能投资</p>
+          </div>
+          <div class="ai-stat">
+            <div class="ai-stat-num">75%</div>
+            <p>的高管表示，"优质数据"是提升企业生成式 AI 能力的最宝贵要素</p>
+          </div>
+          <div class="ai-stat">
+            <div class="ai-stat-num">10–15%</div>
+            <p>数据驱动型企业的收入增长比同行高出 10% 至 15%</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- 行动指南 -->
     <section class="home-process">
       <div class="container">
         <div class="section-header fade-up">
-          <div class="tag">AI Application</div>
           <h2>AI应用落地路径</h2>
           <p>从场景识别到持续优化，构建企业AI应用完整链路</p>
         </div>
-        <div class="process-timeline">
+        <div class="process-pipeline" data-pipeline="ai">
+          <div class="pipeline-track"><div class="pipeline-fill"></div><div class="pipeline-dot"></div></div>
+        </div>
+        <div class="process-timeline" data-timeline="ai">
           <div class="process-step fade-up">
             <div class="process-visual pv-1">
-              <svg width="100" height="80" viewBox="0 0 100 80"><circle cx="50" cy="35" r="20" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/><circle cx="50" cy="35" r="12" fill="none" stroke="#ef4444" stroke-width="1.5"/><circle cx="50" cy="35" r="4" fill="#ef4444"/><line x1="50" y1="55" x2="50" y2="72" stroke="#ef4444" stroke-width="1"/><line x1="38" y1="65" x2="62" y2="65" stroke="#ef4444" stroke-width="1"/><circle cx="22" cy="22" r="2" fill="#ef4444" opacity=".3"/><circle cx="78" cy="18" r="2" fill="#ef4444" opacity=".25"/></svg>
+              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
             </div>
             <div class="process-dot"><div class="outer"><div class="inner"></div></div></div>
             <div class="process-card">
@@ -369,7 +644,7 @@
           </div>
           <div class="process-step fade-up">
             <div class="process-visual pv-2">
-              <svg width="100" height="80" viewBox="0 0 100 80"><rect x="12" y="10" width="76" height="56" rx="4" fill="#ffedd5" stroke="#f97316" stroke-width="1"/><line x1="22" y1="24" x2="50" y2="24" stroke="#f97316" stroke-width="1.5"/><line x1="22" y1="34" x2="78" y2="34" stroke="#f97316" stroke-width="1.5"/><line x1="22" y1="44" x2="58" y2="44" stroke="#f97316" stroke-width="1.5"/><rect x="65" y="20" width="12" height="12" rx="2" fill="none" stroke="#f97316" stroke-width="1"/><line x1="65" y1="26" x2="77" y2="26" stroke="#f97316" stroke-width=".8"/></svg>
+              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
             </div>
             <div class="process-dot"><div class="outer"><div class="inner"></div></div></div>
             <div class="process-card">
@@ -380,7 +655,7 @@
           </div>
           <div class="process-step fade-up">
             <div class="process-visual pv-3">
-              <svg width="100" height="80" viewBox="0 0 100 80"><circle cx="50" cy="25" r="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/><circle cx="28" cy="42" r="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/><circle cx="72" cy="42" r="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/><circle cx="50" cy="58" r="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/><circle cx="50" cy="25" r="3" fill="#3b82f6"/><circle cx="28" cy="42" r="3" fill="#3b82f6"/><circle cx="72" cy="42" r="3" fill="#3b82f6"/><circle cx="50" cy="58" r="3" fill="#3b82f6"/><line x1="50" y1="28" x2="28" y2="39" stroke="#3b82f6" stroke-width=".6" opacity=".5"/><line x1="50" y1="28" x2="72" y2="39" stroke="#3b82f6" stroke-width=".6" opacity=".5"/><line x1="28" y1="45" x2="50" y2="55" stroke="#3b82f6" stroke-width=".6" opacity=".5"/><line x1="72" y1="45" x2="50" y2="55" stroke="#3b82f6" stroke-width=".6" opacity=".5"/></svg>
+              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="12" cy="6" r="2"/><circle cx="6" cy="14" r="2"/><circle cx="12" cy="14" r="2"/><circle cx="18" cy="14" r="2"/><circle cx="12" cy="22" r="2"/><line x1="12" y1="8" x2="6" y2="12"/><line x1="12" y1="8" x2="18" y2="12"/><line x1="6" y1="16" x2="12" y2="20"/><line x1="18" y1="16" x2="12" y2="20"/></svg>
             </div>
             <div class="process-dot"><div class="outer"><div class="inner"></div></div></div>
             <div class="process-card">
@@ -391,7 +666,7 @@
           </div>
           <div class="process-step fade-up">
             <div class="process-visual pv-4">
-              <svg width="100" height="80" viewBox="0 0 100 80"><rect x="20" y="8" width="60" height="36" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="1"/><rect x="26" y="16" width="18" height="7" rx="2" fill="none" stroke="#10b981" stroke-width=".8"/><rect x="26" y="28" width="30" height="5" rx="2" fill="none" stroke="#10b981" stroke-width=".6"/><line x1="50" y1="44" x2="50" y2="54" stroke="#10b981" stroke-width="1"/><line x1="35" y1="54" x2="65" y2="54" stroke="#10b981" stroke-width="1"/><circle cx="50" cy="66" r="8" fill="#d1fae5" stroke="#10b981" stroke-width="1"/><path d="M46 66l3 3 5-6" stroke="#10b981" stroke-width="1" fill="none"/></svg>
+              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><circle cx="12" cy="10" r="1"/></svg>
             </div>
             <div class="process-dot"><div class="outer"><div class="inner"></div></div></div>
             <div class="process-card">
@@ -402,7 +677,7 @@
           </div>
           <div class="process-step fade-up">
             <div class="process-visual pv-5">
-              <svg width="100" height="80" viewBox="0 0 100 80"><rect x="10" y="10" width="80" height="56" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/><path d="M20 50l14-20 10 12 16-28 12 18 14-22" stroke="#f59e0b" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="20" cy="50" r="3" fill="#f59e0b"/><circle cx="34" cy="30" r="3" fill="#f59e0b"/><circle cx="44" cy="42" r="3" fill="#f59e0b"/><circle cx="60" cy="14" r="3" fill="#f59e0b"/><circle cx="72" cy="32" r="3" fill="#f59e0b"/><circle cx="86" cy="10" r="3" fill="#f59e0b"/><circle cx="86" cy="10" r="7" fill="none" stroke="#f59e0b" stroke-width="1"/></svg>
+              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M21 12a9 9 0 11-3.5-7.1"/><polyline points="21 3 21 9 15 9"/></svg>
             </div>
             <div class="process-dot"><div class="outer"><div class="inner"></div></div></div>
             <div class="process-card">
@@ -412,16 +687,18 @@
             </div>
           </div>
         </div>
-        <div style="margin-top:80px;">
+        <div class="home-process-dark" style="padding:60px 0 10px;">
           <div class="section-header fade-up">
-            <div class="tag">Data Governance</div>
             <h2>数据治理实施路径</h2>
             <p>从规划到运营，构建企业数据治理完整闭环</p>
           </div>
-          <div class="process-timeline">
+          <div class="process-pipeline" data-pipeline="dg">
+            <div class="pipeline-track"><div class="pipeline-fill"></div><div class="pipeline-dot"></div></div>
+          </div>
+          <div class="process-timeline" data-timeline="dg">
             <div class="process-step fade-up">
               <div class="process-visual pv-1">
-                <svg width="100" height="80" viewBox="0 0 100 80"><rect x="12" y="10" width="76" height="56" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/><line x1="22" y1="22" x2="78" y2="22" stroke="#ef4444" stroke-width=".8"/><line x1="22" y1="32" x2="60" y2="32" stroke="#ef4444" stroke-width=".8"/><line x1="22" y1="42" x2="70" y2="42" stroke="#ef4444" stroke-width=".8"/><circle cx="48" cy="22" r="2" fill="#ef4444"/><circle cx="38" cy="32" r="2" fill="#ef4444"/><circle cx="30" cy="42" r="2" fill="#ef4444"/><rect x="55" y="52" width="20" height="6" rx="2" fill="none" stroke="#ef4444" stroke-width=".6"/></svg>
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
               </div>
               <div class="process-dot"><div class="outer"><div class="inner"></div></div></div>
               <div class="process-card">
@@ -432,7 +709,7 @@
             </div>
             <div class="process-step fade-up">
               <div class="process-visual pv-2">
-                <svg width="100" height="80" viewBox="0 0 100 80"><rect x="12" y="10" width="76" height="56" rx="4" fill="#ffedd5" stroke="#f97316" stroke-width="1"/><line x1="22" y1="22" x2="78" y2="22" stroke="#f97316" stroke-width=".8"/><path d="M24 38l14-8 12 12 16-14 14 10" stroke="#f97316" stroke-width="1.2" fill="none"/><circle cx="24" cy="38" r="2" fill="#f97316"/><circle cx="50" cy="38" r="2" fill="#f97316"/><circle cx="78" cy="32" r="2" fill="#f97316"/></svg>
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
               </div>
               <div class="process-dot"><div class="outer"><div class="inner"></div></div></div>
               <div class="process-card">
@@ -443,7 +720,7 @@
             </div>
             <div class="process-step fade-up">
               <div class="process-visual pv-3">
-                <svg width="100" height="80" viewBox="0 0 100 80"><rect x="14" y="8" width="30" height="20" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/><rect x="52" y="8" width="30" height="20" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/><rect x="33" y="38" width="30" height="20" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/><line x1="44" y1="18" x2="50" y2="18" stroke="#3b82f6" stroke-width=".8"/><circle cx="48" cy="48" r="2" fill="#3b82f6"/><circle cx="58" cy="16" r="2" fill="#3b82f6"/></svg>
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="8" y="14" width="8" height="8" rx="1"/><line x1="6" y1="10" x2="6" y2="14"/><line x1="18" y1="10" x2="18" y2="14"/></svg>
               </div>
               <div class="process-dot"><div class="outer"><div class="inner"></div></div></div>
               <div class="process-card">
@@ -454,7 +731,7 @@
             </div>
             <div class="process-step fade-up">
               <div class="process-visual pv-4">
-                <svg width="100" height="80" viewBox="0 0 100 80"><rect x="10" y="10" width="80" height="56" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="1"/><path d="M22 30l14-10 14 10 16-8 14 6" stroke="#10b981" stroke-width="1.2" fill="none"/><circle cx="22" cy="30" r="2" fill="#10b981"/><circle cx="36" cy="20" r="2" fill="#10b981"/><circle cx="50" cy="30" r="2" fill="#10b981"/><circle cx="66" cy="22" r="2" fill="#10b981"/><circle cx="80" cy="28" r="2" fill="#10b981"/><rect x="28" y="46" width="44" height="6" rx="2" fill="none" stroke="#10b981" stroke-width=".6"/></svg>
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
               </div>
               <div class="process-dot"><div class="outer"><div class="inner"></div></div></div>
               <div class="process-card">
@@ -465,7 +742,7 @@
             </div>
             <div class="process-step fade-up">
               <div class="process-visual pv-5">
-                <svg width="100" height="80" viewBox="0 0 100 80"><circle cx="50" cy="38" r="22" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/><path d="M50 10a28 28 0 110 56" fill="none" stroke="#f59e0b" stroke-width="1.2"/><polygon points="50,6 47,14 53,14" fill="#f59e0b"/><circle cx="50" cy="38" r="8" fill="none" stroke="#f59e0b" stroke-width="1"/><path d="M46 38l3 4 5-7" stroke="#f59e0b" stroke-width="1" fill="none"/></svg>
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M21.5 2v6h-6M2 12a10 10 0 0117.5-7.1"/><polyline points="2.5 22 2.5 16 8.5 16"/><path d="M22 12a10 10 0 01-17.5 7.1"/></svg>
               </div>
               <div class="process-dot"><div class="outer"><div class="inner"></div></div></div>
               <div class="process-card">
@@ -483,77 +760,68 @@
     <section class="home-cases">
       <div class="container">
         <div class="section-header fade-up">
-          <div class="tag">Customer Cases</div>
           <h2>客户案例</h2>
           <p>覆盖制造、能源、汽车、医药、电子信息等多个行业领域</p>
         </div>
-        <div class="cases-grid">
-          <div class="case-card fade-up case-5">
-            <div class="case-info">
-              <div>
-                <div class="case-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <div class="cases-carousel">
+          <button class="case-nav prev" id="casePrev">←</button>
+          <div class="cases-track">
+            <a href="#" class="case-card fade-up" data-page="home">
+              <img src="shou_ye/制造.webp" class="case-bg" alt="">
+              <div class="case-info">
+                <div class="case-tag">制造业</div>
                 <h4>主数据治理</h4>
                 <p>搭建企业级主数据管理平台，统一物料、客户、供应商编码体系，数据一致性提升90%。</p>
+                <span class="case-link">了解更多 →</span>
               </div>
-              <a href="#" class="case-link" data-page="home">了解更多 →</a>
-            </div>
-            <div class="case-img"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8" opacity=".3"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-          </div>
-          <div class="case-card fade-up case-6">
-            <div class="case-info">
-              <div>
-                <div class="case-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 2l2 7h7l-5 4 2 7-6-4-6 4 2-7-5-4h7z"/></svg></div>
+            </a>
+            <a href="#" class="case-card fade-up" data-page="home">
+              <img src="shou_ye/能源.webp" class="case-bg" alt="">
+              <div class="case-info">
+                <div class="case-tag">能源</div>
                 <h4>数据质量监控</h4>
                 <p>建立数据质量检核规则与自动化监控体系，实现数据问题实时发现与闭环修复。</p>
+                <span class="case-link">了解更多 →</span>
               </div>
-              <a href="#" class="case-link" data-page="home">了解更多 →</a>
-            </div>
-            <div class="case-img"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8" opacity=".3"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/></svg></div>
-          </div>
-          <div class="case-card fade-up case-1">
-            <div class="case-info">
-              <div>
-                <div class="case-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+            </a>
+            <a href="#" class="case-card fade-up" data-page="home">
+              <img src="shou_ye/制造.webp" class="case-bg" alt="">
+              <div class="case-info">
+                <div class="case-tag">制造业</div>
                 <h4>智能生产排程</h4>
-                <p>基于约束优化与强化学习的排程引擎，动态调整生产计划，排产效率提升40%，订单交付周期缩短30%。</p>
+                <p>基于约束优化与强化学习的排程引擎，动态调整生产计划，排产效率提升40%。</p>
+                <span class="case-link">了解更多 →</span>
               </div>
-              <a href="#" class="case-link" data-page="home">了解更多 →</a>
-            </div>
-            <div class="case-img"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8" opacity=".25"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          </div>
-          <div class="case-card fade-up case-2">
-            <div class="case-info">
-              <div>
-                <div class="case-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            </a>
+            <a href="#" class="case-card fade-up" data-page="home">
+              <img src="shou_ye/电子信息.webp" class="case-bg" alt="">
+              <div class="case-info">
+                <div class="case-tag">电子信息</div>
                 <h4>质量视觉检测</h4>
-                <p>计算机视觉驱动的产品质量自动检测，缺陷检出率达99.6%，大幅降低人工质检成本与漏检风险。</p>
+                <p>计算机视觉驱动的产品质量自动检测，缺陷检出率达99.6%。</p>
+                <span class="case-link">了解更多 →</span>
               </div>
-              <a href="#" class="case-link" data-page="home">了解更多 →</a>
-            </div>
-            <div class="case-img"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8" opacity=".25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
-          </div>
-          <div class="case-card fade-up case-3">
-            <div class="case-info">
-              <div>
-                <div class="case-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+            </a>
+            <a href="#" class="case-card fade-up" data-page="home">
+              <img src="shou_ye/汽车.webp" class="case-bg" alt="">
+              <div class="case-info">
+                <div class="case-tag">汽车</div>
                 <h4>设备预测性维护</h4>
-                <p>IoT传感器数据+AI算法预测设备故障，非计划停机减少62%，变被动维修为主动维护。</p>
+                <p>IoT传感器数据+AI算法预测设备故障，非计划停机减少62%。</p>
+                <span class="case-link">了解更多 →</span>
               </div>
-              <a href="#" class="case-link" data-page="home">了解更多 →</a>
-            </div>
-            <div class="case-img"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8" opacity=".25"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
-          </div>
-          <div class="case-card fade-up case-4">
-            <div class="case-info">
-              <div>
-                <div class="case-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            </a>
+            <a href="#" class="case-card fade-up" data-page="home">
+              <img src="shou_ye/医疗.webp" class="case-bg" alt="">
+              <div class="case-info">
+                <div class="case-tag">医药</div>
                 <h4>能耗智能优化</h4>
-                <p>AI驱动的全厂能源监控与动态调优，年节约电力成本超千万元，碳排放强度降低18%。</p>
+                <p>AI驱动的全厂能源监控与动态调优，碳排放强度降低18%。</p>
+                <span class="case-link">了解更多 →</span>
               </div>
-              <a href="#" class="case-link" data-page="home">了解更多 →</a>
-            </div>
-            <div class="case-img"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8" opacity=".25"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            </a>
           </div>
+          <button class="case-nav next" id="caseNext">→</button>
         </div>
       </div>
     </section>
@@ -562,34 +830,29 @@
     <section class="home-news">
       <div class="container">
         <div class="section-header fade-up">
-          <div class="tag">News</div>
           <h2>新闻资讯</h2>
           <p>获取最新的人工智能应用资讯和研究成果</p>
         </div>
         <div class="news-grid">
           <a class="news-card fade-up" href="#">
-            <div class="news-tag">产品</div>
+            <div class="news-img" style="background-image:url('shou_ye/activity/AI智能体.jpg')"><span class="news-tag">产品</span></div>
             <h4>汇元智能体开发平台完成内测，即将开放首批客户试用</h4>
-            <p>平台支持可视化工作流编排与多智能体协同，帮助企业快速构建AI应用原型。</p>
-            <div class="news-date">2025年11月</div>
+            <div class="news-date">2025年11月20日</div>
           </a>
           <a class="news-card fade-up" href="#">
-            <div class="news-tag">活动</div>
+            <div class="news-img" style="background-image:url('shou_ye/activity/智能制造沙龙.jpg')"><span class="news-tag">活动</span></div>
             <h4>汇元科技参加广州智能制造交流沙龙，分享AI落地经验</h4>
-            <p>技术团队与制造业同行围绕生产排程、质量检测等场景展开深入探讨。</p>
-            <div class="news-date">2025年10月</div>
+            <div class="news-date">2025年10月15日</div>
           </a>
           <a class="news-card fade-up" href="#">
-            <div class="news-tag">产品</div>
+            <div class="news-img" style="background-image:url('shou_ye/activity/内测试用.jpg')"><span class="news-tag">产品</span></div>
             <h4>汇元AI应用平台首次交付，助力制造企业智能排产落地</h4>
-            <p>平台围绕生产调度与质量检测两大场景完成首批客户部署，获得积极反馈。</p>
-            <div class="news-date">2025年7月</div>
+            <div class="news-date">2025年7月10日</div>
           </a>
           <a class="news-card fade-up" href="#">
-            <div class="news-tag">产品</div>
+            <div class="news-img" style="background-image:url('shou_ye/activity/数据治理平台.jpg')"><span class="news-tag">产品</span></div>
             <h4>汇元数据治理平台正式上线，首批制造业客户完成部署</h4>
-            <p>提供主数据、元数据与数据质量管理能力，帮助客户实现数据资产规范化。</p>
-            <div class="news-date">2025年3月</div>
+            <div class="news-date">2025年3月5日</div>
           </a>
         </div>
         <div class="news-more">
@@ -604,121 +867,94 @@
     <section id="research">
       <div class="research-content">
         <div class="tag">AI RESEARCH INSTITUTE</div>
-        <h2>借助<span>数据与AI</span><br>实现从被动到主动<br>解决方案的升级改造</h2>
-        <p>汇元科技AI研究院，致力于将前沿数据智能与企业场景深度融合，帮助企业从"事后响应"迈向"事前预判"，构建主动式、智能化的业务新范式。</p>
+        <h2>为各行业<span>量身定制</span><br>AI解决方案</h2>
+        <p>汇元科技深度融合数据智能与行业know-how，覆盖制造、能源、汽车、医药等领域，提供从诊断咨询到落地实施的一站式AI解决方案。</p>
         <a href="#" class="research-arrow" data-page="apps" title="了解更多">↓</a>
       </div>
     </section>
-    <div class="research-industries-section">
-      <div class="research-industries-title">覆 盖 行 业</div>
-      <div class="research-industries">
-        <div class="research-industry"><span class="industry-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h6l-2 8 10-12h-6l2-8z"/></svg></span>能源化工</div>
-        <div class="research-industry"><span class="industry-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><circle cx="7" cy="10" r="2"/><circle cx="17" cy="10" r="2"/><line x1="7" y1="14" x2="17" y2="14"/></svg></span>汽车交通</div>
-        <div class="research-industry"><span class="industry-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>电子信息</div>
-        <div class="research-industry"><span class="industry-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></span>医药健康</div>
-        <div class="research-industry"><span class="industry-icon"><svg viewBox="0 0 24 24"><path d="M18 8h-2V6a4 4 0 00-8 0v2H6a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2v-8a2 2 0 00-2-2z"/><circle cx="12" cy="14" r="2"/></svg></span>食品饮料</div>
-        <div class="research-industry"><span class="industry-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></span>纺织服装</div>
-        <div class="research-industry"><span class="industry-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z"/></svg></span>钢铁冶金</div>
-        <div class="research-industry research-industry-more"><span class="industry-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>持续拓展</div>
+    <div style="background:#fff;height:4px;width:100%;"></div>
+    <section id="research" style="min-height:auto;padding:50px 0;">
+      <div class="research-content">
+        <div class="tag">AI RESEARCH INSTITUTE</div>
+        <h2>紧跟数智发展趋势<br><span>持续迭代产品能力</span></h2>
+        <p>汇元紧跟大模型、数据治理、产业数字化发展浪潮，以技术迭代驱动产品升级，打通数据采集、治理、AI 建模、业务落地全链路，依托自研智能引擎，持续为各行业打磨轻量化、可落地的新一代数智化产品。</p>
       </div>
-    </div>
     </section>
   </div>
 
   <!-- AI应用广场 -->
   <div class="page" id="page-apps">
-    <section id="apps">
-      <div class="container">
-        <div class="section-header fade-up">
-          <div class="tag">AI Application Square</div>
-          <h2>AI应用广场</h2>
-          <p>覆盖企业核心业务域，提供开箱即用的AI应用解决方案</p>
+    <section id="apps" class="apps-new">
+      <div class="apps-hero">
+        <div class="apps-hero-left">
+          <h1>汇元的应用广场</h1>
+          <p>深耕制造全场景<br>适配客户多元化业务需求</p>
         </div>
-        <div class="apps-tabs">
-          <button class="apps-tab active" data-tab="rd">研发部</button>
-          <button class="apps-tab" data-tab="prod">生产部</button>
-          <button class="apps-tab" data-tab="sales">销售部</button>
-          <button class="apps-tab" data-tab="cs">客服部</button>
-          <button class="apps-tab" data-tab="hr">HR部</button>
-          <button class="apps-tab" data-tab="media">新媒体部</button>
-          <span class="apps-tab-more" title="更多部门">+</span>
-        </div>
-        <div class="apps-panel active" id="panel-rd">
-          <div class="app-card"><div class="num">01</div><h4>AI辅助编程</h4><p>智能代码补全、自动生成与Bug检测，大幅提升研发效率与代码质量。</p></div>
-          <div class="app-card"><div class="num">02</div><h4>智能文档生成</h4><p>基于代码自动生成API文档与技术规范，保持文档与代码同步更新。</p></div>
-          <div class="app-card"><div class="num">03</div><h4>自动化测试</h4><p>AI驱动的测试用例生成与回归测试，覆盖边界场景，降低人工测试成本。</p></div>
-          <div class="app-card"><div class="num">04</div><h4>智能代码审查</h4><p>深度学习模型辅助代码Review，识别安全漏洞、性能问题与代码异味。</p></div>
-          <div class="app-card"><div class="num">05</div><h4>知识管理平台</h4><p>企业级技术知识图谱，沉淀研发经验，加速新人上手与技术传承。</p></div>
-          <div class="app-card"><div class="num">06</div><h4>项目管理看板</h4><p>AI辅助需求评估、排期优化与风险预警，让项目管理更科学高效。</p></div>
-          <div class="app-card"><div class="num">07</div><h4>技术选型推荐</h4><p>基于项目需求自动匹配最优技术栈，评估开源组件成熟度与社区活跃度。</p></div>
-          <div class="app-card app-card-more"><div class="more-icon">+</div><div class="more-text">更多场景持续拓展</div></div>
-        </div>
-        <div class="apps-panel" id="panel-prod">
-          <div class="app-card"><div class="num">01</div><h4>智能生产排程</h4><p>基于约束优化与强化学习的生产排程引擎，动态调整生产计划，最大化产线利用效率。</p></div>
-          <div class="app-card"><div class="num">02</div><h4>质量异常检测</h4><p>计算机视觉驱动的产品质量自动检测，实时识别生产缺陷，降低不良品率。</p></div>
-          <div class="app-card"><div class="num">03</div><h4>设备预测性维护</h4><p>IoT传感器数据+AI算法预测设备故障，变被动维修为主动维护，减少非计划停机。</p></div>
-          <div class="app-card"><div class="num">04</div><h4>供应链智能优化</h4><p>需求预测、库存优化、物流调度的全链路智能化，打造弹性敏捷的数字化供应链。</p></div>
-          <div class="app-card"><div class="num">05</div><h4>能耗智能管理</h4><p>AI驱动的能源消耗监控与优化，实现碳排放追踪、节能降耗与绿色生产。</p></div>
-          <div class="app-card"><div class="num">06</div><h4>安全生产监控</h4><p>基于视觉AI的安全行为识别与环境监测，实时预警安全隐患，保障生产安全。</p></div>
-          <div class="app-card"><div class="num">07</div><h4>工艺参数优化</h4><p>基于历史生产数据的工艺参数自动调优，提升产品良率与一致性。</p></div>
-          <div class="app-card app-card-more"><div class="more-icon">+</div><div class="more-text">更多场景持续拓展</div></div>
-        </div>
-        <div class="apps-panel" id="panel-sales">
-          <div class="app-card"><div class="num">01</div><h4>智能客户画像</h4><p>多源数据融合的360°客户画像构建，精准洞察客户需求与行为偏好。</p></div>
-          <div class="app-card"><div class="num">02</div><h4>销售预测</h4><p>基于历史数据与市场趋势的AI销售预测，辅助制定销售目标与策略。</p></div>
-          <div class="app-card"><div class="num">03</div><h4>智能报价系统</h4><p>动态定价引擎，根据市场供需、客户等级与历史成交数据生成最优报价。</p></div>
-          <div class="app-card"><div class="num">04</div><h4>商机评分与跟进</h4><p>AI自动评估商机质量，智能推荐跟进策略，提升销售转化率。</p></div>
-          <div class="app-card"><div class="num">05</div><h4>合同智能审核</h4><p>NLP自动审查合同条款，识别风险项，加速合同流转效率。</p></div>
-          <div class="app-card"><div class="num">06</div><h4>销售话术辅助</h4><p>实时推荐最优话术与应对策略，帮助销售人员更好应对客户异议。</p></div>
-          <div class="app-card"><div class="num">07</div><h4>客户流失预警</h4><p>基于行为数据预测客户流失概率，推荐个性化挽回策略。</p></div>
-          <div class="app-card app-card-more"><div class="more-icon">+</div><div class="more-text">更多场景持续拓展</div></div>
-        </div>
-        <div class="apps-panel" id="panel-cs">
-          <div class="app-card"><div class="num">01</div><h4>智能在线客服</h4><p>大模型驱动的7×24小时智能客服，支持多轮对话，解决80%常见问题。</p></div>
-          <div class="app-card"><div class="num">02</div><h4>智能工单系统</h4><p>自动分类、优先级排序与智能派单，缩短工单处理周期。</p></div>
-          <div class="app-card"><div class="num">03</div><h4>情感分析预警</h4><p>实时识别客户情绪波动，主动预警升级风险，提前干预降低客诉率。</p></div>
-          <div class="app-card"><div class="num">04</div><h4>知识库检索</h4><p>语义搜索驱动的智能知识库，客服人员快速精准获取解决方案。</p></div>
-          <div class="app-card"><div class="num">05</div><h4>智能质检</h4><p>全量自动质检，检测服务态度、合规性与专业度，提升服务质量。</p></div>
-          <div class="app-card"><div class="num">06</div><h4>客户之声分析</h4><p>聚合多渠道客户反馈，AI提炼关键洞察，驱动产品与服务改进。</p></div>
-          <div class="app-card"><div class="num">07</div><h4>自助服务门户</h4><p>AI引导的自助排查与常见问题解决，降低人工客服压力。</p></div>
-          <div class="app-card app-card-more"><div class="more-icon">+</div><div class="more-text">更多场景持续拓展</div></div>
-        </div>
-        <div class="apps-panel" id="panel-hr">
-          <div class="app-card"><div class="num">01</div><h4>智能简历筛选</h4><p>AI自动解析简历，匹配岗位要求，大幅提升招聘筛选效率。</p></div>
-          <div class="app-card"><div class="num">02</div><h4>员工画像与人才盘点</h4><p>多维数据构建员工能力图谱，支撑人才盘点与梯队建设。</p></div>
-          <div class="app-card"><div class="num">03</div><h4>智能培训推荐</h4><p>基于员工能力短板与职业规划，个性化推荐学习课程与发展路径。</p></div>
-          <div class="app-card"><div class="num">04</div><h4>离职风险预警</h4><p>AI模型分析员工行为数据，提前识别高离职风险人员，辅助留任干预。</p></div>
-          <div class="app-card"><div class="num">05</div><h4>智能排班</h4><p>基于业务波峰波谷的智能排班引擎，优化人力配置，降低用工成本。</p></div>
-          <div class="app-card"><div class="num">06</div><h4>绩效数据分析</h4><p>自动化绩效数据采集与分析，辅助管理者做出客观公正的绩效决策。</p></div>
-          <div class="app-card"><div class="num">07</div><h4>薪酬对标分析</h4><p>行业薪酬数据智能采集与对标，辅助制定有竞争力的薪酬策略。</p></div>
-          <div class="app-card app-card-more"><div class="more-icon">+</div><div class="more-text">更多场景持续拓展</div></div>
-        </div>
-        <div class="apps-panel" id="panel-media">
-          <div class="app-card"><div class="num">01</div><h4>AI内容创作</h4><p>大模型驱动的图文、短视频脚本自动生成，提升内容产出效率。</p></div>
-          <div class="app-card"><div class="num">02</div><h4>智能排期发布</h4><p>基于粉丝活跃时段的最优发布排期，最大化内容曝光与互动。</p></div>
-          <div class="app-card"><div class="num">03</div><h4>舆情监控</h4><p>全网品牌声量实时监控与情感分析，及时预警负面舆情。</p></div>
-          <div class="app-card"><div class="num">04</div><h4>数据分析看板</h4><p>多平台数据聚合分析，阅读量、互动率、粉丝增长一目了然。</p></div>
-          <div class="app-card"><div class="num">05</div><h4>竞品新媒体分析</h4><p>自动追踪竞品账号动态，分析内容策略与爆款规律。</p></div>
-          <div class="app-card"><div class="num">06</div><h4>热点追踪</h4><p>实时捕捉全网热点话题，智能推荐蹭热点内容方向与切入角度。</p></div>
-          <div class="app-card"><div class="num">07</div><h4>粉丝画像分析</h4><p>多维度粉丝特征分析与人群聚类，辅助内容策略精准定位。</p></div>
-          <div class="app-card app-card-more"><div class="more-icon">+</div><div class="more-text">更多场景持续拓展</div></div>
+        <div class="apps-hero-right">
+          <video src="ying_yong/应用广场-右边出厂白.mp4" autoplay muted loop playsinline></video>
         </div>
       </div>
+      <div class="apps-category-wrap">
+      <div class="apps-category-grid">
+        <div class="apps-cat-item" data-dept="rd">
+          <img src="ying_yong/2_1研发部.jpg" alt="研发部" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">研发部</span><span class="apps-cat-en">R&D</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+        </div>
+        <div class="apps-cat-item" data-dept="prod">
+          <img src="ying_yong/2_2生产部.jpg" alt="生产部" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">生产部</span><span class="apps-cat-en">Production</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+        </div>
+        <div class="apps-cat-item" data-dept="sales">
+          <img src="ying_yong/2_3销售部.png" alt="销售部" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">销售部</span><span class="apps-cat-en">Sales</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+        </div>
+        <div class="apps-cat-item" data-dept="cs">
+          <img src="ying_yong/2_4销售部.jpg" alt="客服部" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">客服部</span><span class="apps-cat-en">Service</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+        </div>
+        <div class="apps-cat-item" data-dept="hr">
+          <img src="ying_yong/2_5客服部.jpg" alt="HR部" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">HR部</span><span class="apps-cat-en">HR</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+        </div>
+        <div class="apps-cat-item" data-dept="media">
+          <img src="ying_yong/2_6新媒体部.jpg" alt="新媒体部" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">新媒体部</span><span class="apps-cat-en">Media</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+        </div>
+      </div>
+      </div>
     </section>
+    <div class="scene-panel" id="scenePanel">
+      <div class="container">
+        <div class="scene-content" id="sceneContent"></div>
+      </div>
+    </div>
   </div>
 
   <!-- 方案 -->
   <div class="page" id="page-solutions">
     <section id="solutions">
       <div class="container">
-        <div class="section-header fade-up">
+        <div class="solution-arch" id="solution-arch">
+          <div class="section-header fade-up">
+            <div class="tag">Technical Architecture</div>
+            <h2>AI落地整体技术架构</h2>
+            <p>从数据底座到智能应用，构建全链路AI技术能力体系</p>
+          </div>
+          <img src="fang_an/image.png" alt="架构图" usemap="#archMap" style="cursor:pointer;">
+          <map name="archMap">
+            <area shape="rect" coords="50,500,1150,800" alt="算力硬件层" title="点击查看算力中心详情" onclick="event.preventDefault();scrollToCard(5);">
+            <area shape="rect" coords="50,100,1150,500" alt="数据平台层" title="点击查看数据平台详情" onclick="event.preventDefault();scrollToCard(2);">
+            <area shape="rect" coords="50,0,1150,100" alt="智能体平台层" title="点击查看智能体平台详情" onclick="event.preventDefault();scrollToCard(3);">
+          </map>
+        </div>
+        <div class="section-header fade-up" id="solutions-header">
           <div class="tag">Solutions</div>
           <h2>解决方案</h2>
           <p>从顶层咨询到平台落地，提供全方位的数字化与智能化解决方案</p>
         </div>
-        <div class="solutions-grid">
+        <div class="solutions-grid" id="solutions-grid">
           <div class="solution-card">
-            <h3><span class="dot" style="background:#dc2626"></span>咨询</h3>
+            <h3><span class="dot" style="background:#e85d3a"></span>咨询</h3>
             <div class="subtitle">Consulting</div>
             <ul>
               <li>数据治理咨询</li>
@@ -726,7 +962,7 @@
             </ul>
           </div>
           <div class="solution-card">
-            <h3><span class="dot" style="background:#f97316"></span>数据平台</h3>
+            <h3><span class="dot" style="background:#f59e0b"></span>数据平台</h3>
             <div class="subtitle">Data Platform</div>
             <ul>
               <li>治理规划与组织制度</li>
@@ -739,7 +975,7 @@
             </ul>
           </div>
           <div class="solution-card">
-            <h3><span class="dot" style="background:#ef4444"></span>智能体平台</h3>
+            <h3><span class="dot" style="background:#e85d3a"></span>智能体平台</h3>
             <div class="subtitle">Agent Platform</div>
             <ul>
               <li>模型底座管理</li>
@@ -752,7 +988,7 @@
             </ul>
           </div>
           <div class="solution-card">
-            <h3><span class="dot" style="background:#d97706"></span>算力平台</h3>
+            <h3><span class="dot" style="background:#8b5cf6"></span>算力平台</h3>
             <div class="subtitle">Computing Platform</div>
             <ul>
               <li>GPU/AI算力调度平台</li>
@@ -761,7 +997,7 @@
             </ul>
           </div>
           <div class="solution-card">
-            <h3><span class="dot" style="background:#dc2626"></span>算力中心</h3>
+            <h3><span class="dot" style="background:#e85d3a"></span>算力中心</h3>
             <div class="subtitle">Computing Center</div>
             <ul>
               <li>智算中心规划与建设</li>
@@ -783,35 +1019,126 @@
     </section>
   </div>
 
-  <!-- 人才 -->
+  <!-- 职业生涯 -->
   <div class="page" id="page-talent">
     <section id="talent">
+      <div class="talent-hero">
+        <img src="creator_first/image.png" alt="职业生涯" class="talent-hero-bg">
+      </div>
       <div class="container">
-        <div class="section-header fade-up">
-          <div class="tag">Talents</div>
-          <h2>人才发展</h2>
-          <p>汇聚AI与数据领域顶尖人才，打造持续学习与成长的平台</p>
+        <!-- 共赴理想的未来 -->
+        <div class="career-section" id="career-vision">
+          <div class="career-vision-wrap">
+            <h2 class="career-vision-title"><span>敢为人先</span><br><span class="vision-sub">共赴</span>理想的未来</h2>
+            <div class="career-values">
+              <div class="career-value fade-up" style="background:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.2)),url('creator_future_image/房子和人.jpg') center/cover;">
+                <div class="career-img-text">
+                  <div class="career-img-title">每份工作都有价值和意义</div>
+                  <div class="career-desc">汇元致力于把数字世界带入每个行业，构建万物互联的智能世界。</div>
+                </div>
+              </div>
+              <div class="career-value fade-up" style="background:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.2)),url('creator_future_image/道路.jpg') center/cover;">
+                <div class="career-img-text">
+                  <div class="career-img-title">每个领域都有发展和前景</div>
+                  <div class="career-desc">汇元秉持长期发展理念，深耕技术研发多年，已构建起AI智能体全栈落地能力，完成数据咨询、数据治理、AI应用开发、算力支撑、AI安全防护等全产业链布局，形成核心竞争优势。</div>
+                </div>
+              </div>
+              <div class="career-value fade-up" style="background:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.2)),url('creator_future_image/阳光和树.jpg') center/cover;">
+                <div class="career-img-text">
+                  <div class="career-img-title">每次付出都有收获与回报</div>
+                  <div class="career-desc">汇元坚持"以奋斗者为本"，不搞论资排辈，坚持责任结果导向，将职级、回报与个人贡献、能力及时匹配。我们敢于破格提拔，愿意给予优秀人才有挑战性的机会，获得更快速的成长。</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="talent-grid">
-          <div class="talent-card">
-            <div class="talent-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></div>
-            <h4>人才培养体系</h4>
-            <p>完善的导师制与轮岗机制，为每一位员工量身定制成长路径，助力快速成为领域专家。</p>
+        <!-- 多样岗位 -->
+        <div class="career-section" id="career-jobs">
+          <h2 class="career-title">多样岗位，期待你的加入</h2>
+          <div class="job-tabs">
+            <button class="job-tab active" data-job="rd">研发</button>
+            <button class="job-tab" data-job="sales">销售</button>
           </div>
-          <div class="talent-card">
-            <div class="talent-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
-            <h4>前沿技术氛围</h4>
-            <p>与顶级AI研究员并肩工作，参与核心产品研发，接触业界最前沿的技术栈与工程实践。</p>
+          <div class="jobs-panel active" id="jp-rd">
+            <div class="jobs-list">
+              <div class="job-card fade-up">
+                <h4>数据治理工程师</h4>
+                <div class="job-meta"><span>面议</span><span>广州番禺</span></div>
+                <div class="job-section"><h5>工作内容</h5><ul><li>企业数据管理体系的搭建与优化，推动数据标准、数据质量、元数据管理等工作的落地实施</li><li>协调业务部门与技术团队，梳理数据资产，提升数据可用性与合规性</li><li>编写数据治理相关文档，支持数据资产管理平台的建设与维护</li></ul></div>
+                <div class="job-section"><h5>任职要求</h5><ul><li>本科及以上学历，计算机、信息管理、数学或相关专业背景</li><li>熟悉数据治理框架与方法论，具备至少2年以上数据治理或数据管理相关工作经验</li><li>熟练掌握SQL、Python等数据处理工具，了解数据仓库、大数据平台者优先</li><li>具备良好的沟通能力与跨部门协作能力</li></ul></div>
+              </div>
+              <div class="job-card fade-up">
+                <h4>AI应用工程师 / AI Agent开发工程师</h4>
+                <div class="job-meta"><span>面议</span><span>广州番禺</span></div>
+                <div class="job-section"><h5>工作内容</h5><ul><li>负责智能体系统的设计、开发与优化，提升智能体的交互能力和任务处理效率</li><li>参与智能体应用需求调研，推动智能体在实际场景中的落地</li><li>完成智能体功能模块的集成与测试</li><li>持续跟踪行业技术动态，探索前沿技术并应用于项目中</li></ul></div>
+                <div class="job-section"><h5>任职要求</h5><ul><li>计算机相关专业本科及以上学历，具备扎实的编程基础</li><li>熟悉机器学习、自然语言处理或深度学习等相关技术，有实际项目经验者优先</li><li>具备良好的逻辑思维和问题解决能力，能够独立完成需求开发</li><li>有较强的学习能力和团队协作精神，对人工智能领域充满热情</li></ul></div>
+              </div>
+            </div>
           </div>
-          <div class="talent-card">
-            <div class="talent-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <h4>多元发展通道</h4>
-            <p>管理与专家双通道发展体系，无论你是技术极客还是团队领袖，都能找到属于自己的舞台。</p>
+          <div class="jobs-panel" id="jp-sales">
+            <div class="jobs-list jobs-list-grid">
+              <div class="job-card fade-up">
+                <h4>销售经理/主管</h4>
+                <div class="job-meta"><span>面议</span><span>广州番禺</span></div>
+                <div class="job-section"><h5>工作内容</h5><ul><li>制定并执行销售策略，负责数据治理平台、智能体平台及智能体应用开发产品线的市场拓展与业绩达成</li><li>大客户挖掘，梳理客户需求，完成从线索跟进到合同签订的业务全流程</li><li>在制造业、教育行业有较多的客户资源，有成熟的客户获取方法</li><li>安排技术团队与客户对接，提供定制化解决方案</li></ul></div>
+                <div class="job-section"><h5>任职要求</h5><ul><li>本科及以上学历，具备3年以上软件产品对直接客户的销售经验</li><li>拥有成熟的行业客户资源者优先考虑</li><li>具备商务谈判与方案宣讲能力</li><li>结果导向思维强，自我管理，自驱力强</li></ul></div>
+              </div>
+              <div class="job-card fade-up">
+                <h4>AI产品高级销售代表</h4>
+                <div class="job-meta"><span>面议</span><span>广州番禺</span></div>
+                <div class="job-section"><h5>工作内容</h5><ul><li>负责AI产品线的市场拓展，精准挖掘半导体及制造行业客户需求并制定销售策略</li><li>主导大客户开发、商务谈判，完成从需求调研、方案演示到合同签订的全流程闭环管理</li><li>协同技术团队输出定制化解决方案，推动产品落地实施</li><li>维护核心客户关系，深度挖掘存量客户需求</li></ul></div>
+                <div class="job-section"><h5>任职要求</h5><ul><li>本科及以上学历，计算机、电子信息或市场营销相关专业，具备2年以上B端销售经验</li><li>拥有相关行业客户资源者优先</li><li>具备优秀的商务沟通能力、方案呈现能力及抗压能力</li><li>逻辑清晰，对数据敏感，熟练使用CRM系统</li></ul></div>
+              </div>
+              <div class="job-card fade-up">
+                <h4>高级销售代表</h4>
+                <div class="job-meta"><span>面议</span><span>广州番禺</span></div>
+                <div class="job-section"><h5>工作内容</h5><ul><li>负责AI智能体平台、数据治理平台、算力一体机的市场推广与销售</li><li>挖掘客户需求，配合技术工程师为客户提供专业解决方案</li><li>收集和分析市场信息，为产品优化和市场策略提供支持</li><li>设定销售目标，制定销售计划，并落实执行</li></ul></div>
+                <div class="job-section"><h5>任职要求</h5><ul><li>大专及以上学历</li><li>具备2年以上销售经验，有成功案例和良好业绩记录</li><li>具备较强的沟通能力与谈判技巧</li><li>具有较强的目标意识和抗压能力</li></ul></div>
+              </div>
+            </div>
           </div>
-          <div class="talent-card">
-            <div class="talent-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 11l-2 2-3-3-2 2-3-3-2 2"/><circle cx="7" cy="7" r="1"/><circle cx="17" cy="7" r="1"/><circle cx="7" cy="17" r="1"/><circle cx="17" cy="17" r="1"/></svg></div>
-            <h4>开放包容文化</h4>
-            <p>扁平化管理，开放透明的沟通氛围，鼓励创新、包容失败，让每个想法都有机会被听见。</p>
+        </div>
+        <!-- 培训 -->
+        <div class="career-section" id="career-train">
+          <div class="career-train-wrap">
+            <div class="career-train-left">
+              <h2 class="career-title"><span class="title-underline">人尽其才</span>，丰富资源支持未来发展</h2>
+              <div class="career-growth">
+                <div class="career-grow fade-up" style="background:#fef5f3;">
+                  <h3>多路径发展</h3>
+                  <p>汇元坚持"人尽其才"，我们鼓励跨专业、跨领域、跨地域的复合式成长，也鼓励长期稳定地在岗位上持续积累与提升，不论你热爱突破创新，还是期望稳定精深，在汇元都能找到合适的岗位及清晰的成长路径。</p>
+                </div>
+                <div class="career-grow fade-up" style="background:#fef9f0;">
+                  <h3>系统化培训</h3>
+                  <p>我们构建了多元化、系统化的培训体系，有针对新员工的入职培训及"导师制"，有职业发展所需的专业能力提升项目，还有辅助管理能力提升的管理者发展项目等，为你每个阶段的成长提供全方位赋能。</p>
+                </div>
+                <div class="career-grow fade-up" style="background:#f5f7fc;">
+                  <h3>全域学习资源</h3>
+                  <p>你可以在知识社区中与各领域同行和专家分享经验、发表见解，可以在Learning学习平台随时随地学习数万门在线课程。</p>
+                </div>
+              </div>
+            </div>
+            <div class="career-train-img">
+              <img src="person_develop/人尽其才（移动端）.png" alt="人尽其才">
+            </div>
+          </div>
+        </div>
+        <!-- 丰富多彩的活动 -->
+        <div class="career-section" id="career-life">
+          <h2 class="career-title">丰富多彩的活动，五彩缤纷的生活</h2>
+          <div class="career-life">
+            <div class="career-life-card fade-up">
+              <img src="activity/活动足球.png" alt="足球活动">
+              <h4>足球协会</h4>
+            </div>
+            <div class="career-life-card fade-up">
+              <img src="activity/五彩生活-摄影协会.jpg" alt="摄影协会">
+              <h4>摄影协会</h4>
+            </div>
+            <div class="career-life-card fade-up">
+              <img src="activity/家庭day.jpg" alt="家庭日">
+              <h4>家庭日</h4>
+            </div>
           </div>
         </div>
       </div>
@@ -821,62 +1148,83 @@
   <!-- 关于我们 -->
   <div class="page" id="page-about">
     <section id="about">
+      <div class="about-hero">
+        <div class="about-hero-content">
+          <h1>公司简介</h1>
+          <p>致力于成为企业AI智能化建设领域的领导企业，为推动企业的数字化转型和智能化升级贡献力量</p>
+        </div>
+      </div>
       <div class="container">
-        <div class="section-header fade-up">
-          <div class="tag">About Us</div>
-          <h2>关于我们</h2>
-          <p>创新 · 专业 · 诚信 · 共赢</p>
-        </div>
-        <div class="about-services">
-          <div class="about-service">
-            <h3><span class="dot" style="background:#dc2626"></span>AI平台搭建服务</h3>
-            <p>包括数据管理平台、算力管理平台、智能体开发平台等，满足企业不同场景下的AI应用需求。</p>
+        <div class="about-timeline-section">
+          <div class="about-timeline-wrap">
+            <h2 class="about-timeline-title">发展历程</h2>
+            <div class="about-timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2018</div>
+              <div class="timeline-card">
+                <h3>公司创立，奠基起步</h3>
+                <p>2018年4月，广州世纪云帆智能软件技术有限公司正式注册成立，注册资本500万元。核心团队组建，聚焦数据治理、数据管理咨询领域，以代理及项目实施为核心开展早期项目交付。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2019–2020</div>
+              <div class="timeline-card">
+                <h3>技术沉淀，服务体系成型</h3>
+                <p>深耕数据治理、主数据、元数据、数据质量等领域，依托合作厂商产品开展代理销售与项目实施，建立标准化服务交付体系。持续拓展政企客户，落地多个数据治理、数据平台集成项目，积累丰富行业案例与服务经验。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2021</div>
+              <div class="timeline-card">
+                <h3>算力布局，生态合作萌芽</h3>
+                <p>紧跟行业发展趋势，布局算力相关业务。正式与浪潮、华三、深信服等厂商建立代理合作关系，搭建初步生态体系。业务从单一数据治理拓展为数据+算力一体化解决方案。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2022</div>
+              <div class="timeline-card">
+                <h3>深耕集成，拓展业务边界</h3>
+                <p>持续深化与各大厂商的合作，丰富代理产品矩阵，专注于数据、算力相关项目集成与技术服务。打磨咨询、方案落地、系统集成、后期运维的一站式服务能力。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2023</div>
+              <div class="timeline-card">
+                <h3>资质升级，生态全面深化</h3>
+                <p>完成经营范围变更，完善AI、大数据、算力基础设施相关经营资质。与亿信华辰、永洪等厂商深化代理合作，生态伙伴阵容进一步壮大。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2024</div>
+              <div class="timeline-card">
+                <h3>品牌升级，营收突破2000万</h3>
+                <p>正式更名为广州汇元数据技术有限公司，确立"汇元数据"全新品牌。正式落地智能客服、智能安防、智能生产调度等AI场景应用，全年营业额突破2000万。生态合作体系趋于成熟。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2025</div>
+              <div class="timeline-card">
+                <h3>总部搬迁，规模化扩张</h3>
+                <p>公司搬迁至广州市番禺区，扩充办公及服务场地。重点发力AI安全、算力基础设施、智能体场景开发等方向，打造数据+AI+算力+安全综合服务能力，业务面向全国拓展。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2026</div>
+              <div class="timeline-card">
+                <h3>智领未来，赋能万物</h3>
+                <p>以数据治理、应用协同、智能体演进为核心，整合全生态资源，打造领先的智能融合服务体系。愿景：智领未来，赋能万物。致力于成为企业AI智能化建设领域的优质服务商。</p>
+              </div>
+            </div>
           </div>
-          <div class="about-service">
-            <h3><span class="dot" style="background:#f97316"></span>AI应用开发</h3>
-            <p>为企业定制化开发AI应用，如智能客服、智能安防、智能生产调度、智能数据分析等，提升企业的运营效率和决策能力。</p>
           </div>
-          <div class="about-service">
-            <h3><span class="dot" style="background:#ef4444"></span>数据治理与管理</h3>
-            <p>提供数据治理平台和服务，包括主数据、元数据、数据标准、数据质量、数据建模、数据资产、数据集成、数据分析等，确保企业数据的高质量和高可用性，为AI应用提供坚实的数据基础。</p>
-          </div>
-          <div class="about-service">
-            <h3><span class="dot" style="background:#d97706"></span>系统集成与优化</h3>
-            <p>将AI技术与企业现有的IT系统进行深度集成，实现数据和业务流程的无缝对接，提升系统的整体性能和智能化水平。</p>
-          </div>
-          <div class="about-service">
-            <h3><span class="dot" style="background:#dc2626"></span>运维与技术支持</h3>
-            <p>提供专业的运维服务和技术支持，确保AI系统的稳定运行，及时解决企业在使用过程中遇到的问题。</p>
-          </div>
-        </div>
-        <div class="section-header fade-up">
-          <div class="tag">Core Advantages</div>
-          <h2>核心优势</h2>
-        </div>
-        <div class="about-advantages">
-          <div class="about-adv">
-            <h4>技术实力</h4>
-            <p>汇元拥有一支高素质、经验丰富的技术团队，涵盖AI算法、数据科学、软件开发等多个领域的专家和工程师，具备强大的技术研发和创新能力。</p>
-          </div>
-          <div class="about-adv">
-            <h4>行业经验</h4>
-            <p>在企业数字化转型领域积累了丰富的行业经验，成功实施了多个大型AI项目，具备强大的项目实施和管理能力。</p>
-          </div>
-          <div class="about-adv">
-            <h4>一站式服务</h4>
-            <p>提供从咨询、规划、平台搭建、应用开发到运维支持的一站式服务，满足企业不同阶段的智能化建设需求，降低企业的建设成本和管理难度。</p>
-          </div>
-          <div class="about-adv">
-            <h4>数据安全与隐私保护</h4>
-            <p>高度重视数据安全和隐私保护，采用先进的加密技术和安全措施，确保企业数据的安全性和合规性。</p>
-          </div>
-          <div class="about-adv">
-            <h4>生态合作</h4>
-            <p>与多家知名科技企业和科研机构建立了紧密的合作关系，共同打造AI智能化建设的生态系统，为企业提供更全面、更优质的服务。</p>
-          </div>
-        </div>
-        <div class="about-philosophy">
-          <p>汇元科技秉承"创新、专业、诚信、共赢"的经营理念，不断提升自身的技术水平和服务质量，致力于成为企业AI智能化建设领域的领导企业，为推动企业的数字化转型和智能化升级贡献力量。</p>
         </div>
       </div>
     </section>
@@ -887,15 +1235,15 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="微信图片_20260528133247_1_166.png" alt="汇元科技" style="height:32px;" onerror="this.style.display='none';">
+      <img src="huiyuan_logo1.png" alt="汇元科技">
       <p>汇元科技 — 以AI驱动企业数字化转型新未来。从数据治理到智能决策，为企业提供全链路的智能化解决方案。</p>
     </div>
     <div class="footer-col">
       <h4>快速导航</h4>
       <a href="#" data-page="research">AI研究院</a>
       <a href="#" data-page="apps">AI应用广场</a>
-      <a href="#" data-page="solutions">解决方案</a>
-      <a href="#" data-page="talent">人才发展</a>
+      <a href="#" data-page="solutions">方案</a>
+      <a href="#" data-page="talent">职业生涯</a>
       <a href="#" data-page="about">关于我们</a>
     </div>
     <div class="footer-col">
@@ -928,20 +1276,41 @@
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
 
-  function showPage(name) {
+  function showPage(name, skipScroll) {
     pages.forEach(p => p.classList.remove('active'));
     const target = document.getElementById('page-' + name);
     if (target) target.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Close mobile nav
+    if (!skipScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
     navLinks.classList.remove('open');
   }
 
   document.querySelectorAll('[data-page]').forEach(el => {
     el.addEventListener('click', function(e) {
       e.preventDefault();
-      showPage(this.dataset.page);
-    });
+      var hasScroll = !!(this.dataset.scroll || this.dataset.tab);
+      showPage(this.dataset.page, hasScroll);
+      if (this.dataset.tab) {
+        setTimeout(function() {
+          var catItem = document.querySelector('.apps-cat-item[data-dept="' + this.dataset.tab + '"]');
+          if (catItem) {
+            catItem.click();
+            setTimeout(function() {
+              var panel = document.getElementById('scenePanel');
+              if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+          }
+        }.bind(this), 200);
+      }
+      if (hasScroll) {
+        setTimeout(function() {
+          var target = document.getElementById(this.dataset.scroll);
+          if (target) {
+            var top = target.getBoundingClientRect().top + window.pageYOffset - 100;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        }.bind(this), 100);
+      }
+    }.bind(el));
   });
 
   // Mobile nav toggle
@@ -982,6 +1351,271 @@
   document.querySelectorAll('.fade-up, .fade-in').forEach(function(el) {
     observer.observe(el);
   });
+
+  // Timeline tabs
+  document.querySelectorAll('.timeline-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.timeline-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.timeline-panel').forEach(function(p) { p.classList.remove('active'); });
+      this.classList.add('active');
+      var panel = document.getElementById('tp-' + this.dataset.year);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // Nav dropdown on mobile
+  document.querySelectorAll('.nav-dropdown > a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth <= 900) {
+        e.preventDefault();
+        this.parentElement.classList.toggle('open');
+      }
+    });
+  });
+
+  // AI stats animation
+  var statsObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.ai-stat-num, .ai-stat p').forEach(function(el, i) {
+          setTimeout(function() { el.classList.add('visible'); }, i * 150);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  var statsGrid = document.querySelector('.ai-stats-grid');
+  if (statsGrid) {
+    statsGrid.querySelectorAll('.ai-stat').forEach(function(stat) {
+      statsObserver.observe(stat);
+    });
+  }
+
+  // Landing banner animation
+  var bannerObserver = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      var banner = entries[0].target;
+      banner.querySelectorAll('.tag, .banner-icon, .consult-btn, .banner-line-left, .banner-line-right').forEach(function(el) {
+        el.classList.add('visible');
+      });
+      bannerObserver.unobserve(banner);
+    }
+  }, { threshold: 0.3 });
+  var banner = document.getElementById('landingBanner');
+  if (banner) bannerObserver.observe(banner);
+
+  // Scene modal
+  var sceneData = {
+    rd: {title:'研发部',img:'yanfa',items:[
+      {n:'01',t:'AI辅助编程',d:'智能代码补全、自动生成与Bug检测。',i:'电脑.jpg'},
+      {n:'02',t:'智能文档生成',d:'基于代码自动生成API文档与技术规范。',i:'ipad.jpg'},
+      {n:'03',t:'自动化测试',d:'AI驱动的测试用例生成与回归测试。',i:'电力数据计算.webp'},
+      {n:'04',t:'智能代码审查',d:'深度学习模型辅助代码Review。',i:'电脑分类.jpg'},
+      {n:'05',t:'知识管理平台',d:'企业级技术知识图谱，沉淀研发经验。',i:'电脑和手机.jpg'},
+      {n:'06',t:'项目管理看板',d:'AI辅助需求评估、排期优化与风险预警。',i:'010101.webp'},
+      {n:'07',t:'技术选型推荐',d:'基于项目需求自动匹配最优技术栈。',i:'点击数字.webp'}
+    ]},
+    prod: {title:'生产部',img:'produce',items:[
+      {n:'01',t:'智能生产排程',d:'基于约束优化与强化学习的排程引擎。',i:'厂房.jpg'},
+      {n:'02',t:'质量异常检测',d:'计算机视觉驱动的产品质量自动检测。',i:'吊机.jpg'},
+      {n:'03',t:'设备预测性维护',d:'IoT传感器数据+AI算法预测设备故障。',i:'齿轮.webp'},
+      {n:'04',t:'供应链智能优化',d:'需求预测、库存优化全链路智能化。',i:'工厂拉货.webp'},
+      {n:'05',t:'能耗智能管理',d:'AI驱动的能源消耗监控与优化。',i:'排烟口工厂.jpg'},
+      {n:'06',t:'安全生产监控',d:'基于视觉AI的安全行为识别。',i:'工厂物料.webp'},
+      {n:'07',t:'工艺参数优化',d:'基于历史生产数据的工艺参数自动调优。',i:'湖边装货.webp'}
+    ]},
+    sales: {title:'销售部',img:'sale',items:[
+      {n:'01',t:'智能客户画像',d:'多源数据融合的360°客户画像构建。',i:'卖衣服.webp'},
+      {n:'02',t:'销售预测',d:'基于历史数据与市场趋势的AI销售预测。',i:'零售.webp'},
+      {n:'03',t:'智能报价系统',d:'动态定价引擎，生成最优报价。',i:'数字各种医疗.webp'},
+      {n:'04',t:'商机评分与跟进',d:'AI自动评估商机质量。',i:'汽车加人.webp'},
+      {n:'05',t:'合同智能审核',d:'NLP自动审查合同条款。',i:'装修汽车.webp'},
+      {n:'06',t:'销售话术辅助',d:'实时推荐最优话术与应对策略。',i:'湖边装货.webp'},
+      {n:'07',t:'客户流失预警',d:'基于行为数据预测客户流失概率。',i:'湖边装货 copy.webp'}
+    ]},
+    cs: {title:'客服部',img:'custom',items:[
+      {n:'01',t:'智能在线客服',d:'大模型驱动的7×24小时智能客服。',i:'客服打电话.webp'},
+      {n:'02',t:'智能工单系统',d:'自动分类、优先级排序与智能派单。',i:'银行卡和电脑.jpg'},
+      {n:'03',t:'情感分析预警',d:'实时识别客户情绪波动。',i:'小孩呵护成长.webp'},
+      {n:'04',t:'知识库检索',d:'语义搜索驱动的智能知识库。',i:'拿着手机.webp'},
+      {n:'05',t:'智能质检',d:'全量自动质检，提升服务质量。',i:'万物互联.webp'},
+      {n:'06',t:'客户之声分析',d:'聚合多渠道反馈AI提炼洞察。',i:'呵护成长.webp'},
+      {n:'07',t:'自助服务门户',d:'AI引导的自助排查与问题解决。',i:'急救.webp'}
+    ]},
+    hr: {title:'HR部',img:'hr',items:[
+      {n:'01',t:'智能简历筛选',d:'AI自动解析简历，匹配岗位要求。',i:'拿着手机.webp'},
+      {n:'02',t:'员工画像与人才盘点',d:'多维数据构建员工能力图谱。',i:'图表.webp'},
+      {n:'03',t:'智能培训推荐',d:'个性化推荐学习课程与发展路径。',i:'制作饼干.webp'},
+      {n:'04',t:'离职风险预警',d:'AI模型提前识别高离职风险人员。',i:'数据湖.webp'},
+      {n:'05',t:'智能排班',d:'基于业务波峰波谷的智能排班引擎。',i:'办公楼.webp'},
+      {n:'06',t:'绩效数据分析',d:'自动化绩效数据采集与分析。',i:'各种建筑物.jpg'},
+      {n:'07',t:'薪酬对标分析',d:'行业薪酬数据智能采集与对标。',i:'各种建筑物-办公楼.jpg'}
+    ]},
+    media: {title:'新媒体部',img:'media',items:[
+      {n:'01',t:'AI内容创作',d:'大模型驱动的图文短视频脚本生成。',i:'新媒体展示各种场景.webp'},
+      {n:'02',t:'智能排期发布',d:'基于粉丝活跃时段的最优发布排期。',i:'电脑分类.jpg'},
+      {n:'03',t:'舆情监控',d:'全网品牌声量实时监控与情感分析。',i:'计算机chatgpt.jpg'},
+      {n:'04',t:'数据分析看板',d:'多平台数据聚合分析。',i:'纽带.webp'},
+      {n:'05',t:'竞品新媒体分析',d:'自动追踪竞品账号动态。',i:'办公楼.webp'},
+      {n:'06',t:'热点追踪',d:'实时捕捉全网热点话题。',i:'高耸入云.webp'},
+      {n:'07',t:'粉丝画像分析',d:'多维度粉丝特征分析与人群聚类。',i:'各种高压电线.jpg'}
+    ]}
+  };
+  document.querySelectorAll('.apps-cat-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      var dept = this.dataset.dept;
+      var data = sceneData[dept];
+      if (!data) return;
+      var html = '<div class="scene-track">';
+      data.items.forEach(function(it) {
+        var imgSrc = it.i ? 'ying_yong/' + data.img + '/' + it.i : '';
+        html += '<div class="scene-card">' + (imgSrc ? '<img src="' + imgSrc + '" class="scene-img" alt="">' : '<div class="scene-img"></div>') + '<div class="scene-body"><div class="scene-num">' + it.n + '</div><h4>' + it.t + '</h4><p>' + it.d + '</p></div></div>';
+      });
+      html += '</div>';
+      document.getElementById('sceneContent').innerHTML = html;
+      document.getElementById('scenePanel').classList.add('open');
+    });
+  });
+
+  // Process pipeline hover animation
+  (function(){
+    var timelines = document.querySelectorAll('[data-timeline]');
+    timelines.forEach(function(timeline) {
+      var pipeline = timeline.parentElement.querySelector('.process-pipeline');
+      if (!pipeline) return;
+      var fill = pipeline.querySelector('.pipeline-fill');
+      var dot = pipeline.querySelector('.pipeline-dot');
+      var steps = timeline.querySelectorAll('.process-step');
+      var totalSteps = steps.length;
+      var stepsPct = [12, 30, 50, 70, 88, 100];
+      var timer = null;
+      var stepIndex = 0;
+
+      function resetAll() {
+        clearTimeout(timer);
+        timer = null;
+        stepIndex = 0;
+        steps.forEach(function(s) { s.classList.remove('activated'); });
+        fill.style.width = '0';
+        dot.style.left = '0';
+      }
+
+      function advance() {
+        var total = totalSteps + 1;
+        if (stepIndex <= totalSteps) {
+          steps.forEach(function(s, i) {
+            if (i <= stepIndex) s.classList.add('activated');
+          });
+          fill.style.width = stepsPct[stepIndex] + '%';
+          dot.style.left = stepsPct[stepIndex] + '%';
+          stepIndex++;
+          timer = setTimeout(advance, 1200);
+        }
+        if (stepIndex > totalSteps) {
+          timer = setTimeout(function() {
+            resetAll();
+            timer = setTimeout(advance, 800);
+          }, 2000);
+        }
+      }
+
+      timeline.addEventListener('mouseenter', function() {
+        if (!timer) { stepIndex = 0; advance(); }
+      });
+      timeline.addEventListener('mouseleave', function() { resetAll(); });
+    });
+  })();
+
+  // Solution cards scroll animation
+  (function(){
+    var solObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var cards = entry.target.querySelectorAll('.solution-card');
+          cards.forEach(function(card, i) {
+            setTimeout(function() { card.classList.add('visible'); card.style.transition = 'opacity .5s ease, transform .5s ease'; }, i * 120);
+          });
+          solObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    var solGrid = document.querySelector('.solutions-grid');
+    if (solGrid) solObserver.observe(solGrid);
+  })();
+
+  // Case carousel loop
+  var caseTrack = document.querySelector('.cases-track');
+  var casePrev = document.getElementById('casePrev');
+  var caseNext = document.getElementById('caseNext');
+  if (caseTrack && casePrev && caseNext) {
+    var cardWidth = caseTrack.querySelector('.case-card') ? caseTrack.querySelector('.case-card').offsetWidth + 36 : 320;
+    casePrev.addEventListener('click', function() {
+      if (caseTrack.scrollLeft <= 10) {
+        caseTrack.scrollTo({ left: caseTrack.scrollWidth, behavior: 'smooth' });
+      } else {
+        caseTrack.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      }
+    });
+    caseNext.addEventListener('click', function() {
+      if (caseTrack.scrollLeft + caseTrack.offsetWidth >= caseTrack.scrollWidth - 10) {
+        caseTrack.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        caseTrack.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
+    });
+  }
+
+  // Career value click to toggle description
+  document.querySelectorAll('.career-value').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var wasActive = this.classList.contains('active');
+      document.querySelectorAll('.career-value').forEach(function(e) { e.classList.remove('active'); });
+      if (!wasActive) this.classList.add('active');
+    });
+  });
+
+  // Job tabs
+  document.querySelectorAll('.job-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.job-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.jobs-panel').forEach(function(p) { p.classList.remove('active'); });
+      this.classList.add('active');
+      var panel = document.getElementById('jp-' + this.dataset.job);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // Activity cards hover
+  document.querySelectorAll('.career-life-card').forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      document.querySelectorAll('.career-life-card').forEach(function(c) { c.classList.remove('big'); });
+      this.classList.add('big');
+    });
+  });
+
+  // Architecture image map scroll
+  window.scrollToCard = function(n) {
+    var card = document.querySelector('#solutions .solution-card:nth-child(' + n + ')');
+    if (card) {
+      window.scrollTo({ top: card.getBoundingClientRect().top + window.pageYOffset - 450, behavior: 'smooth' });
+    }
+  };
+
+  // Partners slow scroll
+  (function(){
+    var track = document.querySelector('.partners-track');
+    if (!track) return;
+    var imgs = track.querySelectorAll('img');
+    var singleWidth = imgs[0] ? imgs[0].offsetWidth + 72 : 200;
+    var step = 0;
+    var maxSteps = 7;
+    function slide() {
+      step = (step + 1) % maxSteps;
+      track.style.transform = 'translateX(-' + (step * singleWidth) + 'px)';
+      setTimeout(slide, 3000);
+    }
+    setTimeout(slide, 3000);
+  })();
 })();
 </script>
 </body>
