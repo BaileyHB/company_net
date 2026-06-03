@@ -15,20 +15,20 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 .nav-logo img { height: 36px; }
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a { text-decoration: none; color: #1a1a1a; font-size: 16px; font-weight: 700; transition: color .2s; }
-.nav-links a:hover { color: #f97316; }
+.nav-links a:hover { color: #dc2626; }
 .nav-dropdown { position: relative; }
-.nav-dropdown .arrow { display: inline-flex; align-items: center; margin-left: 5px; vertical-align: middle; opacity: 0; transition: opacity .2s; }
-.nav-dropdown:hover .arrow { opacity: 1; }
-.nav-dropdown .arrow svg { width: 16px; height: 10px; color: #1a1a1a; }
-.dropdown-menu { display: none; position: absolute; top: 100%; left: -12px; background: #fff; border: 1px solid #f0f0f0; border-radius: 6px; min-width: 150px; padding: 8px 0; box-shadow: 0 8px 30px rgba(0,0,0,.08); z-index: 200; list-style: none; }
+.dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #f0f0f0; border-radius: 6px; min-width: 150px; padding: 8px 0; box-shadow: 0 8px 30px rgba(0,0,0,.08); z-index: 200; list-style: none; }
 .nav-dropdown:hover .dropdown-menu { display: block; }
 .dropdown-menu li a { display: block; padding: 10px 20px; color: #1a1a1a; font-size: 14px; text-decoration: none; }
 .dropdown-menu li a:hover { background: #fdf6f0; color: #f97316; }
 .nav-sub-dropdown { position: relative; }
-.sub-dropdown-menu { display: none; position: absolute; left: 100%; top: 0; background: #fff; border: 1px solid #f0f0f0; border-radius: 6px; min-width: 240px; padding: 8px 0; box-shadow: 0 8px 30px rgba(0,0,0,.08); z-index: 210; list-style: none; }
+.sub-dropdown-menu { display: none; position: absolute; left: 100%; top: 0; background: #fff; border: 1px solid #f0f0f0; border-radius: 6px; width: fit-content; max-width: 300px; padding: 4px 0; box-shadow: 0 8px 30px rgba(0,0,0,.08); z-index: 210; list-style: none; }
 .nav-sub-dropdown:hover .sub-dropdown-menu { display: block; }
-.sub-dropdown-menu li a { display: block; padding: 10px 20px; color: #1a1a1a; font-size: 14px; text-decoration: none; }
+.sub-dropdown-menu li a { display: block; padding: 7px 20px; color: #1a1a1a; font-size: 14px; text-decoration: none; white-space: nowrap; }
 .sub-dropdown-menu li a:hover { background: #fdf6f0; color: #f97316; }
+.nav-dropdown .arrow { display: inline-flex; align-items: center; margin-left: 5px; vertical-align: middle; opacity: 0; transition: opacity .2s; }
+.nav-dropdown:hover .arrow { opacity: 1; }
+.nav-dropdown .arrow svg { width: 16px; height: 10px; color: #1a1a1a; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 @media (max-width: 900px) { .nav-links { display: none; } }
 .mdm-hero { background: #0F121A; padding: 0; }
@@ -50,7 +50,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 .mdm-services h2 span { color: #FF7722; }
 .mdm-blocks-row { display: flex; justify-content: center; gap: 32px; margin-bottom: 28px; max-width: 100%; margin-left: auto; margin-right: auto; padding: 0 20px; }
 .mdm-blocks-row.two { max-width: 700px; }
-.mdm-block { padding: 40px 80px; border-radius: 16px; font-size: 28px; font-weight: 600; flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: auto; }
+.mdm-block { padding: 28px 32px; border-radius: 16px; font-size: 18px; font-weight: 600; flex: 1 1 0; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 90px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mdm-block.dark { background: #1a1a1a; color: #fff; }
 .mdm-block.teal { background: #FF7722; color: #fff; }
 .mdm-block.gray { background: #e5e5e5; color: #1a1a1a; }
@@ -85,33 +85,26 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 </style>
 </head>
 <body>
-<nav class="nav">
+<nav class="nav" id="navbar">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo"><img src="../huiyuan_logo.png" alt="汇元科技"></a>
-    <ul class="nav-links">
-      <li><a href="../index.html">首页</a></li>
-      <li><a href="../index.html" onclick="localStorage.setItem('targetPage','research');">AI研究院</a></li>
-      <li><a href="../index.html" onclick="localStorage.setItem('targetPage','apps');">AI应用广场</a></li>
+    <a href="../index.html" class="nav-logo"><img src="../huiyuan_logo.png" alt="汇元科技"><span style="display:none">汇元科技</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">AI研究院</a></li>
+      <li><a href="../index.html">AI应用广场</a></li>
       <li class="nav-dropdown">
-        <a href="../index.html" onclick="localStorage.setItem('targetPage','solutions');">方案 <span class="arrow"><svg width="16" height="10" viewBox="0 0 12 7"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a href="#">方案 <span class="arrow"><svg width="12" height="7" viewBox="0 0 12 7"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         <ul class="dropdown-menu">
-          <li><a href="../index.html" onclick="localStorage.setItem('targetPage','solutions');">架构总览</a></li>
-          <li class="nav-sub-dropdown"><a href="#">咨询 <span style="float:right;">›</span></a>
-            <ul class="sub-dropdown-menu"><li><a href="data-governance.html">数据治理咨询</a></li><li><a href="digital-consulting.html">数字化咨询</a></li></ul></li>
-          <li class="nav-sub-dropdown"><a href="#">数据平台 <span style="float:right;">›</span></a>
-            <ul class="sub-dropdown-menu"><li><a href="data-platform.html">治理规划与组织制度</a></li><li><a href="data-standard.html">数据标准管理</a></li><li><a href="data-platform.html">主数据管理</a></li><li><a href="data-platform.html">元数据与数据资产</a></li><li><a href="data-quality.html">数据质量管理</a></li><li><a href="kpi-management.html">指标体系管理</a></li><li><a href="data-security-comp.html">数据安全与合规</a></li></ul></li>
-          <li class="nav-sub-dropdown"><a href="#">智能体平台 <span style="float:right;">›</span></a>
-            <ul class="sub-dropdown-menu"><li><a href="model-base.html">模型底座管理</a></li><li><a href="agent-platform.html">智能体核心引擎</a></li><li><a href="knowledge-rag.html">知识库与RAG</a></li><li><a href="agent-platform.html">工具与技能市场</a></li><li><a href="workflow-orch.html">工作流可视化编排</a></li><li><a href="multi-agent.html">多智能体协同</a></li><li><a href="memory-context.html">记忆与上下文管理</a></li></ul></li>
-          <li class="nav-sub-dropdown"><a href="#">算力平台 <span style="float:right;">›</span></a>
-            <ul class="sub-dropdown-menu"><li><a href="gpu-scheduling.html">GPU/AI算力调度平台</a></li><li><a href="train-accel.html">模型训练与推理加速</a></li><li><a href="hybrid-cloud.html">混合云算力管理</a></li></ul></li>
-          <li class="nav-sub-dropdown"><a href="#">算力中心 <span style="float:right;">›</span></a>
-            <ul class="sub-dropdown-menu"><li><a href="computing-center.html">智算中心规划与建设</a></li><li><a href="computing-center.html">液冷/高密度算力方案</a></li><li><a href="computing-center.html">绿色数据中心</a></li></ul></li>
-          <li class="nav-sub-dropdown"><a href="#">AI安全 <span style="float:right;">›</span></a>
-            <ul class="sub-dropdown-menu"><li><a href="ai-security.html">模型安全评估</a></li><li><a href="ai-security.html">数据隐私保护</a></li><li><a href="ai-security.html">AI合规审计</a></li></ul></li>
+          <li><a href="../index.html">架构总览</a></li>
+          <li class="nav-sub-dropdown"><a href="#">咨询 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="data-governance.html">数据治理咨询</a></li><li><a href="digital-consulting.html">数字化咨询</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">数据平台 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="governance-org.html">治理规划与组织制度</a></li><li><a href="data-standard.html">数据标准管理</a></li><li><a href="master-data.html">主数据管理</a></li><li><a href="metadata-asset.html">元数据与数据资产</a></li><li><a href="data-quality.html">数据质量管理</a></li><li><a href="kpi-management.html">指标体系管理</a></li><li><a href="data-security-comp.html">数据安全与合规</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">智能体平台 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="model-base.html">模型底座管理</a></li><li><a href="agent-engine.html">智能体核心引擎</a></li><li><a href="knowledge-rag.html">知识库与RAG</a></li><li><a href="tool-market.html">工具与技能市场</a></li><li><a href="workflow-orch.html">工作流可视化编排</a></li><li><a href="multi-agent.html">多智能体协同</a></li><li><a href="memory-context.html">记忆与上下文管理</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">算力平台 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="gpu-scheduling.html">GPU/AI算力调度平台</a></li><li><a href="train-accel.html">模型训练与推理加速</a></li><li><a href="hybrid-cloud.html">混合云算力管理</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">算力中心 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="computing-center.html">智算中心规划与建设</a></li><li><a href="liquid-cooling.html">液冷/高密度算力方案</a></li><li><a href="green-datacenter.html">绿色数据中心</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">AI安全 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="model-security.html">模型安全评估</a></li><li><a href="data-privacy.html">数据隐私保护</a></li><li><a href="ai-audit.html">AI合规审计</a></li></ul></li>
         </ul>
       </li>
-      <li><a href="../index.html" onclick="localStorage.setItem('targetPage','talent');">职业生涯</a></li>
-      <li><a href="../index.html" onclick="localStorage.setItem('targetPage','about');">关于我们</a></li>
+      <li><a href="../index.html">职业生涯</a></li>
+      <li><a href="../index.html">关于我们</a></li>
     </ul>
   </div>
 </nav>
@@ -202,25 +195,55 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
     <div><a href="#" style="color:#a1a1aa;text-decoration:none;">隐私政策</a> | <a href="#" style="color:#a1a1aa;text-decoration:none;">使用条款</a></div>
   </div>
 </footer>
+<script src="data.js"></script>
 <script>
+var pageKey = 'kpi-management';
+document.addEventListener('DOMContentLoaded', function(){
+var d = moduleData[pageKey];
+if (!d) { console.log('No data for '+pageKey); return; }
+document.querySelector('.mdm-hero-left h1').textContent = d.title;
+document.querySelector('.mdm-hero-left p').textContent = d.subtitle;
+document.querySelector('.mdm-hero-right img').src = d.img;
+document.querySelector('.mdm-what-text h2').textContent = d.what || ('什么是' + d.title);
+document.querySelector('.mdm-what-text p').textContent = d.whatDesc || '';
+if (d.services) {
+  var svcHtml = '<h2>我们服务的<span>组成部分</span></h2><div class="mdm-blocks-row">';
+  var colors = ['dark','teal','gray'];
+  d.services.forEach(function(s,i){
+    if (i>0 && i%3===0) svcHtml += '</div><div class="mdm-blocks-row'+(d.services.length-i<=2?' two':'')+'">';
+    svcHtml += '<div class="mdm-block '+colors[i%3]+'">'+s+'</div>';
+  });
+  svcHtml += '</div>';
+  document.querySelector('.mdm-services').innerHTML = svcHtml;
+}
+if (d.advantages) {
+  var advIcons = ['<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-4 0v2"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'];
+  var advHtml = '<h2>我们的主要优势</h2><div class="mdm-adv-grid">';
+  d.advantages.forEach(function(a,i){
+    advHtml += '<div class="mdm-adv-card"><div class="mdm-adv-icon">'+advIcons[i%4]+'</div><h3>'+a.t+'</h3><p>'+a.d+'</p></div>';
+  });
+  advHtml += '</div>';
+  document.querySelector('.mdm-advantages').innerHTML = advHtml;
+}
+});
 var pageMap = {
   '数据治理咨询': 'data-governance.html', '数字化咨询': 'digital-consulting.html',
-  '治理规划与组织制度': 'data-platform.html', '数据标准管理': 'data-standard.html',
-  '主数据管理': 'data-platform.html', '元数据与数据资产': 'data-platform.html',
+  '治理规划与组织制度': 'governance-org.html', '数据标准管理': 'data-standard.html',
+  '主数据管理': 'master-data.html', '元数据与数据资产': 'metadata-asset.html',
   '数据质量管理': 'data-quality.html', '指标体系管理': 'kpi-management.html',
   '数据安全与合规': 'data-security-comp.html',
-  '模型底座管理': 'model-base.html', '智能体核心引擎': 'agent-platform.html',
-  '知识库与RAG': 'knowledge-rag.html', '工具与技能市场': 'agent-platform.html',
+  '模型底座管理': 'model-base.html', '智能体核心引擎': 'agent-engine.html',
+  '知识库与RAG': 'knowledge-rag.html', '工具与技能市场': 'tool-market.html',
   '工作流可视化编排': 'workflow-orch.html', '多智能体协同': 'multi-agent.html',
   '记忆与上下文管理': 'memory-context.html',
   'GPU/AI算力调度平台': 'gpu-scheduling.html', '模型训练与推理加速': 'train-accel.html',
   '混合云算力管理': 'hybrid-cloud.html',
-  '智算中心规划与建设': 'computing-center.html', '液冷/高密度算力方案': 'computing-center.html',
-  '绿色数据中心': 'computing-center.html',
-  '模型安全评估': 'ai-security.html', '数据隐私保护': 'ai-security.html', 'AI合规审计': 'ai-security.html',
+  '智算中心规划与建设': 'computing-center.html', '液冷/高密度算力方案': 'liquid-cooling.html',
+  '绿色数据中心': 'green-datacenter.html',
+  '模型安全评估': 'model-security.html', '数据隐私保护': 'data-privacy.html', 'AI合规审计': 'ai-audit.html',
   '咨询': 'data-governance.html', '数据平台': 'data-platform.html',
   '智能体平台': 'agent-platform.html', '算力平台': 'computing-platform.html',
-  '算力中心': 'computing-center.html', 'AI安全': 'ai-security.html'
+  '算力中心': 'computing-center.html', 'AI安全': 'model-security.html'
 };
 document.querySelectorAll('.solution-card li, .solution-card h3').forEach(function(el) {
   el.addEventListener('click', function(e) {
@@ -231,4 +254,5 @@ document.querySelectorAll('.solution-card li, .solution-card h3').forEach(functi
 });
 </script>
 </body>
-</html>
+<!-- v2 -->
+

@@ -1,0 +1,23 @@
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="../huiyuan_logo.png" alt="汇元科技"><span style="display:none">汇元科技</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">AI研究院</a></li>
+      <li><a href="../index.html">AI应用广场</a></li>
+      <li class="nav-dropdown">
+        <a href="#">方案 <span class="arrow"><svg width="12" height="7" viewBox="0 0 12 7"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="../index.html">架构总览</a></li>
+          <li class="nav-sub-dropdown"><a href="#">咨询 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="data-governance.html">数据治理咨询</a></li><li><a href="digital-consulting.html">数字化咨询</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">数据平台 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="governance-org.html">治理规划与组织制度</a></li><li><a href="data-standard.html">数据标准管理</a></li><li><a href="master-data.html">主数据管理</a></li><li><a href="metadata-asset.html">元数据与数据资产</a></li><li><a href="data-quality.html">数据质量管理</a></li><li><a href="kpi-management.html">指标体系管理</a></li><li><a href="data-security-comp.html">数据安全与合规</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">智能体平台 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="model-base.html">模型底座管理</a></li><li><a href="agent-engine.html">智能体核心引擎</a></li><li><a href="knowledge-rag.html">知识库与RAG</a></li><li><a href="tool-market.html">工具与技能市场</a></li><li><a href="workflow-orch.html">工作流可视化编排</a></li><li><a href="multi-agent.html">多智能体协同</a></li><li><a href="memory-context.html">记忆与上下文管理</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">算力平台 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="gpu-scheduling.html">GPU/AI算力调度平台</a></li><li><a href="train-accel.html">模型训练与推理加速</a></li><li><a href="hybrid-cloud.html">混合云算力管理</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">算力中心 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="computing-center.html">智算中心规划与建设</a></li><li><a href="liquid-cooling.html">液冷/高密度算力方案</a></li><li><a href="green-datacenter.html">绿色数据中心</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">AI安全 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="model-security.html">模型安全评估</a></li><li><a href="data-privacy.html">数据隐私保护</a></li><li><a href="ai-audit.html">AI合规审计</a></li></ul></li>
+        </ul>
+      </li>
+      <li><a href="../index.html">职业生涯</a></li>
+      <li><a href="../index.html">关于我们</a></li>
+    </ul>
+  </div>
+</nav>
