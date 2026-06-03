@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数据平台 - 汇元科技</title>
+<style>
+:root { --g: #f97316; --d: #1a1a1a; --w: #ffffff; --gr: #f4f4f5; --gr2: #e5e5e5; --st: #71717a; --lt: #a1a1aa; --r: #dc2626; --rad: 6px; --t: all .3s ease; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 16px; color: #71717a; background: #fff; -webkit-font-smoothing: antialiased; padding-top: 64px; }
+.nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(255,255,255,.97); border-bottom: 1px solid #e5e5e5; height: 64px; display: flex; align-items: center; }
+.nav-inner { max-width: 1400px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.nav-logo img { height: 36px; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { text-decoration: none; color: #1a1a1a; font-size: 16px; font-weight: 700; transition: color .2s; }
+.nav-links a:hover { color: #f97316; }
+.nav-dropdown { position: relative; }
+.nav-dropdown .arrow { display: inline-flex; align-items: center; margin-left: 5px; vertical-align: middle; opacity: 0; transition: opacity .2s; }
+.nav-dropdown:hover .arrow { opacity: 1; }
+.nav-dropdown .arrow svg { width: 16px; height: 10px; color: #1a1a1a; }
+.dropdown-menu { display: none; position: absolute; top: 100%; left: -12px; background: #fff; border: 1px solid #f0f0f0; border-radius: 6px; min-width: 150px; padding: 8px 0; box-shadow: 0 8px 30px rgba(0,0,0,.08); z-index: 200; list-style: none; }
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu li a { display: block; padding: 10px 20px; color: #1a1a1a; font-size: 14px; text-decoration: none; }
+.dropdown-menu li a:hover { background: #fdf6f0; color: #f97316; }
+.nav-sub-dropdown { position: relative; }
+.sub-dropdown-menu { display: none; position: absolute; left: 100%; top: 0; background: #fff; border: 1px solid #f0f0f0; border-radius: 6px; min-width: 240px; padding: 8px 0; box-shadow: 0 8px 30px rgba(0,0,0,.08); z-index: 210; list-style: none; }
+.nav-sub-dropdown:hover .sub-dropdown-menu { display: block; }
+.sub-dropdown-menu li a { display: block; padding: 10px 20px; color: #1a1a1a; font-size: 14px; text-decoration: none; }
+.sub-dropdown-menu li a:hover { background: #fdf6f0; color: #f97316; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+@media (max-width: 900px) { .nav-links { display: none; } }
+.mdm-hero { background: #0F121A; padding: 0; }
+.mdm-hero-wrap { display: flex; gap: 0; align-items: stretch; min-height: 450px; }
+.mdm-hero-left { width: 50%; flex-shrink: 0; padding: 60px 60px 60px 80px; display: flex; flex-direction: column; justify-content: center; }
+.mdm-hero-left h1 { font-size: 56px; font-weight: 800; color: #fff; margin-bottom: 20px; }
+.mdm-hero-left p { font-size: 22px; color: #99A3B8; line-height: 1.9; }
+.mdm-hero-right { width: 50%; flex-shrink: 0; }
+.mdm-hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mdm-content { background: #0a1628; padding: 80px 0; }
+.mdm-what-wrap { display: flex; gap: 48px; align-items: center; margin-bottom: 48px; }
+.mdm-what-img { width: 38%; flex-shrink: 0; display: flex; align-items: center; padding: 40px 20px; margin-left: 80px; }
+.mdm-what-img img { width: 100%; height: auto; border-radius: 8px; }
+.mdm-what-text { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-right: 120px; }
+.mdm-what-text h2 { margin-top: 0; margin-bottom: 120px; color: #fff; font-size: 40px; font-weight: 800; }
+.mdm-what-text p { color: #8a9ba8; line-height: 1.9; font-size: 22px; }
+.mdm-services { background: #f8f8f8; padding: 120px 0; text-align: center; }
+.mdm-services h2 { font-size: 56px; font-weight: 800; color: #1a1a1a; margin-bottom: 60px; }
+.mdm-services h2 span { color: #FF7722; }
+.mdm-blocks-row { display: flex; justify-content: center; gap: 32px; margin-bottom: 28px; max-width: 100%; margin-left: auto; margin-right: auto; padding: 0 20px; }
+.mdm-blocks-row.two { max-width: 700px; }
+.mdm-block { padding: 40px 80px; border-radius: 16px; font-size: 28px; font-weight: 600; flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: auto; }
+.mdm-block.dark { background: #1a1a1a; color: #fff; }
+.mdm-block.teal { background: #FF7722; color: #fff; }
+.mdm-block.gray { background: #e5e5e5; color: #1a1a1a; }
+.mdm-advantages { background: #f4f4f5; padding: 80px 0; text-align: center; }
+.mdm-advantages h2 { font-size: 40px; font-weight: 800; color: #1a1a1a; margin-bottom: 48px; }
+.mdm-adv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 100%; margin: 0 auto; padding: 0 32px; }
+.mdm-adv-card { background: #FFF0E0; padding: 80px 48px; border-radius: 20px; border: 1px solid #fde4cc; text-align: left; transition: var(--t); }
+.mdm-adv-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,.04); transform: translateY(-2px); }
+.mdm-adv-icon { margin-bottom: 16px; }
+.mdm-adv-icon svg { width: 32px; height: 32px; stroke: #1a1a1a; }
+.mdm-adv-card h3 { font-size: 22px; font-weight: 800; color: #1a1a1a; margin-bottom: 12px; }
+.mdm-adv-card p { font-size: 16px; color: #555; line-height: 1.7; }
+.mdm-expertise { background: #171C29; padding: 80px 0 0; position: relative; }
+.mdm-expertise .section-header { text-align: center; margin-bottom: 60px; }
+.mdm-expertise .section-header .tag { display: inline-block; padding: 6px 18px; color: #FF7722; border: 1px solid rgba(255,119,34,.3); background: rgba(255,119,34,.08); border-radius: 50px; font-size: 12px; font-weight: 600; margin-bottom: 16px; letter-spacing: 1.5px; text-transform: uppercase; }
+.mdm-expertise .section-header h2 { color: #fff; font-size: 36px; margin-bottom: 12px; margin-top: 8px; font-weight: 700; }
+.mdm-expertise .section-header h2::after { content: ''; display: block; width: 60px; height: 3px; background: linear-gradient(90deg, #FF7722, #FF9944); margin: 16px auto 0; border-radius: 2px; }
+.mdm-expertise .section-header p { color: #99A3B8; font-size: 16px; }
+.solutions-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px; max-width: 100%; padding: 0 20px; }
+.solution-card { background: #171C29; border: 1px solid rgba(255,119,34,.18); border-radius: 18px; padding: 32px 24px; transition: all .35s ease; text-align: center; position: relative; overflow: hidden; }
+.solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #FF7722, #FF9944, #FF7722); background-size: 200% 100%; }
+.solution-card:hover { transform: translateY(-4px); border-color: #FF7722; box-shadow: 0 8px 30px rgba(255,119,34,.22); }
+.solution-card h3 { font-size: 19px; color: #fff; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; }
+.solution-card h3 .dot { width: 8px; height: 8px; border-radius: 50%; background: #FF7722; }
+.solution-card .subtitle { font-size: 12px; color: #99A3B8; font-weight: 600; margin-bottom: 14px; }
+.solution-card ul { list-style: none; padding: 0; }
+.solution-card ul li { padding: 10px 0; color: #B0B9C9; font-size: 18px; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: color .2s; }
+.solution-card ul li:hover { color: #FF7722; }
+.solution-card h3 { cursor: pointer; }
+@media (max-width: 900px) { .solutions-grid { grid-template-columns: repeat(2, 1fr); } .mdm-hero-wrap { flex-direction: column; } .mdm-hero-left,.mdm-hero-right { width: 100%; } .mdm-hero-left { padding: 40px 24px; } }
+@media (max-width: 500px) { .solutions-grid { grid-template-columns: 1fr; } .mdm-adv-grid { grid-template-columns: 1fr; } .mdm-blocks-row { flex-direction: column; } }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="../huiyuan_logo.png" alt="汇元科技"></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="../index.html" onclick="localStorage.setItem('targetPage','research');">AI研究院</a></li>
+      <li><a href="../index.html" onclick="localStorage.setItem('targetPage','apps');">AI应用广场</a></li>
+      <li class="nav-dropdown">
+        <a href="../index.html" onclick="localStorage.setItem('targetPage','solutions');">方案 <span class="arrow"><svg width="16" height="10" viewBox="0 0 12 7"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="../index.html" onclick="localStorage.setItem('targetPage','solutions');">架构总览</a></li>
+          <li class="nav-sub-dropdown"><a href="#">咨询 <span style="float:right;">›</span></a>
+            <ul class="sub-dropdown-menu"><li><a href="data-governance.html">数据治理咨询</a></li><li><a href="digital-consulting.html">数字化咨询</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">数据平台 <span style="float:right;">›</span></a>
+            <ul class="sub-dropdown-menu"><li><a href="data-platform.html">治理规划与组织制度</a></li><li><a href="data-standard.html">数据标准管理</a></li><li><a href="data-platform.html">主数据管理</a></li><li><a href="data-platform.html">元数据与数据资产</a></li><li><a href="data-quality.html">数据质量管理</a></li><li><a href="kpi-management.html">指标体系管理</a></li><li><a href="data-security-comp.html">数据安全与合规</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">智能体平台 <span style="float:right;">›</span></a>
+            <ul class="sub-dropdown-menu"><li><a href="model-base.html">模型底座管理</a></li><li><a href="agent-platform.html">智能体核心引擎</a></li><li><a href="knowledge-rag.html">知识库与RAG</a></li><li><a href="agent-platform.html">工具与技能市场</a></li><li><a href="workflow-orch.html">工作流可视化编排</a></li><li><a href="multi-agent.html">多智能体协同</a></li><li><a href="memory-context.html">记忆与上下文管理</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">算力平台 <span style="float:right;">›</span></a>
+            <ul class="sub-dropdown-menu"><li><a href="gpu-scheduling.html">GPU/AI算力调度平台</a></li><li><a href="train-accel.html">模型训练与推理加速</a></li><li><a href="hybrid-cloud.html">混合云算力管理</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">算力中心 <span style="float:right;">›</span></a>
+            <ul class="sub-dropdown-menu"><li><a href="computing-center.html">智算中心规划与建设</a></li><li><a href="computing-center.html">液冷/高密度算力方案</a></li><li><a href="computing-center.html">绿色数据中心</a></li></ul></li>
+          <li class="nav-sub-dropdown"><a href="#">AI安全 <span style="float:right;">›</span></a>
+            <ul class="sub-dropdown-menu"><li><a href="ai-security.html">模型安全评估</a></li><li><a href="ai-security.html">数据隐私保护</a></li><li><a href="ai-security.html">AI合规审计</a></li></ul></li>
+        </ul>
+      </li>
+      <li><a href="../index.html" onclick="localStorage.setItem('targetPage','talent');">职业生涯</a></li>
+      <li><a href="../index.html" onclick="localStorage.setItem('targetPage','about');">关于我们</a></li>
+    </ul>
+  </div>
+</nav>
+<section class="mdm-hero">
+  <div class="mdm-hero-wrap">
+    <div class="mdm-hero-left">
+      <h1>数据平台</h1>
+      <p>构建企业级数据治理与资产管理体系</p>
+    </div>
+    <div class="mdm-hero-right">
+      <img src="../fang_an/zhu_shu_ju_manager/主数据管理页面.webp" alt="数据平台">
+    </div>
+  </div>
+</section>
+<section class="mdm-content">
+  <div class="container">
+    <div class="mdm-what-wrap">
+      <div class="mdm-what-img"><img src="../fang_an/zhu_shu_ju_manager/好多图片.webp" alt=""></div>
+      <div class="mdm-what-text">
+        <h2>什么是数据平台</h2>
+        <p>企业数据平台是支撑数据治理、数据管理与数据应用的一体化基础设施，涵盖数据采集、存储、计算、分析与服务全链路能力。汇元数据平台帮助企业构建统一的数据底座，实现数据资产的规范化管理与高效利用。</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="mdm-services">
+      <h2>我们服务的<span>组成部分</span></h2>
+      <div class="mdm-blocks-row">
+        <div class="mdm-block dark">治理规划与组织制度</div>
+        <div class="mdm-block teal">数据标准管理</div>
+        <div class="mdm-block gray">主数据管理</div>
+      </div>
+      <div class="mdm-blocks-row two">
+        <div class="mdm-block teal">元数据与数据资产</div>
+        <div class="mdm-block gray">数据质量管理</div>
+      </div>
+    </div>
+</section>
+<section class="mdm-advantages">
+      <h2>我们的主要优势</h2>
+      <div class="mdm-adv-grid">
+        <div class="mdm-adv-card"><div class="mdm-adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div><h3>统一数据底座</h3><p>构建企业级统一数据存储与计算平台，消除数据孤岛，实现数据资产的集中管理与高效利用。</p></div>
+        <div class="mdm-adv-card"><div class="mdm-adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg></div><h3>全链路数据治理</h3><p>覆盖数据标准、质量、安全、元数据等全领域，建立数据全生命周期治理闭环。</p></div>
+        <div class="mdm-adv-card"><div class="mdm-adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-4 0v2"/></svg></div><h3>敏捷数据服务</h3><p>提供标准化数据API与自助分析能力，加速数据消费，赋能业务决策与智能应用。</p></div>
+      </div>
+    </div>
+</section>
+<section class="mdm-expertise">
+      <div class="section-header"><div class="tag">Solutions</div><h2>解决方案</h2><p>从顶层咨询到平台落地，提供全方位的数字化与智能化解决方案</p></div>
+      <div class="solutions-grid">
+        <div class="solution-card"><h3><span class="dot"></span>咨询</h3><div class="subtitle">Consulting</div><ul><li>数据治理咨询</li><li>数字化咨询</li></ul></div>
+        <div class="solution-card"><h3><span class="dot"></span>数据平台</h3><div class="subtitle">Data Platform</div><ul><li>治理规划与组织制度</li><li>数据标准管理</li><li>主数据管理</li><li>元数据与数据资产</li><li>数据质量管理</li><li>指标体系管理</li><li>数据安全与合规</li></ul></div>
+        <div class="solution-card"><h3><span class="dot"></span>智能体平台</h3><div class="subtitle">Agent Platform</div><ul><li>模型底座管理</li><li>智能体核心引擎</li><li>知识库与RAG</li><li>工具与技能市场</li><li>工作流可视化编排</li><li>多智能体协同</li><li>记忆与上下文管理</li></ul></div>
+        <div class="solution-card"><h3><span class="dot"></span>算力平台</h3><div class="subtitle">Computing Platform</div><ul><li>GPU/AI算力调度平台</li><li>模型训练与推理加速</li><li>混合云算力管理</li></ul></div>
+        <div class="solution-card"><h3><span class="dot"></span>算力中心</h3><div class="subtitle">Computing Center</div><ul><li>智算中心规划与建设</li><li>液冷/高密度算力方案</li><li>绿色数据中心</li></ul></div>
+        <div class="solution-card"><h3><span class="dot"></span>AI安全</h3><div class="subtitle">AI Security</div><ul><li>模型安全评估</li><li>数据隐私保护</li><li>AI合规审计</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer style="background:#1c1814;color:#a1a1aa;padding:80px 0 32px;margin-top:0;">
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;max-width:1200px;margin:0 auto;padding:0 24px;">
+    <div>
+      <img src="../huiyuan_logo1.png" alt="汇元科技" style="height:42px;margin-bottom:16px;filter:brightness(0) saturate(100%) invert(55%) sepia(98%) saturate(1800%) hue-rotate(355deg);">
+      <p style="font-size:15px;line-height:1.9;">汇元科技 — 以AI驱动企业数字化转型新未来</p>
+      <p style="margin-top:12px;font-size:13px;">广东省广州市番禺区华资大厦D栋1113室</p>
+    </div>
+    <div><h4 style="color:#fff;font-size:16px;margin-bottom:18px;">快速导航</h4>
+      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">首页</a>
+      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">AI研究院</a>
+      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">AI应用广场</a>
+      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">方案</a>
+    </div>
+    <div><h4 style="color:#fff;font-size:16px;margin-bottom:18px;">解决方案</h4>
+      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">数据平台</a>
+      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">智能体平台</a>
+      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">算力平台</a>
+      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">AI安全</a>
+    </div>
+    <div style="text-align:center;">
+      <h4 style="color:#fff;font-size:16px;margin-bottom:12px;">微信</h4>
+      <img src="../weixin.png" alt="微信二维码" style="width:100px;height:100px;border-radius:6px;display:block;margin:0 auto 8px;">
+      <span style="font-size:13px;">扫码关注</span>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:48px auto 0;padding:24px 24px 0;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;font-size:14px;">
+    <span>&copy; 2026 汇元科技 All Rights Reserved.</span>
+    <div><a href="#" style="color:#a1a1aa;text-decoration:none;">隐私政策</a> | <a href="#" style="color:#a1a1aa;text-decoration:none;">使用条款</a></div>
+  </div>
+</footer>
+<script>
+var pageMap = {
+  '数据治理咨询': 'data-governance.html', '数字化咨询': 'digital-consulting.html',
+  '治理规划与组织制度': 'data-platform.html', '数据标准管理': 'data-standard.html',
+  '主数据管理': 'data-platform.html', '元数据与数据资产': 'data-platform.html',
+  '数据质量管理': 'data-quality.html', '指标体系管理': 'kpi-management.html',
+  '数据安全与合规': 'data-security-comp.html',
+  '模型底座管理': 'model-base.html', '智能体核心引擎': 'agent-platform.html',
+  '知识库与RAG': 'knowledge-rag.html', '工具与技能市场': 'agent-platform.html',
+  '工作流可视化编排': 'workflow-orch.html', '多智能体协同': 'multi-agent.html',
+  '记忆与上下文管理': 'memory-context.html',
+  'GPU/AI算力调度平台': 'gpu-scheduling.html', '模型训练与推理加速': 'train-accel.html',
+  '混合云算力管理': 'hybrid-cloud.html',
+  '智算中心规划与建设': 'computing-center.html', '液冷/高密度算力方案': 'computing-center.html',
+  '绿色数据中心': 'computing-center.html',
+  '模型安全评估': 'ai-security.html', '数据隐私保护': 'ai-security.html', 'AI合规审计': 'ai-security.html',
+  '咨询': 'data-governance.html', '数据平台': 'data-platform.html',
+  '智能体平台': 'agent-platform.html', '算力平台': 'computing-platform.html',
+  '算力中心': 'computing-center.html', 'AI安全': 'ai-security.html'
+};
+document.querySelectorAll('.solution-card li, .solution-card h3').forEach(function(el) {
+  el.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var text = this.textContent.trim();
+    for (var k in pageMap) { if (text.indexOf(k) >= 0 && pageMap[k]) { window.location.href = pageMap[k]; return; } }
+  });
+});
+</script>
+</body>
+</html>
