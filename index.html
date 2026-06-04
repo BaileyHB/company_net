@@ -23,22 +23,22 @@
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 16px; color: var(--tx); background: var(--w); -webkit-font-smoothing: antialiased; padding: 64px 0 0 0; margin: 0; }
+body { font-family: "Microsoft YaHei", "Source Han Sans CN", "PingFang SC", sans-serif; font-size: 16px; color: var(--tx); background: var(--w); -webkit-font-smoothing: antialiased; padding: 80px 0 0 0; margin: 0; }
 
-.nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--gr); height: 64px; display: flex; align-items: center; }
+.nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--gr); height: 80px; display: flex; align-items: center; }
 .nav-inner { max-width: 1400px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-.nav-logo img { height: 36px; }
+.nav-logo img { height: 52px; }
 .nav-logo span { font-size: 20px; font-weight: 700; color: var(--d); }
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a { text-decoration: none; color: #1a1a1a; font-size: 16px; font-weight: 700; transition: color .2s; }
-.nav-links a:hover { color: var(--r); }
+.nav-links a:hover { color: #dc2626; }
 .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
 .nav-toggle span { width: 22px; height: 2px; background: var(--d); border-radius: 2px; transition: .3s; }
 .nav-dropdown { position: relative; }
 .dropdown-menu { display: none; position: absolute; top: 100%; left: -6px; background: #fff; border: none; border-radius: 6px; width: fit-content; padding: 4px 0; box-shadow: 0 4px 12px rgba(0,0,0,.04); z-index: 200; list-style: none; }
 .nav-dropdown:hover .dropdown-menu { display: block; }
-.dropdown-menu li a { display: block; padding: 7px 20px; color: #1a1a1a; font-size: 14px; text-decoration: none; white-space: nowrap; transition: var(--t); }
+.dropdown-menu li a { display: block; padding: 10px 20px; color: #1a1a1a; font-size: 14px; text-decoration: none; white-space: nowrap; transition: var(--t); }
 .dropdown-menu li a:hover { background: #fdf6f0; color: #f97316; }
 .nav-sub-dropdown { position: relative; }
 .sub-dropdown-menu { display: none; position: absolute; left: 100%; top: 0; background: #fff; border: none; border-radius: 6px; width: fit-content; max-width: 300px; padding: 4px 0; box-shadow: 0 4px 12px rgba(0,0,0,.04); z-index: 210; list-style: none; }
@@ -57,11 +57,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
   .nav-inner { padding: 0 24px; }
   .nav-dropdown .dropdown-menu { display: none; position: static; border: none; box-shadow: none; padding: 0; min-width: 0; }
   .nav-dropdown.open .dropdown-menu { display: block; }
-  .dropdown-menu li a { padding: 10px 20px; font-size: 13px; }
+  .dropdown-menu li a { padding: 10px 20px; font-size: 12px; }
 }
 
-.home-video { width: 100%; max-height: 70vh; overflow: hidden; position: relative; }
-.home-video video { width: 100%; height: auto; display: block; }
+.home-video { width: 100%; max-height: 70vh; overflow: hidden; position: relative; background: #0a0a0a; }
+.home-video video { width: 100%; height: auto; display: block; opacity: 0; transition: opacity 0.6s ease; }
+.home-video video.loaded { opacity: 1; }
 .home-video-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; z-index: 1; }
 .home-video-text h2 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; color: #fff; text-shadow: 0 4px 20px rgba(0,0,0,.5); margin-bottom: 12px; }
 .home-video-text p { font-size: clamp(16px, 2.5vw, 22px); color: #f97316; font-weight: 600; text-shadow: 0 2px 10px rgba(0,0,0,.5); }
@@ -481,7 +482,7 @@ section { padding: 0; }
 .mdm-card:hover { border-color: #f97316; background: #122540; }
 .mdm-content > .container > p { font-size: 16px; color: #71717a; line-height: 1.9; margin-bottom: 48px; max-width: 900px; }
 .mdm-what-wrap { display: flex; gap: 48px; align-items: center; margin-bottom: 48px; }
-.mdm-what-img { width: 38%; flex-shrink: 0; display: flex; align-items: center; padding: 40px 20px; margin-left: 80px; }
+.mdm-what-img { width: 50%; flex-shrink: 0; display: flex; align-items: center; padding: 20px 0; }
 .mdm-what-img img { width: 100%; height: auto; border-radius: 8px; }
 .mdm-what-text { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-right: 120px; }
 .mdm-what-text h2 { margin-top: 0; margin-bottom: 120px; color: #fff; }
@@ -540,15 +541,15 @@ section { padding: 0; }
 footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
 .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 80px; padding: 0 40px; }
 .footer-brand img { height: 56px; margin-bottom: 24px; filter: brightness(0) saturate(100%) invert(55%) sepia(98%) saturate(1800%) hue-rotate(355deg); }
-.footer-brand p { font-size: 18px; line-height: 2.1; color: var(--st); }
-.footer-col h4 { color: var(--w); font-size: 20px; margin-bottom: 24px; }
-.footer-col a { display: block; color: var(--lt); text-decoration: none; font-size: 16px; padding: 10px 0; transition: color .2s; }
+.footer-brand p { font-size: 14px; line-height: 1.8; color: var(--st); }
+.footer-col h4 { color: var(--w); font-size: 14px; margin-bottom: 16px; }
+.footer-col a { display: block; color: var(--lt); text-decoration: none; font-size: 13px; padding: 5px 0; transition: color .2s; }
 .footer-col a:hover { color: var(--g); }
 .footer-wechat { text-align: center; }
-.footer-wechat h4 { color: var(--w); font-size: 20px; margin-bottom: 16px; }
-.footer-wechat img { width: 140px; height: 140px; border-radius: 8px; display: block; margin: 0 auto 12px; }
-.footer-wechat span { font-size: 15px; color: var(--st); }
-.footer-bottom { margin-top: 60px; padding: 32px 40px 0; border-top: 1px solid rgba(255,255,255,.08); display: flex; justify-content: space-between; font-size: 15px; flex-wrap: wrap; gap: 16px; }
+.footer-wechat h4 { color: var(--w); font-size: 14px; margin-bottom: 12px; }
+.footer-wechat img { width: 100px; height: 100px; border-radius: 6px; display: block; margin: 0 auto 8px; }
+.footer-wechat span { font-size: 12px; color: var(--st); }
+.footer-bottom { margin-top: 48px; padding: 20px 40px 0; border-top: 1px solid rgba(255,255,255,.08); display: flex; justify-content: space-between; font-size: 12px; flex-wrap: wrap; gap: 12px; }
 .footer-bottom a { color: var(--lt); text-decoration: none; }
 .footer-bottom a:hover { color: var(--g); }
 
@@ -609,12 +610,12 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
       <li class="nav-dropdown">
         <a href="#" data-page="apps">AI应用广场 <span class="arrow"><svg width="12" height="7" viewBox="0 0 12 7"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#" data-page="apps" data-tab="rd">研发部</a></li>
-          <li><a href="#" data-page="apps" data-tab="prod">生产部</a></li>
-          <li><a href="#" data-page="apps" data-tab="sales">销售部</a></li>
-          <li><a href="#" data-page="apps" data-tab="cs">客服部</a></li>
-          <li><a href="#" data-page="apps" data-tab="hr">HR部</a></li>
-          <li><a href="#" data-page="apps" data-tab="media">新媒体部</a></li>
+          <li><a href="#" data-page="apps" data-tab="rd">研发域</a></li>
+          <li><a href="#" data-page="apps" data-tab="prod">生产域</a></li>
+          <li><a href="#" data-page="apps" data-tab="sales">销售域</a></li>
+          <li><a href="#" data-page="apps" data-tab="cs">客服域</a></li>
+          <li><a href="#" data-page="apps" data-tab="hr">HR域</a></li>
+          <li><a href="#" data-page="apps" data-tab="media">新媒体域</a></li>
         </ul>
       </li>
       <li class="nav-dropdown">
@@ -631,10 +632,10 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
           <li class="nav-sub-dropdown">
             <a href="#">数据平台 <span style="float:right;">›</span></a>
             <ul class="sub-dropdown-menu">
-              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('data-platform')">治理规划与组织制度</a></li>
+              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('governance-org')">治理规划与组织制度</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('data-standard')">数据标准管理</a></li>
-              <li><a href="#" data-page="mdm">主数据管理</a></li>
-              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('data-platform')">元数据与数据资产</a></li>
+              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('master-data')">主数据管理</a></li>
+              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('metadata-asset')">元数据与数据资产</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('data-quality')">数据质量管理</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('kpi-management')">指标体系管理</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('data-security-comp')">数据安全与合规</a></li>
@@ -644,9 +645,9 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
             <a href="#">智能体平台 <span style="float:right;">›</span></a>
             <ul class="sub-dropdown-menu">
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('model-base')">模型底座管理</a></li>
-              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('agent-platform')">智能体核心引擎</a></li>
+              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('agent-engine')">智能体核心引擎</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('knowledge-rag')">知识库与RAG</a></li>
-              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('agent-platform')">工具与技能市场</a></li>
+              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('tool-market')">工具与技能市场</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('workflow-orch')">工作流可视化编排</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('multi-agent')">多智能体协同</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('memory-context')">记忆与上下文管理</a></li>
@@ -664,16 +665,16 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
             <a href="#">算力中心 <span style="float:right;">›</span></a>
             <ul class="sub-dropdown-menu">
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('computing-center')">智算中心规划与建设</a></li>
-              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('computing-center')">液冷/高密度算力方案</a></li>
-              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('computing-center')">绿色数据中心</a></li>
+              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('liquid-cooling')">液冷/高密度算力方案</a></li>
+              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('green-datacenter')">绿色数据中心</a></li>
             </ul>
           </li>
           <li class="nav-sub-dropdown">
             <a href="#">AI安全 <span style="float:right;">›</span></a>
             <ul class="sub-dropdown-menu">
-              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('ai-security')">模型安全评估</a></li>
-              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('ai-security')">数据隐私保护</a></li>
-              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('ai-security')">AI合规审计</a></li>
+              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('model-security')">模型安全评估</a></li>
+              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('data-privacy')">数据隐私保护</a></li>
+              <li><a href="#" onclick="event.preventDefault();window.openSolDetail('ai-audit')">AI合规审计</a></li>
             </ul>
           </li>
         </ul>
@@ -697,7 +698,7 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
   <!-- Home -->
   <div class="page active" id="page-home">
     <div class="home-video">
-      <video src="shou_ye/首页第一部介绍.mp4" autoplay muted loop playsinline></video>
+      <video src="shou_ye/首页第一部介绍.mp4" autoplay muted loop playsinline preload="auto" onloadeddata="this.classList.add('loaded')"></video>
       <div class="home-video-text">
         <h2>深耕行业专业能力</h2>
         <p>汇元以数据 + AI 赋能业务落地</p>
@@ -1028,34 +1029,34 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
           <p>深耕制造全场景<br>适配客户多元化业务需求</p>
         </div>
         <div class="apps-hero-right">
-          <video src="ying_yong/应用广场-右边出厂白.mp4" autoplay muted loop playsinline></video>
+          <video src="ying_yong/应用广场-右边出厂白.mp4" autoplay muted loop playsinline preload="auto" onloadeddata="this.classList.add('loaded')"></video>
         </div>
       </div>
       <div class="apps-category-wrap">
       <div class="apps-category-grid">
         <div class="apps-cat-item" data-dept="rd">
-          <img src="ying_yong/2_1研发部.jpg" alt="研发部" class="apps-cat-hover">
-          <div class="apps-cat-text"><span class="apps-cat-label">研发部</span><span class="apps-cat-en">R&D</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+          <img src="ying_yong/2_1研发部.jpg" alt="研发域" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">研发域</span><span class="apps-cat-en">R&D</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
         </div>
         <div class="apps-cat-item" data-dept="prod">
-          <img src="ying_yong/2_2生产部.jpg" alt="生产部" class="apps-cat-hover">
-          <div class="apps-cat-text"><span class="apps-cat-label">生产部</span><span class="apps-cat-en">Production</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+          <img src="ying_yong/2_2生产部.jpg" alt="生产域" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">生产域</span><span class="apps-cat-en">Production</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
         </div>
         <div class="apps-cat-item" data-dept="sales">
-          <img src="ying_yong/2_3销售部.png" alt="销售部" class="apps-cat-hover">
-          <div class="apps-cat-text"><span class="apps-cat-label">销售部</span><span class="apps-cat-en">Sales</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+          <img src="ying_yong/2_3销售部.png" alt="销售域" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">销售域</span><span class="apps-cat-en">Sales</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
         </div>
         <div class="apps-cat-item" data-dept="cs">
-          <img src="ying_yong/2_4销售部.jpg" alt="客服部" class="apps-cat-hover">
-          <div class="apps-cat-text"><span class="apps-cat-label">客服部</span><span class="apps-cat-en">Service</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+          <img src="ying_yong/2_4销售部.jpg" alt="客服域" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">客服域</span><span class="apps-cat-en">Service</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
         </div>
         <div class="apps-cat-item" data-dept="hr">
-          <img src="ying_yong/2_5客服部.jpg" alt="HR部" class="apps-cat-hover">
-          <div class="apps-cat-text"><span class="apps-cat-label">HR部</span><span class="apps-cat-en">HR</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+          <img src="ying_yong/2_5客服部.jpg" alt="HR域" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">HR域</span><span class="apps-cat-en">HR</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
         </div>
         <div class="apps-cat-item" data-dept="media">
-          <img src="ying_yong/2_6新媒体部.jpg" alt="新媒体部" class="apps-cat-hover">
-          <div class="apps-cat-text"><span class="apps-cat-label">新媒体部</span><span class="apps-cat-en">Media</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
+          <img src="ying_yong/2_6新媒体部.jpg" alt="新媒体域" class="apps-cat-hover">
+          <div class="apps-cat-text"><span class="apps-cat-label">新媒体域</span><span class="apps-cat-en">Media</span><span class="apps-cat-scene">查看场景 <span class="arrow">→</span></span></div>
         </div>
       </div>
       </div>
@@ -1102,13 +1103,13 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
             <h3><span class="dot" style="background:#f59e0b"></span>数据平台</h3>
             <div class="subtitle">Data Platform</div>
             <ul>
-              <li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">治理规划与组织制度</li>
-              <li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">数据标准管理</li>
-              <li><a href="#" data-page="mdm" style="color:#B0B9C9;text-decoration:none;">主数据管理</a></li>
-              <li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">元数据与数据资产</li>
-              <li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">数据质量管理</li>
-              <li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">指标体系管理</li>
-              <li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">数据安全与合规</li>
+              <li onclick="event.stopPropagation();openSolDetail('governance-org')" style="cursor:pointer;">治理规划与组织制度</li>
+              <li onclick="event.stopPropagation();openSolDetail('data-standard')" style="cursor:pointer;">数据标准管理</li>
+              <li onclick="event.stopPropagation();openSolDetail('master-data')" style="cursor:pointer;">主数据管理</li>
+              <li onclick="event.stopPropagation();openSolDetail('metadata-asset')" style="cursor:pointer;">元数据与数据资产</li>
+              <li onclick="event.stopPropagation();openSolDetail('data-quality')" style="cursor:pointer;">数据质量管理</li>
+              <li onclick="event.stopPropagation();openSolDetail('kpi-management')" style="cursor:pointer;">指标体系管理</li>
+              <li onclick="event.stopPropagation();openSolDetail('data-security-comp')" style="cursor:pointer;">数据安全与合规</li>
             </ul>
           </div>
           <div class="solution-card">
@@ -1116,10 +1117,10 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
             <div class="subtitle">Agent Platform</div>
             <ul>
               <li onclick="event.stopPropagation();openSolDetail('model-base')" style="cursor:pointer;">模型底座管理</li>
-              <li onclick="event.stopPropagation();openSolDetail('agent-platform')" style="cursor:pointer;">智能体核心引擎</li>
+              <li onclick="event.stopPropagation();openSolDetail('agent-engine')" style="cursor:pointer;">智能体核心引擎</li>
               <li onclick="event.stopPropagation();openSolDetail('knowledge-rag')" style="cursor:pointer;">知识库与RAG</li>
-              <li onclick="event.stopPropagation();openSolDetail('agent-platform')" style="cursor:pointer;">工具与技能市场</li>
-              <li>工作流可视化编排</li>
+              <li onclick="event.stopPropagation();openSolDetail('tool-market')" style="cursor:pointer;">工具与技能市场</li>
+              <li onclick="event.stopPropagation();openSolDetail('workflow-orch')" style="cursor:pointer;">工作流可视化编排</li>
               <li onclick="event.stopPropagation();openSolDetail('multi-agent')" style="cursor:pointer;">多智能体协同</li>
               <li onclick="event.stopPropagation();openSolDetail('memory-context')" style="cursor:pointer;">记忆与上下文管理</li>
             </ul>
@@ -1138,17 +1139,17 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
             <div class="subtitle">Computing Center</div>
             <ul>
               <li onclick="event.stopPropagation();openSolDetail('computing-center')" style="cursor:pointer;">智算中心规划与建设</li>
-              <li>液冷/高密度算力方案</li>
-              <li onclick="event.stopPropagation();openSolDetail('computing-center')" style="cursor:pointer;">绿色数据中心</li>
+              <li onclick="event.stopPropagation();openSolDetail('liquid-cooling')" style="cursor:pointer;">液冷/高密度算力方案</li>
+              <li onclick="event.stopPropagation();openSolDetail('green-datacenter')" style="cursor:pointer;">绿色数据中心</li>
             </ul>
           </div>
           <div class="solution-card">
             <h3><span class="dot" style="background:#4f46e5"></span>AI安全</h3>
             <div class="subtitle">AI Security</div>
             <ul>
-              <li onclick="event.stopPropagation();openSolDetail('ai-security')" style="cursor:pointer;">模型安全评估</li>
-              <li>数据隐私保护</li>
-              <li>AI合规审计</li>
+              <li onclick="event.stopPropagation();openSolDetail('model-security')" style="cursor:pointer;">模型安全评估</li>
+              <li onclick="event.stopPropagation();openSolDetail('data-privacy')" style="cursor:pointer;">数据隐私保护</li>
+              <li onclick="event.stopPropagation();openSolDetail('ai-audit')" style="cursor:pointer;">AI合规审计</li>
             </ul>
           </div>
         </div>
@@ -1358,11 +1359,11 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
           <div class="solutions-grid" style="opacity:1;transform:none;">
             <div class="solution-card visible" data-page="solutions"><h3><span class="dot" style="background:#FF7722"></span>咨询</h3><div class="subtitle">Consulting</div><ul><li onclick="event.stopPropagation();openSolDetail('data-governance')" style="cursor:pointer;">数据治理咨询</li><li onclick="event.stopPropagation();openSolDetail('digital-consulting')" style="cursor:pointer;">数字化咨询</li></ul></div>
             <div class="solution-card visible" data-page="solutions"><h3 style="cursor:pointer;" onclick="event.stopPropagation();openSolDetail('data-platform')"><span class="dot" style="background:#FF7722"></span>数据平台</h3>
-<div class="subtitle">Data Platform</div><ul><li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">治理规划与组织制度</li><li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">数据标准管理</li><li>主数据管理</li><li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">元数据与数据资产</li><li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">数据质量管理</li><li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">指标体系管理</li><li onclick="event.stopPropagation();openSolDetail('data-platform')" style="cursor:pointer;">数据安全与合规</li></ul></div>
-            <div class="solution-card visible" data-page="solutions"><h3><span class="dot" style="background:#FF7722"></span>智能体平台</h3><div class="subtitle">Agent Platform</div><ul><li onclick="event.stopPropagation();openSolDetail('model-base')" style="cursor:pointer;">模型底座管理</li><li onclick="event.stopPropagation();openSolDetail('agent-platform')" style="cursor:pointer;">智能体核心引擎</li><li onclick="event.stopPropagation();openSolDetail('knowledge-rag')" style="cursor:pointer;">知识库与RAG</li><li onclick="event.stopPropagation();openSolDetail('agent-platform')" style="cursor:pointer;">工具与技能市场</li><li>工作流可视化编排</li><li onclick="event.stopPropagation();openSolDetail('multi-agent')" style="cursor:pointer;">多智能体协同</li><li onclick="event.stopPropagation();openSolDetail('memory-context')" style="cursor:pointer;">记忆与上下文管理</li></ul></div>
+	<div class="subtitle">Data Platform</div><ul><li onclick="event.stopPropagation();openSolDetail('governance-org')" style="cursor:pointer;">治理规划与组织制度</li><li onclick="event.stopPropagation();openSolDetail('data-standard')" style="cursor:pointer;">数据标准管理</li><li onclick="event.stopPropagation();openSolDetail('master-data')" style="cursor:pointer;">主数据管理</li><li onclick="event.stopPropagation();openSolDetail('metadata-asset')" style="cursor:pointer;">元数据与数据资产</li><li onclick="event.stopPropagation();openSolDetail('data-quality')" style="cursor:pointer;">数据质量管理</li><li onclick="event.stopPropagation();openSolDetail('kpi-management')" style="cursor:pointer;">指标体系管理</li><li onclick="event.stopPropagation();openSolDetail('data-security-comp')" style="cursor:pointer;">数据安全与合规</li></ul></div>
+            <div class="solution-card visible" data-page="solutions"><h3><span class="dot" style="background:#FF7722"></span>智能体平台</h3><div class="subtitle">Agent Platform</div><ul><li onclick="event.stopPropagation();openSolDetail('model-base')" style="cursor:pointer;">模型底座管理</li><li onclick="event.stopPropagation();openSolDetail('agent-engine')" style="cursor:pointer;">智能体核心引擎</li><li onclick="event.stopPropagation();openSolDetail('knowledge-rag')" style="cursor:pointer;">知识库与RAG</li><li onclick="event.stopPropagation();openSolDetail('tool-market')" style="cursor:pointer;">工具与技能市场</li><li onclick="event.stopPropagation();openSolDetail('workflow-orch')" style="cursor:pointer;">工作流可视化编排</li><li onclick="event.stopPropagation();openSolDetail('multi-agent')" style="cursor:pointer;">多智能体协同</li><li onclick="event.stopPropagation();openSolDetail('memory-context')" style="cursor:pointer;">记忆与上下文管理</li></ul></div>
             <div class="solution-card visible" data-page="solutions"><h3><span class="dot" style="background:#FF7722"></span>算力平台</h3><div class="subtitle">Computing Platform</div><ul><li onclick="event.stopPropagation();openSolDetail('gpu-scheduling')" style="cursor:pointer;">GPU/AI算力调度平台</li><li onclick="event.stopPropagation();openSolDetail('train-accel')" style="cursor:pointer;">模型训练与推理加速</li><li onclick="event.stopPropagation();openSolDetail('hybrid-cloud')" style="cursor:pointer;">混合云算力管理</li></ul></div>
-            <div class="solution-card visible" data-page="solutions"><h3><span class="dot" style="background:#FF7722"></span>算力中心</h3><div class="subtitle">Computing Center</div><ul><li onclick="event.stopPropagation();openSolDetail('computing-center')" style="cursor:pointer;">智算中心规划与建设</li><li>液冷/高密度算力方案</li><li onclick="event.stopPropagation();openSolDetail('computing-center')" style="cursor:pointer;">绿色数据中心</li></ul></div>
-            <div class="solution-card visible" data-page="solutions"><h3><span class="dot" style="background:#FF7722"></span>AI安全</h3><div class="subtitle">AI Security</div><ul><li onclick="event.stopPropagation();openSolDetail('ai-security')" style="cursor:pointer;">模型安全评估</li><li>数据隐私保护</li><li>AI合规审计</li></ul></div>
+            <div class="solution-card visible" data-page="solutions"><h3><span class="dot" style="background:#FF7722"></span>算力中心</h3><div class="subtitle">Computing Center</div><ul><li onclick="event.stopPropagation();openSolDetail('computing-center')" style="cursor:pointer;">智算中心规划与建设</li><li onclick="event.stopPropagation();openSolDetail('liquid-cooling')" style="cursor:pointer;">液冷/高密度算力方案</li><li onclick="event.stopPropagation();openSolDetail('green-datacenter')" style="cursor:pointer;">绿色数据中心</li></ul></div>
+            <div class="solution-card visible" data-page="solutions"><h3><span class="dot" style="background:#FF7722"></span>AI安全</h3><div class="subtitle">AI Security</div><ul><li onclick="event.stopPropagation();openSolDetail('model-security')" style="cursor:pointer;">模型安全评估</li><li onclick="event.stopPropagation();openSolDetail('data-privacy')" style="cursor:pointer;">数据隐私保护</li><li onclick="event.stopPropagation();openSolDetail('ai-audit')" style="cursor:pointer;">AI合规审计</li></ul></div>
           </div>
         </div>
       </div>
@@ -1492,10 +1493,12 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
     </div>
     <div class="footer-col">
       <h4>解决方案</h4>
-      <a href="#" data-page="solutions">数据治理</a>
-      <a href="#" data-page="solutions">智能体平台</a>
-      <a href="#" data-page="solutions">算力平台</a>
-      <a href="#" data-page="solutions">AI安全</a>
+      <a href="#" onclick="event.preventDefault();window.openSolDetail('data-governance')">数据治理咨询</a>
+      <a href="#" onclick="event.preventDefault();window.openSolDetail('master-data')">主数据管理</a>
+      <a href="#" onclick="event.preventDefault();window.openSolDetail('agent-engine')">智能体核心引擎</a>
+      <a href="#" onclick="event.preventDefault();window.openSolDetail('gpu-scheduling')">GPU/AI算力调度平台</a>
+      <a href="#" onclick="event.preventDefault();window.openSolDetail('computing-center')">智算中心规划与建设</a>
+      <a href="#" onclick="event.preventDefault();window.openSolDetail('model-security')">模型安全评估</a>
     </div>
     <div class="footer-wechat">
       <h4 style="color:#e2e8f0;font-size:15px;margin-bottom:12px;">微信</h4>
@@ -1527,6 +1530,14 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
     if (!skipScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
     navLinks.classList.remove('open');
   }
+
+  // Hash-based routing for external links (e.g. from detail pages)
+  function handleHash() {
+    var hash = window.location.hash.replace('#', '');
+    if (hash) showPage(hash);
+  }
+  window.addEventListener('hashchange', handleHash);
+  if (window.location.hash) handleHash();
 
   document.querySelectorAll('[data-page]').forEach(el => {
     el.addEventListener('click', function(e) {
@@ -1650,7 +1661,7 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
 
   // Scene modal
   var sceneData = {
-    rd: {title:'研发部',img:'yanfa',items:[
+    rd: {title:'研发域',img:'yanfa',items:[
       {n:'01',t:'AI辅助编程',d:'智能代码补全、自动生成与Bug检测。',i:'电脑.jpg'},
       {n:'02',t:'智能文档生成',d:'基于代码自动生成API文档与技术规范。',i:'ipad.jpg'},
       {n:'03',t:'自动化测试',d:'AI驱动的测试用例生成与回归测试。',i:'电力数据计算.webp'},
@@ -1659,7 +1670,7 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
       {n:'06',t:'项目管理看板',d:'AI辅助需求评估、排期优化与风险预警。',i:'010101.webp'},
       {n:'07',t:'技术选型推荐',d:'基于项目需求自动匹配最优技术栈。',i:'点击数字.webp'}
     ]},
-    prod: {title:'生产部',img:'produce',items:[
+    prod: {title:'生产域',img:'produce',items:[
       {n:'01',t:'智能生产排程',d:'基于约束优化与强化学习的排程引擎。',i:'厂房.jpg'},
       {n:'02',t:'质量异常检测',d:'计算机视觉驱动的产品质量自动检测。',i:'吊机.jpg'},
       {n:'03',t:'设备预测性维护',d:'IoT传感器数据+AI算法预测设备故障。',i:'齿轮.webp'},
@@ -1668,7 +1679,7 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
       {n:'06',t:'安全生产监控',d:'基于视觉AI的安全行为识别。',i:'工厂物料.webp'},
       {n:'07',t:'工艺参数优化',d:'基于历史生产数据的工艺参数自动调优。',i:'湖边装货.webp'}
     ]},
-    sales: {title:'销售部',img:'sale',items:[
+    sales: {title:'销售域',img:'sale',items:[
       {n:'01',t:'智能客户画像',d:'多源数据融合的360°客户画像构建。',i:'卖衣服.webp'},
       {n:'02',t:'销售预测',d:'基于历史数据与市场趋势的AI销售预测。',i:'零售.webp'},
       {n:'03',t:'智能报价系统',d:'动态定价引擎，生成最优报价。',i:'数字各种医疗.webp'},
@@ -1677,7 +1688,7 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
       {n:'06',t:'销售话术辅助',d:'实时推荐最优话术与应对策略。',i:'湖边装货.webp'},
       {n:'07',t:'客户流失预警',d:'基于行为数据预测客户流失概率。',i:'湖边装货 copy.webp'}
     ]},
-    cs: {title:'客服部',img:'custom',items:[
+    cs: {title:'客服域',img:'custom',items:[
       {n:'01',t:'智能在线客服',d:'大模型驱动的7×24小时智能客服。',i:'客服打电话.webp'},
       {n:'02',t:'智能工单系统',d:'自动分类、优先级排序与智能派单。',i:'银行卡和电脑.jpg'},
       {n:'03',t:'情感分析预警',d:'实时识别客户情绪波动。',i:'小孩呵护成长.webp'},
@@ -1686,7 +1697,7 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
       {n:'06',t:'客户之声分析',d:'聚合多渠道反馈AI提炼洞察。',i:'呵护成长.webp'},
       {n:'07',t:'自助服务门户',d:'AI引导的自助排查与问题解决。',i:'急救.webp'}
     ]},
-    hr: {title:'HR部',img:'hr',items:[
+    hr: {title:'HR域',img:'hr',items:[
       {n:'01',t:'智能简历筛选',d:'AI自动解析简历，匹配岗位要求。',i:'拿着手机.webp'},
       {n:'02',t:'员工画像与人才盘点',d:'多维数据构建员工能力图谱。',i:'图表.webp'},
       {n:'03',t:'智能培训推荐',d:'个性化推荐学习课程与发展路径。',i:'制作饼干.webp'},
@@ -1695,7 +1706,7 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
       {n:'06',t:'绩效数据分析',d:'自动化绩效数据采集与分析。',i:'各种建筑物.jpg'},
       {n:'07',t:'薪酬对标分析',d:'行业薪酬数据智能采集与对标。',i:'各种建筑物-办公楼.jpg'}
     ]},
-    media: {title:'新媒体部',img:'media',items:[
+    media: {title:'新媒体域',img:'media',items:[
       {n:'01',t:'AI内容创作',d:'大模型驱动的图文短视频脚本生成。',i:'新媒体展示各种场景.webp'},
       {n:'02',t:'智能排期发布',d:'基于粉丝活跃时段的最优发布排期。',i:'电脑分类.jpg'},
       {n:'03',t:'舆情监控',d:'全网品牌声量实时监控与情感分析。',i:'计算机chatgpt.jpg'},
@@ -1717,7 +1728,11 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
       });
       html += '</div>';
       document.getElementById('sceneContent').innerHTML = html;
-      document.getElementById('scenePanel').classList.add('open');
+      var panel = document.getElementById('scenePanel');
+      panel.classList.add('open');
+      setTimeout(function() {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
     });
   });
 
@@ -1890,24 +1905,33 @@ footer { background: #1c1814; color: var(--lt); padding: 120px 0 48px; }
     var pageMap = {
       'data-platform': 'detail/data-platform.html',
       'master-data': 'detail/master-data.html',
-      'data-governance': 'detail/data-platform.html',
-      'digital-consulting': 'detail/data-platform.html',
-      'agent-platform': 'detail/data-platform.html',
-      'computing-platform': 'detail/data-platform.html',
-      'computing-center': 'detail/data-platform.html',
-      'ai-security': 'detail/data-platform.html',
-      'data-standard': 'detail/data-platform.html',
-      'data-quality': 'detail/data-platform.html',
-      'kpi-management': 'detail/data-platform.html',
-      'data-security-comp': 'detail/data-platform.html',
-      'model-base': 'detail/data-platform.html',
-      'knowledge-rag': 'detail/data-platform.html',
-      'workflow-orch': 'detail/data-platform.html',
-      'multi-agent': 'detail/data-platform.html',
-      'memory-context': 'detail/data-platform.html',
-      'gpu-scheduling': 'detail/data-platform.html',
-      'train-accel': 'detail/data-platform.html',
-      'hybrid-cloud': 'detail/data-platform.html'
+      'data-governance': 'detail/data-governance.html',
+      'digital-consulting': 'detail/digital-consulting.html',
+      'agent-platform': 'detail/agent-platform.html',
+      'computing-platform': 'detail/computing-platform.html',
+      'computing-center': 'detail/computing-center.html',
+      'ai-security': 'detail/ai-security.html',
+      'data-standard': 'detail/data-standard.html',
+      'data-quality': 'detail/data-quality.html',
+      'kpi-management': 'detail/kpi-management.html',
+      'data-security-comp': 'detail/data-security-comp.html',
+      'model-base': 'detail/model-base.html',
+      'knowledge-rag': 'detail/knowledge-rag.html',
+      'workflow-orch': 'detail/workflow-orch.html',
+      'multi-agent': 'detail/multi-agent.html',
+      'memory-context': 'detail/memory-context.html',
+      'gpu-scheduling': 'detail/gpu-scheduling.html',
+      'train-accel': 'detail/train-accel.html',
+      'hybrid-cloud': 'detail/hybrid-cloud.html',
+      'governance-org': 'detail/governance-org.html',
+      'metadata-asset': 'detail/metadata-asset.html',
+      'agent-engine': 'detail/agent-engine.html',
+      'tool-market': 'detail/tool-market.html',
+      'liquid-cooling': 'detail/liquid-cooling.html',
+      'green-datacenter': 'detail/green-datacenter.html',
+      'model-security': 'detail/model-security.html',
+      'data-privacy': 'detail/data-privacy.html',
+      'ai-audit': 'detail/ai-audit.html'
     };
     var url = pageMap[key] || 'detail/data-platform.html';
     window.location.href = url;

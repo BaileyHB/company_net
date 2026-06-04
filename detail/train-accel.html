@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>数据平台 - 汇元科技</title>
+<title>模型训练与推理加速 - 汇元科技</title>
 <style>
 :root { --g: #f97316; --d: #1a1a1a; --w: #ffffff; --gr: #f4f4f5; --gr2: #e5e5e5; --st: #71717a; --lt: #a1a1aa; --r: #dc2626; --rad: 6px; --t: all .3s ease; }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 16px; color: #71717a; background: #fff; -webkit-font-smoothing: antialiased; padding-top: 64px; }
-.nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(255,255,255,.97); border-bottom: 1px solid #e5e5e5; height: 64px; display: flex; align-items: center; }
+body { font-family: "Microsoft YaHei", "Source Han Sans CN", "PingFang SC", sans-serif; font-size: 16px; color: #71717a; background: #fff; -webkit-font-smoothing: antialiased; padding-top: 80px; }
+.nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(255,255,255,.97); border-bottom: 1px solid #e5e5e5; height: 80px; display: flex; align-items: center; }
 .nav-inner { max-width: 1400px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-.nav-logo img { height: 36px; }
+.nav-logo img { height: 52px; }
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a { text-decoration: none; color: #1a1a1a; font-size: 16px; font-weight: 700; transition: color .2s; }
 .nav-links a:hover { color: #dc2626; }
@@ -40,10 +40,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 .mdm-hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .mdm-content { background: #0a1628; padding: 80px 0; }
 .mdm-what-wrap { display: flex; gap: 48px; align-items: center; margin-bottom: 48px; }
-.mdm-what-img { width: 38%; flex-shrink: 0; display: flex; align-items: center; padding: 40px 20px; margin-left: 80px; }
+.mdm-what-img { width: 50%; flex-shrink: 0; display: flex; align-items: center; padding: 20px 0; margin-left: -80px; }
 .mdm-what-img img { width: 100%; height: auto; border-radius: 8px; }
-.mdm-what-text { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-right: 120px; }
-.mdm-what-text h2 { margin-top: 0; margin-bottom: 120px; color: #fff; font-size: 40px; font-weight: 800; }
+.mdm-what-text { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 40px; }
+.mdm-what-text h2 { margin-top: 0; margin-bottom: 40px; color: #fff; font-size: 40px; font-weight: 800; }
 .mdm-what-text p { color: #8a9ba8; line-height: 1.9; font-size: 22px; }
 .mdm-services { background: #f8f8f8; padding: 120px 0; text-align: center; }
 .mdm-services h2 { font-size: 56px; font-weight: 800; color: #1a1a1a; margin-bottom: 60px; }
@@ -82,6 +82,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 .solution-card h3 { cursor: pointer; }
 @media (max-width: 900px) { .solutions-grid { grid-template-columns: repeat(2, 1fr); } .mdm-hero-wrap { flex-direction: column; } .mdm-hero-left,.mdm-hero-right { width: 100%; } .mdm-hero-left { padding: 40px 24px; } }
 @media (max-width: 500px) { .solutions-grid { grid-template-columns: 1fr; } .mdm-adv-grid { grid-template-columns: 1fr; } .mdm-blocks-row { flex-direction: column; } }
+.nav-dropdown.open > .dropdown-menu,.nav-sub-dropdown.open > .sub-dropdown-menu{display:block!important}
 </style>
 </head>
 <body>
@@ -89,12 +90,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo"><img src="../huiyuan_logo.png" alt="汇元科技"><span style="display:none">汇元科技</span></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="../index.html">AI研究院</a></li>
-      <li><a href="../index.html">AI应用广场</a></li>
+      <li><a href="/index.html#research" onclick="window.location.href=this.href;return false;">AI研究院</a></li>
+      <li><a href="/index.html#apps" onclick="window.location.href=this.href;return false;">AI应用广场</a></li>
       <li class="nav-dropdown">
         <a href="#">方案 <span class="arrow"><svg width="12" height="7" viewBox="0 0 12 7"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         <ul class="dropdown-menu">
-          <li><a href="../index.html">架构总览</a></li>
+          <li><a href="/index.html#solutions" onclick="window.location.href=this.href;return false;">架构总览</a></li>
           <li class="nav-sub-dropdown"><a href="#">咨询 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="data-governance.html">数据治理咨询</a></li><li><a href="digital-consulting.html">数字化咨询</a></li></ul></li>
           <li class="nav-sub-dropdown"><a href="#">数据平台 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="governance-org.html">治理规划与组织制度</a></li><li><a href="data-standard.html">数据标准管理</a></li><li><a href="master-data.html">主数据管理</a></li><li><a href="metadata-asset.html">元数据与数据资产</a></li><li><a href="data-quality.html">数据质量管理</a></li><li><a href="kpi-management.html">指标体系管理</a></li><li><a href="data-security-comp.html">数据安全与合规</a></li></ul></li>
           <li class="nav-sub-dropdown"><a href="#">智能体平台 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="model-base.html">模型底座管理</a></li><li><a href="agent-engine.html">智能体核心引擎</a></li><li><a href="knowledge-rag.html">知识库与RAG</a></li><li><a href="tool-market.html">工具与技能市场</a></li><li><a href="workflow-orch.html">工作流可视化编排</a></li><li><a href="multi-agent.html">多智能体协同</a></li><li><a href="memory-context.html">记忆与上下文管理</a></li></ul></li>
@@ -103,8 +104,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
           <li class="nav-sub-dropdown"><a href="#">AI安全 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="model-security.html">模型安全评估</a></li><li><a href="data-privacy.html">数据隐私保护</a></li><li><a href="ai-audit.html">AI合规审计</a></li></ul></li>
         </ul>
       </li>
-      <li><a href="../index.html">职业生涯</a></li>
-      <li><a href="../index.html">关于我们</a></li>
+      <li><a href="/index.html#talent" onclick="window.location.href=this.href;return false;">职业生涯</a></li>
+      <li><a href="/index.html#about" onclick="window.location.href=this.href;return false;">关于我们</a></li>
     </ul>
   </div>
 </nav>
@@ -174,15 +175,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
     </div>
     <div><h4 style="color:#fff;font-size:16px;margin-bottom:18px;">快速导航</h4>
       <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">首页</a>
-      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">AI研究院</a>
-      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">AI应用广场</a>
-      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">方案</a>
+      <a href="/index.html#research" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">AI研究院</a>
+      <a href="/index.html#apps" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">AI应用广场</a>
+      <a href="/index.html#solutions" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">方案</a>
     </div>
     <div><h4 style="color:#fff;font-size:16px;margin-bottom:18px;">解决方案</h4>
-      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">数据平台</a>
-      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">智能体平台</a>
-      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">算力平台</a>
-      <a href="../index.html" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">AI安全</a>
+      <a href="/index.html#solutions" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">数据平台</a>
+      <a href="/index.html#solutions" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">智能体平台</a>
+      <a href="/index.html#solutions" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">算力平台</a>
+      <a href="/index.html#solutions" style="display:block;color:#a1a1aa;font-size:14px;padding:6px 0;text-decoration:none;">AI安全</a>
     </div>
     <div style="text-align:center;">
       <h4 style="color:#fff;font-size:16px;margin-bottom:12px;">微信</h4>
@@ -252,6 +253,25 @@ document.querySelectorAll('.solution-card li, .solution-card h3').forEach(functi
     for (var k in pageMap) { if (text.indexOf(k) >= 0 && pageMap[k]) { window.location.href = pageMap[k]; return; } }
   });
 });
+
+// Click toggle for nav dropdowns
+document.querySelectorAll('.nav-dropdown > a, .nav-sub-dropdown > a').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault(); e.stopPropagation();
+    var li = this.parentElement;
+    var wasOpen = li.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.nav-dropdown.open, .nav-sub-dropdown.open').forEach(function(el) { el.classList.remove('open'); });
+    // Toggle this one
+    if (!wasOpen) li.classList.add('open');
+  });
+});
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-dropdown') && !e.target.closest('.nav-sub-dropdown')) {
+    document.querySelectorAll('.nav-dropdown.open, .nav-sub-dropdown.open').forEach(function(el) { el.classList.remove('open'); });
+  }
+});
+
 </script>
 </body>
 <!-- v2 -->
