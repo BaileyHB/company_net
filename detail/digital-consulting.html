@@ -215,7 +215,7 @@ var d = moduleData[pageKey];
 if (!d) { console.log('No data for '+pageKey); return; }
 document.querySelector('.mdm-hero-left h1').textContent = d.title;
 document.querySelector('.mdm-hero-left p').textContent = d.subtitle;
-document.querySelector('.mdm-hero-right img').src = d.img;
+// img src is hardcoded — no flash
 document.querySelector('.mdm-what-text h2').textContent = d.what || ('什么是' + d.title);
 document.querySelector('.mdm-what-text p').textContent = d.whatDesc || '';
 if (d.services) {
