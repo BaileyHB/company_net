@@ -41,7 +41,7 @@ h1,h2,h3,h4,h5,h6,.nav-links a,.btn,.stage,.tag{font-family:"Space Grotesk","Not
 .nav-dropdown { position: relative; }
 .dropdown-menu { display: none; position: absolute; top: 100%; left: -6px; background: #fff; border: none; border-radius: var(--rad-md); min-width: 160px; width: max-content; padding: 4px 0; box-shadow: 0 4px 16px rgba(0,0,0,.08); z-index: 200; list-style: none; }
 .nav-dropdown:hover .dropdown-menu { display: block; }
-.dropdown-menu li a { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 10px 20px; color: #1a1a1a; font-size: 14px; text-decoration: none; white-space: nowrap; transition: var(--t); }
+.dropdown-menu li a { display: block; padding: 10px 20px; color: #1a1a1a; font-size: 14px; text-decoration: none; white-space: nowrap; transition: var(--t); }
 .dropdown-menu li a:hover { background: rgba(37,99,235,.06); color: var(--primary); }
 .nav-sub-dropdown { position: relative; }
 .sub-dropdown-menu { display: none; position: absolute; left: 100%; top: 0; background: #fff; border: none; border-radius: var(--rad-md); min-width: 180px; width: max-content; padding: 4px 0; box-shadow: 0 4px 16px rgba(0,0,0,.08); z-index: 210; list-style: none; }
@@ -626,14 +626,14 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
         <ul class="dropdown-menu">
           <li><a href="#" data-page="solutions" data-scroll="solution-arch">架构总览</a></li>
           <li class="nav-sub-dropdown">
-            <a href="#">咨询 <span>›</span></a>
+            <a href="#">咨询 <span style="margin-left:8px;">›</span></a>
             <ul class="sub-dropdown-menu">
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('data-governance')">数据治理咨询</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('digital-consulting')">数字化咨询</a></li>
             </ul>
           </li>
           <li class="nav-sub-dropdown">
-            <a href="#">数据平台 <span>›</span></a>
+            <a href="#">数据平台 <span style="margin-left:8px;">›</span></a>
             <ul class="sub-dropdown-menu">
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('governance-org')">治理规划与组织制度</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('data-standard')">数据标准管理</a></li>
@@ -645,7 +645,7 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
             </ul>
           </li>
           <li class="nav-sub-dropdown">
-            <a href="#">智能体平台 <span>›</span></a>
+            <a href="#">智能体平台 <span style="margin-left:8px;">›</span></a>
             <ul class="sub-dropdown-menu">
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('model-base')">模型底座管理</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('agent-engine')">智能体核心引擎</a></li>
@@ -657,7 +657,7 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
             </ul>
           </li>
           <li class="nav-sub-dropdown">
-            <a href="#">算力平台 <span>›</span></a>
+            <a href="#">算力平台 <span style="margin-left:8px;">›</span></a>
             <ul class="sub-dropdown-menu">
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('gpu-scheduling')">GPU/AI算力调度平台</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('train-accel')">模型训练与推理加速</a></li>
@@ -665,7 +665,7 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
             </ul>
           </li>
           <li class="nav-sub-dropdown">
-            <a href="#">算力中心 <span>›</span></a>
+            <a href="#">算力中心 <span style="margin-left:8px;">›</span></a>
             <ul class="sub-dropdown-menu">
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('computing-center')">智算中心规划与建设</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('liquid-cooling')">液冷/高密度算力方案</a></li>
@@ -673,7 +673,7 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
             </ul>
           </li>
           <li class="nav-sub-dropdown">
-            <a href="#">AI安全 <span>›</span></a>
+            <a href="#">AI安全 <span style="margin-left:8px;">›</span></a>
             <ul class="sub-dropdown-menu">
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('model-security')">模型安全评估</a></li>
               <li><a href="#" onclick="event.preventDefault();window.openSolDetail('data-privacy')">数据隐私保护</a></li>
