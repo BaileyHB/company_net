@@ -28,9 +28,9 @@ h1,h2,h3,h4,h5,h6,.nav-links a,.btn,.stage,.tag{font-family:"Space Grotesk","Not
 .nav-sub-dropdown:hover .sub-dropdown-menu { display: block; }
 .sub-dropdown-menu li a { display: block; padding: 7px 20px; color: #1a1a1a; font-size: 14px; text-decoration: none; white-space: nowrap; }
 .sub-dropdown-menu li a:hover { background: rgba(37,99,235,.06); color: var(--primary); }
-.nav-dropdown .arrow { display: inline-flex; align-items: center; margin-left: 5px; vertical-align: middle; opacity: 0; transition: opacity .2s; }
-.nav-dropdown:hover .arrow { opacity: 1; }
-.nav-dropdown .arrow svg { width: 16px; height: 10px; color: #1a1a1a; }
+
+
+
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 @media (max-width: 900px) {
   .nav-links { position: fixed; top: 72px; left: 0; width: 100%; flex-direction: column; gap: 0; background: var(--w); border-bottom: 1px solid rgba(226,232,240,.5); transform: translateY(-120%); transition: transform .35s; padding: 12px 40px; max-height: 80vh; overflow-y: auto; z-index: 99; }
@@ -104,7 +104,7 @@ h1,h2,h3,h4,h5,h6,.nav-links a,.btn,.stage,.tag{font-family:"Space Grotesk","Not
       <li><a href="/index.html#research" onclick="window.location.href=this.href;return false;">AI研究院</a></li>
       <li><a href="/index.html#apps" onclick="window.location.href=this.href;return false;">AI应用广场</a></li>
       <li class="nav-dropdown">
-        <a href="#">方案 <span class="arrow"><svg width="12" height="7" viewBox="0 0 12 7"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a href="#">方案</a>
         <ul class="dropdown-menu">
           <li><a href="/index.html#solutions" onclick="window.location.href=this.href;return false;">架构总览</a></li>
           <li class="nav-sub-dropdown"><a href="#">咨询 <span style="float:right;">&#8250;</span></a><ul class="sub-dropdown-menu"><li><a href="data-governance.html">数据治理咨询</a></li><li><a href="digital-consulting.html">数字化咨询</a></li></ul></li>
