@@ -300,7 +300,8 @@ section { padding: 0; }
 
 /* Talent */
 .talent-hero { position: relative; text-align: center; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.talent-hero-bg { width: 100%; height: auto; display: block; }
+.talent-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(249,115,22,.08) 0%, rgba(0,0,0,.15) 100%); pointer-events: none; }
+.talent-hero-bg { width: 100%; height: auto; display: block; position: relative; }
 .talent-hero-content { position: absolute; z-index: 1; padding: 40px; }
 .talent-hero-content h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 800; color: #fff; margin-bottom: 12px; position: relative; }
 .talent-hero-content p { font-size: 16px; color: rgba(255,255,255,.75); max-width: 500px; margin: 0 auto; line-height: 1.7; position: relative; }
