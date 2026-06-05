@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汇元数据 · 30秒招商片故事板</title>
+<style>
+  :root {
+    --blue: #1a56db;
+    --blue-dark: #0f2b6b;
+    --blue-light: #e8f0fe;
+    --gray-50: #f8f9fa;
+    --gray-100: #f0f1f3;
+    --gray-200: #e2e4e8;
+    --gray-400: #9ca3af;
+    --gray-600: #6b7280;
+    --gray-800: #2d2d2d;
+    --white: #ffffff;
+    --gold: #c9a84c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: #f3f4f6;
+    color: var(--gray-800);
+    line-height: 1.6;
+  }
+
+  /* ---- Header ---- */
+  .header {
+    background: linear-gradient(135deg, #0b1d3a 0%, #132f5e 40%, #1a3f7a 100%);
+    color: white;
+    text-align: center;
+    padding: 48px 24px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(59,130,246,0.12) 0%, transparent 55%),
+                radial-gradient(ellipse at 70% 30%, rgba(99,102,241,0.08) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .header-logo {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 16px;
+  }
+  .header-logo img {
+    height: 52px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+  }
+  .header .sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 8px;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+  }
+  .header .meta-badges {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    backdrop-filter: blur(4px);
+  }
+
+  /* ---- Container ---- */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  /* ---- Storyboard Grid ---- */
+  .storyboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  /* ---- Card ---- */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    transition: box-shadow 0.2s;
+  }
+  .card:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08), 0 8px 28px rgba(0,0,0,0.07);
+  }
+  .card:nth-child(even) {
+    grid-template-columns: 1fr 1.4fr;
+  }
+
+  /* ---- Frame (visual mockup) ---- */
+  .frame {
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 24px;
+  }
+  .frame-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .frame-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  /* Scene-specific backgrounds */
+  .bg-pain       { background: linear-gradient(150deg, #f0f0f0 0%, #d8d8d8 40%, #c4c4c4 100%); }
+  .bg-brand      { background: linear-gradient(150deg, #e8f0fe 0%, #d4e2fc 40%, #f0f4f8 100%); }
+  .bg-service    { background: linear-gradient(150deg, #eef6f0 0%, #dcebe2 40%, #f2f7f4 100%); }
+  .bg-security   { background: linear-gradient(150deg, #fef7ed 0%, #fce8d2 40%, #fef9f2 100%); }
+  .bg-produce    { background: linear-gradient(150deg, #eef2f8 0%, #dde4f2 40%, #f2f4f8 100%); }
+  .bg-ecosystem  { background: linear-gradient(150deg, #f0f4fe 0%, #e2eafc 40%, #f5f7fe 100%); }
+  .bg-cta        { background: linear-gradient(150deg, #f5f5f5 0%, #e8e8e8 40%, #fafafa 100%); }
+
+  /* Scene icons / visuals */
+  .scene-icon {
+    font-size: 56px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+  .scene-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .scene-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-top: 4px;
+  }
+
+  /* Split panels for pain scene */
+  .split-panels {
+    display: flex;
+    gap: 6px;
+    height: 70%;
+    width: 90%;
+    position: relative;
+    z-index: 1;
+  }
+  .split-panel {
+    flex: 1;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .split-panel .overlay-text {
+    position: absolute;
+    bottom: 10px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    padding: 4px 8px;
+  }
+  .panel-factory { background: linear-gradient(180deg, #8b9cb0 0%, #5a6c7d 100%); }
+  .panel-service { background: linear-gradient(180deg, #a8907a 0%, #7a6250 100%); }
+  .panel-security { background: linear-gradient(180deg, #8899aa 0%, #5c6e80 100%); }
+
+  /* Logo watermark in frames */
+  .logo-watermark {
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    z-index: 2;
+    opacity: 0.6;
+  }
+  .logo-watermark img {
+    height: 22px;
+  }
+
+  /* Stats display */
+  .stat-callout {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    min-width: 160px;
+  }
+  .stat-value {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--gray-600);
+    margin-top: 4px;
+  }
+
+  /* Architecture diagram in frame 6 */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 80%;
+    position: relative;
+    z-index: 1;
+  }
+  .arch-block {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 16px 12px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    color: var(--blue-dark);
+    border-left: 3px solid var(--blue);
+    position: relative;
+  }
+  .arch-block .icon { font-size: 24px; display: block; margin-bottom: 4px; }
+  .arch-block:nth-child(1) { border-left-color: #1a56db; }
+  .arch-block:nth-child(2) { border-left-color: #6366f1; }
+  .arch-block:nth-child(3) { border-left-color: #8b5cf6; }
+  .arch-block:nth-child(4) { border-left-color: #22c55e; }
+
+  /* CTA final */
+  .cta-box {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-logo img {
+    height: 64px;
+    margin-bottom: 16px;
+  }
+  .cta-slogan {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--blue-dark);
+    letter-spacing: 3px;
+  }
+  .cta-sub {
+    font-size: 16px;
+    color: var(--gray-600);
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  /* Map dots */
+  .map-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    z-index: 1;
+  }
+  .map-dot {
+    width: 10px; height: 10px;
+    background: var(--blue);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(26,86,219,0.2);
+    animation: pulse 2s infinite;
+  }
+  .map-dot:nth-child(2) { animation-delay: 0.4s; }
+  .map-dot:nth-child(3) { animation-delay: 0.8s; }
+  .map-dot:nth-child(4) { animation-delay: 1.2s; }
+  .map-dot:nth-child(5) { animation-delay: 1.6s; }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(26,86,219,0.2); }
+    50% { box-shadow: 0 0 0 12px rgba(26,86,219,0.05); }
+  }
+
+  /* ---- Info panel ---- */
+  .info {
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid var(--gray-100);
+  }
+  .card:nth-child(even) .info {
+    border-left: none;
+    border-right: 1px solid var(--gray-100);
+    order: -1;
+  }
+  .info .num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .info .title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 8px;
+  }
+  .info .duration {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-bottom: 12px;
+  }
+  .info .narration {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.7;
+    padding: 12px 16px;
+    background: var(--gray-50);
+    border-radius: 8px;
+    border-left: 3px solid var(--blue);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+  .info .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .info .tag {
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    background: var(--blue-light);
+    color: var(--blue);
+  }
+
+  /* ---- Footer ---- */
+  .footer {
+    text-align: center;
+    padding: 40px 24px;
+    color: var(--gray-400);
+    font-size: 13px;
+    border-top: 1px solid var(--gray-200);
+    margin-top: 20px;
+  }
+  .footer strong { color: var(--gray-600); }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 768px) {
+    .card, .card:nth-child(even) {
+      grid-template-columns: 1fr;
+    }
+    .info {
+      border-left: none;
+      border-top: 1px solid var(--gray-100);
+      padding: 20px;
+    }
+    .card:nth-child(even) .info {
+      border-right: none;
+      order: 0;
+    }
+    .header h1 { font-size: 24px; }
+    .stat-value { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="header-logo">
+    <img src="assets/images/brand/huiyuan_logo.png" alt="汇元数据" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+    <div style="display:none;font-size:28px;font-weight:700;letter-spacing:4px;">汇元数据</div>
+  </div>
+  <h1>30秒招商版 · 故事板</h1>
+  <p class="sub">7组镜头 · 视觉分镜脚本</p>
+  <div class="meta-badges">
+    <span class="badge">16:9 宽屏</span>
+    <span class="badge">明亮清透风格</span>
+    <span class="badge">招商向</span>
+    <span class="badge">总时长 ~32秒</span>
+  </div>
+</header>
+
+<!-- ===== STORYBOARD ===== -->
+<div class="container">
+  <div class="storyboard-grid">
+
+    <!-- === 镜头1: 痛点直击 === -->
+    <div class="card">
+      <div class="frame bg-pain">
+        <div class="split-panels">
+          <div class="split-panel panel-factory">
+            🏭
+            <span class="overlay-text">产线效率低</span>
+          </div>
+          <div class="split-panel panel-service">
+            📞
+            <span class="overlay-text">人工成本高</span>
+          </div>
+          <div class="split-panel panel-security">
+            🛡️
+            <span class="overlay-text">安防漏洞多</span>
+          </div>
+        </div>
+        <div class="logo-watermark">
+          <img src="assets/images/brand/huiyuan_logo.png" alt="汇元" onerror="this.style.display='none';">
+        </div>
+      </div>
+      <div class="info">
+        <div class="num">SCENE 01</div>
+        <div class="title">企业痛点直击</div>
+        <div class="duration">⏱ 0–4秒</div>
+        <div class="narration">"人工成本高、产线效率低、安防漏洞多——这是千万企业的真实困境。"</div>
+        <div class="tags">
+          <span class="tag">工厂车间</span>
+          <span class="tag">客服中心</span>
+          <span class="tag">园区安防</span>
+          <span class="tag">三画面对比</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- === 镜头2: 品牌+标杆 === -->
+    <div class="card">
+      <div class="frame bg-brand">
+        <div class="frame-content">
+          <div style="font-size:48px;margin-bottom:8px;">🏢</div>
+          <div style="font-size:18px;font-weight:700;color:var(--blue-dark);letter-spacing:1px;">汇元数据</div>
+          <div style="font-size:13px;color:var(--gray-600);margin-top:4px;">深耕数字化八年</div>
+          <div style="display:flex;gap:16px;margin-top:16px;font-size:13px;color:var(--gray-600);">
+            <span>🏭 制造</span>
+            <span>🏗️ 园区</span>
+            <span>🏛️ 政务</span>
+          </div>
+        </div>
+        <div class="logo-watermark">
+          <img src="assets/images/brand/huiyuan_logo.png" alt="汇元" onerror="this.style.display='none';">
+        </div>
+      </div>
+      <div class="info">
+        <div class="num">SCENE 02</div>
+        <div class="title">汇元品牌 + 标杆项目</div>
+        <div class="duration">⏱ 5–9秒</div>
+        <div class="narration">"汇元数据，深耕数字化八年，服务覆盖制造、园区、政务多行业。"</div>
+        <div class="tags">
+          <span class="tag">LOGO展示</span>
+          <span class="tag">商务团队</span>
+          <span class="tag">行业背书</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- === 镜头3: 智能客服 === -->
+    <div class="card">
+      <div class="frame bg-service">
+        <div class="frame-content" style="display:flex;align-items:center;gap:20px;">
+          <div style="text-align:left;">
+            <div style="font-size:36px;">💬</div>
+            <div style="font-size:13px;font-weight:600;margin-top:4px;">智能客服系统</div>
+            <div style="font-size:11px;color:var(--gray-600);">7×24h 智能应答</div>
+          </div>
+          <div class="stat-callout">
+            <div class="stat-value">-40%</div>
+            <div class="stat-label">人力成本降低</div>
+          </div>
+        </div>
+        <div class="logo-watermark">
+          <img src="assets/images/brand/huiyuan_logo.png" alt="汇元" onerror="this.style.display='none';">
+        </div>
+      </div>
+      <div class="info">
+        <div class="num">SCENE 03</div>
+        <div class="title">智能客服 + 数据看板</div>
+        <div class="duration">⏱ 10–14秒</div>
+        <div class="narration">"智能客服上线3个月，某制造企业人力成本直降40%。"</div>
+        <div class="tags">
+          <span class="tag">智能客服</span>
+          <span class="tag">数据看板</span>
+          <span class="tag">量化成效</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- === 镜头4: 智能安防 === -->
+    <div class="card">
+      <div class="frame bg-security">
+        <div class="frame-content" style="display:flex;align-items:center;gap:20px;">
+          <div class="stat-callout">
+            <div class="stat-value">+60%</div>
+            <div class="stat-label">巡检效率提升</div>
+            <div style="margin-top:8px;font-size:12px;color:#22c55e;font-weight:600;">漏检率 → 0</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:36px;">📹</div>
+            <div style="font-size:13px;font-weight:600;margin-top:4px;">AI安防巡检</div>
+            <div style="font-size:11px;color:var(--gray-600);">实时预警 · 全程溯源</div>
+          </div>
+        </div>
+        <div class="logo-watermark">
+          <img src="assets/images/brand/huiyuan_logo.png" alt="汇元" onerror="this.style.display='none';">
+        </div>
+      </div>
+      <div class="info">
+        <div class="num">SCENE 04</div>
+        <div class="title">智能安防 + 巡检大屏</div>
+        <div class="duration">⏱ 15–19秒</div>
+        <div class="narration">"某产业园区安防巡检效率提升60%，安全隐患漏检率趋零。"</div>
+        <div class="tags">
+          <span class="tag">智能安防</span>
+          <span class="tag">实时预警</span>
+          <span class="tag">园区场景</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- === 镜头5: 智能生产排程 === -->
+    <div class="card">
+      <div class="frame bg-produce">
+        <div class="frame-content" style="display:flex;align-items:center;gap:20px;">
+          <div style="text-align:left;">
+            <div style="font-size:36px;">⚙️</div>
+            <div style="font-size:13px;font-weight:600;margin-top:4px;">智能生产排程</div>
+            <div style="font-size:11px;color:var(--gray-600);">产线有序运转</div>
+          </div>
+          <div class="stat-callout" style="min-width:170px;">
+            <div class="stat-value">+25%</div>
+            <div class="stat-label">产能利用率提升</div>
+            <div style="margin-top:6px;font-size:11px;color:#f59e0b;font-weight:600;">物料损耗 ↓ 大幅下降</div>
+          </div>
+        </div>
+        <div class="logo-watermark">
+          <img src="assets/images/brand/huiyuan_logo.png" alt="汇元" onerror="this.style.display='none';">
+        </div>
+      </div>
+      <div class="info">
+        <div class="num">SCENE 05</div>
+        <div class="title">智能生产排程 + 产能提升</div>
+        <div class="duration">⏱ 20–23秒</div>
+        <div class="narration">"某工厂生产排程智能化，产能利用率提升25%，物料损耗大幅下降。"</div>
+        <div class="tags">
+          <span class="tag">生产调度</span>
+          <span class="tag">产能可视化</span>
+          <span class="tag">工厂场景</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- === 镜头6: 四位一体+全国布局 === -->
+    <div class="card">
+      <div class="frame bg-ecosystem">
+        <div class="arch-grid">
+          <div class="arch-block">
+            <span class="icon">📊</span> 数据
+          </div>
+          <div class="arch-block">
+            <span class="icon">🧠</span> AI
+          </div>
+          <div class="arch-block">
+            <span class="icon">🖥️</span> 算力
+          </div>
+          <div class="arch-block">
+            <span class="icon">🔒</span> 安全
+          </div>
+        </div>
+        <div class="map-dots">
+          <span class="map-dot"></span>
+          <span class="map-dot"></span>
+          <span class="map-dot"></span>
+          <span class="map-dot"></span>
+          <span class="map-dot"></span>
+        </div>
+        <div class="logo-watermark">
+          <img src="assets/images/brand/huiyuan_logo.png" alt="汇元" onerror="this.style.display='none';">
+        </div>
+      </div>
+      <div class="info">
+        <div class="num">SCENE 06</div>
+        <div class="title">四位一体 + 全国布局加速</div>
+        <div class="duration">⏱ 24–28秒</div>
+        <div class="narration">"数据+算力+AI+安全，实景落地，效果可量化。全国布局加速——"</div>
+        <div class="tags">
+          <span class="tag">四位一体</span>
+          <span class="tag">全国化布局</span>
+          <span class="tag">生态伙伴</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- === 镜头7: LOGO定格 + 招商CTA === -->
+    <div class="card">
+      <div class="frame bg-cta">
+        <div class="cta-box">
+          <div class="cta-logo">
+            <img src="assets/images/brand/huiyuan_logo.png" alt="汇元数据" style="height:64px;" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+            <div style="display:none;font-size:36px;font-weight:700;color:var(--blue-dark);">汇元数据</div>
+          </div>
+          <div class="cta-slogan">以数为基 · 以智赋能</div>
+          <div class="cta-sub">诚邀渠道伙伴 · 共拓千亿AI企业服务蓝海</div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="num">SCENE 07</div>
+        <div class="title">LOGO定格 + 招商CTA</div>
+        <div class="duration">⏱ 29–32秒</div>
+        <div class="narration">"汇元数据，诚邀渠道伙伴，共拓千亿AI企业服务蓝海。"</div>
+        <div class="tags">
+          <span class="tag">品牌定格</span>
+          <span class="tag">Slogan</span>
+          <span class="tag">招商行动号召</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <strong>汇元数据</strong> · 30秒招商版故事板 · 7组镜头 / ~32秒总时长 · 明亮清透风格<br>
+  对应AI生成提示词文档：<code>docs/make_invest_movie_30s.txt</code>
+</footer>
+
+</body>
+</html>
