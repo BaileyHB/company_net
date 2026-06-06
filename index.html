@@ -76,13 +76,13 @@ h1,h2,h3,h4,h5,h6,.nav-links a,.btn,.stage,.tag{font-family:"Space Grotesk","Not
 
     .company-intro-section { background: #f3f4f6; padding: 0; }
     .company-intro-wrap { display: flex; gap: 0; align-items: stretch; min-height: 520px; }
-    .company-intro-video { flex: 1; min-width: 0; background: transparent; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; overflow: visible; padding: 40px; }
-    .company-intro-video video { width: 100%; height: auto; max-height: 100%; object-fit: contain; display: block; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,.1); }
+    .company-intro-video { flex: 1; min-width: 0; background: transparent; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; overflow: visible; padding: 0; }
+    .company-intro-video video { width: 85%; max-height: 280px; object-fit: contain; display: block; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,.1); }
     .company-intro-video .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 68px; height: 68px; background: rgba(15,23,42,.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all .3s ease; box-shadow: 0 4px 20px rgba(0,0,0,.25); z-index: 2; }
     .company-intro-video .play-btn:hover { background: #0F172A; transform: translate(-50%,-50%) scale(1.08); }
     .company-intro-video .play-btn::after { content: ''; display: block; width: 0; height: 0; border-left: 22px solid #fff; border-top: 13px solid transparent; border-bottom: 13px solid transparent; margin-left: 4px; }
     .company-intro-video.playing .play-btn { display: none; }
-    .company-intro-right { flex: 1; padding: 60px 64px; display: flex; flex-direction: column; justify-content: center; }
+    .company-intro-right { flex: 1; padding: 60px 80px 60px 48px; display: flex; flex-direction: column; justify-content: center; }
     .company-intro-right h2 { font-size: 32px; font-weight: 800; color: #0F172A; margin-bottom: 24px; letter-spacing: 2px; }
     .company-intro-right p { font-size: 16px; color: #1e293b; line-height: 2.1; margin-bottom: 6px; }
     .company-intro-right .intro-highlight { font-size: 17px; color: #f97316; font-weight: 600; margin-top: 14px; letter-spacing: 2px; }
@@ -94,7 +94,7 @@ h1,h2,h3,h4,h5,h6,.nav-links a,.btn,.stage,.tag{font-family:"Space Grotesk","Not
       .company-intro-right p { font-size: 14px; }
     }
 
-.partners-strip { background: #fff; padding: 48px 0; border-bottom: 1px solid #f0f0f0; overflow: hidden; }
+.partners-strip { background: #f8f9fa; padding: 48px 0; border-bottom: 1px solid #f0f0f0; overflow: hidden; }
 .partners-track { display: flex; align-items: center; gap: 72px; width: max-content; transition: transform 1.5s ease; }
 .partners-track img { height: 40px; width: auto; object-fit: cover; border: none; background: none; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: 6px; font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: var(--t); }
@@ -218,7 +218,7 @@ section { padding: 0; }
 .home-cases .section-header h2 { color: #fff; }
 .home-cases .section-header p { color: var(--text-light); }
 .cases-carousel { max-width: 100%; margin: 0; position: relative; padding: 0 20px; }
-.cases-track { display: flex; gap: 36px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; padding: 12px 0; }
+    .cases-track { display: flex; gap: 36px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; padding: 12px 0; overscroll-behavior-y: contain; touch-action: pan-y pan-x; }
 .cases-track::-webkit-scrollbar { display: none; }
 .case-card { flex: 0 0 calc(28% - 24px); min-width: 260px; border-radius: 12px; overflow: hidden; cursor: pointer; text-decoration: none; scroll-snap-align: start; background: rgba(255,255,255,.04); transition: background .4s ease; display: flex; flex-direction: column; }
 .case-card:hover { background: rgba(37,99,235,.06); }
@@ -249,9 +249,9 @@ section { padding: 0; }
 .news-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(37,99,235,.15); }
 .news-card .news-img { height: 200px; background-size: cover; background-position: center; position: relative; }
 .news-card .news-tag { position: absolute; top: 14px; left: 14px; padding: 5px 12px; background: rgba(255,255,255,.9); color: var(--text); border-radius: 20px; font-size: 11px; font-weight: 600; margin: 0; }
-.news-card h4 { font-size: 20px; font-weight: 700; color: #121212; padding: 18px 20px 14px; line-height: 1.45; background: #f5f5f5; margin: 0; }
+.news-card h4 { font-size: 20px; font-weight: 700; color: #121212; padding: 18px 20px 14px; line-height: 1.45; margin: 0; }
 .news-card p { display: none; }
-.news-card .news-date { font-size: 12px; color: var(--text-secondary); padding: 0 20px 16px; background: #f5f5f5; margin: 0; }
+.news-card .news-date { font-size: 12px; color: var(--text-secondary); padding: 0 20px 16px; margin: 0; }
 .news-more { text-align: center; padding: 16px 0 40px; }
 .news-more a { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 6px; border: 1px solid rgba(226,232,240,.3); color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 600; transition: var(--t); }
 .news-more a:hover { border-color: var(--primary); color: var(--primary); }
@@ -532,11 +532,10 @@ section { padding: 0; }
 
 /* Footer */
 footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
-.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 80px; padding: 0 40px; }
-.footer-brand img { height: 56px; margin-bottom: 24px; filter: brightness(0) saturate(100%) invert(55%) sepia(98%) saturate(1800%) hue-rotate(355deg); }
-.footer-brand p { font-size: 14px; line-height: 1.8; color: var(--st); }
+    .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 40px; padding: 0 40px 0 20px; align-items: center; }
+    .footer-logo-col { display: flex; align-items: center; justify-content: center; }
 .footer-col h4 { color: var(--w); font-size: 14px; margin-bottom: 16px; }
-.footer-col a { display: block; color: var(--lt); text-decoration: none; font-size: 13px; padding: 5px 0; transition: color .2s; }
+.footer-col a { display: block; color: var(--lt); text-decoration: none; font-size: 13px; padding: 7px 0; transition: color .2s; line-height: 1.6; }
 .footer-col a:hover { color: var(--primary); }
 .footer-wechat { text-align: center; }
 .footer-wechat h4 { color: var(--w); font-size: 14px; margin-bottom: 12px; }
@@ -567,8 +566,7 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
   .section-header p { font-size: 14px; }
   .research-content h2 { font-size: 22px; }
   .research-content p { font-size: 15px; }
-  .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .footer-brand { grid-column: 1 / -1; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
   .footer-wechat { grid-column: 1 / -1; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .solutions-grid, .talent-grid, .news-grid, .cases-grid, .about-services, .about-advantages { grid-template-columns: 1fr; }
@@ -591,10 +589,13 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
 <!-- ── Nav ── -->
 <nav class="nav" id="navbar">
   <div class="nav-inner">
+    <div style="display:flex;align-items:center;gap:16px;">
     <a href="#" class="nav-logo" data-page="home">
       <img src="assets/images/brand/huiyuan_logo.png" alt="汇元科技">
       <span style="display:none">汇元科技</span>
     </a>
+    <a href="tel:13798063997" style="display:flex;align-items:center;gap:4px;text-decoration:none;color:#f97316;font-weight:700;font-size:18px;white-space:nowrap;padding-left:2px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>13798063997</a>
+    </div>
     <button class="nav-toggle" id="navToggle" aria-label="菜单">
       <span></span><span></span><span></span>
     </button>
@@ -682,6 +683,7 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
         </ul>
       </li>
       <li><a href="#" data-page="about">关于我们</a></li>
+    </div>
     </ul>
   </div>
 </nav>
@@ -694,7 +696,7 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
       <video src="assets/videos/home-intro.mp4" autoplay muted loop playsinline preload="auto" onloadeddata="this.classList.add('loaded')"></video>
       <div class="home-video-text">
         <h2>深耕行业专业能力</h2>
-        <p>汇元以数据 + AI 赋能业务落地</p>
+        <p><span style="color:#f97316;font-weight:700;font-size:135%;">⟦</span> 数据+AI <span style="color:#f97316;font-weight:700;font-size:135%;">⟧</span> 赋能业务落地</p>
       </div>
     </div>
     <!-- 合作伙伴轮播 -->
@@ -722,12 +724,11 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
     <section class="company-intro-section">
       <div class="company-intro-wrap">
         <div class="company-intro-video" onclick="var v=this.querySelector('video');if(v.paused){v.play();this.classList.add('playing');}else{v.pause();this.classList.remove('playing');}">
-          <video src="assets/videos/company_introduce.mp4" loop playsinline preload="auto"></video>
+          <video src="assets/videos/company_intro_zimu.mp4" playsinline preload="auto" onended="var v=this;setTimeout(function(){v.currentTime=0;v.pause();v.parentElement.classList.remove('playing');},1000);"></video>
           <div class="play-btn"></div>
         </div>
         <div class="company-intro-right">
-          <h2>汇元<span style="font-size:32px;font-weight:600;color:#0F172A;letter-spacing:0">（您的数据和AI项目合作伙伴）</span></h2>
-          <p>2018年从广州出发，专注数据治理与AI赋能。构建数据、算力、AI、安全四位一体全链服务体系，方案深入制造、园区、能源、汽车、电子；携手浪潮、华三、深信服等头部伙伴，聚合产业力量，以实效兑现价值。</p>
+          <p>汇元数据恪守创新、专业、诚信、共赢的经营准则，汇聚 AI 算法、数据科学、软件工程等多领域资深技术人才，依托完善的产业生态合作资源，联动头部软硬件厂商与科研机构夯实技术底座。公司围绕企业数字化转型全生命周期，打造从顶层咨询规划、软硬件平台部署、行业智能应用定制到落地运维托管的一站式闭环服务，以成熟落地能力赋能千行百业智能化升级，聚力成长为国内企业 AI 智能化建设的标杆服务商。</p>
         </div>
       </div>
     </section>
@@ -977,18 +978,41 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
   <div class="page" id="page-research">
     <section id="research">
       <div class="research-content">
-        <div class="tag">AI RESEARCH INSTITUTE</div>
-        <h2>为各行业<span>量身定制</span><br>AI解决方案</h2>
-        <p>汇元科技深度融合数据智能与行业know-how，覆盖制造、能源、汽车、医药等领域，提供从诊断咨询到落地实施的一站式AI解决方案。</p>
-        <a href="#" class="research-arrow" data-page="apps" title="了解更多">↓</a>
+        <div class="tag">CORE TECH 01</div>
+        <h2>异构算力微粒度<br><span>虚拟化池化技术</span></h2>
+        <p>跨英伟达、昇腾多元硬件架构，实现算力颗粒精细化切分与动态负载博弈调度，构建算力资源按需配给的资源经济学模型。</p>
       </div>
     </section>
     <div style="background:#fff;height:4px;width:100%;"></div>
     <section id="research" style="min-height:auto;padding:50px 0;">
       <div class="research-content">
-        <div class="tag">AI RESEARCH INSTITUTE</div>
-        <h2>紧跟数智发展趋势<br><span>持续迭代产品能力</span></h2>
-        <p>汇元紧跟大模型、数据治理、产业数字化发展浪潮，以技术迭代驱动产品升级，打通数据采集、治理、AI 建模、业务落地全链路，依托自研智能引擎，持续为各行业打磨轻量化、可落地的新一代数智化产品。</p>
+        <div class="tag">CORE TECH 02</div>
+        <h2>分层式自主智能体<br><span>心智架构技术</span></h2>
+        <p>依托长短记忆分层存储、工具链动态编排、反思闭环机制，构建具备感知-规划-执行-自省全链路的内生心智，实现业务任务自主拆解与闭环落地。</p>
+      </div>
+    </section>
+    <div style="background:#fff;height:4px;width:100%;"></div>
+    <section id="research" style="min-height:auto;padding:50px 0;">
+      <div class="research-content">
+        <div class="tag">CORE TECH 03</div>
+        <h2>大模型垂直域<br><span>轻量化锚定微调技术</span></h2>
+        <p>基于行业私有数据做参数域局部微调，消解通用大模型域外偏见，完成通用基座向产业专属模型的收敛演化。</p>
+      </div>
+    </section>
+    <div style="background:#fff;height:4px;width:100%;"></div>
+    <section id="research" style="min-height:auto;padding:50px 0;">
+      <div class="research-content">
+        <div class="tag">CORE TECH 04</div>
+        <h2>全链路AI<br><span>内生安全拓扑架构</span></h2>
+        <p>由数据脱敏屏障、模型安全护栏、Agent沙箱隔离、动态权限管控组成四维约束架构，对智能体自主行为进行全域边界锁止。</p>
+      </div>
+    </section>
+    <div style="background:#fff;height:4px;width:100%;"></div>
+    <section id="research" style="min-height:auto;padding:50px 0;">
+      <div class="research-content">
+        <div class="tag">CORE TECH 05</div>
+        <h2>AI落地价值<br><span>量化建模技术</span></h2>
+        <p>建立多要素量化测算范式，实现智能化收益指标可溯源、可量化、全周期闭环运营。</p>
       </div>
     </section>
   </div>
@@ -998,8 +1022,8 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
     <section id="apps" class="apps-new">
       <div class="apps-hero">
         <div class="apps-hero-left">
-          <h1>汇元的应用广场</h1>
-          <p>深耕制造全场景<br>适配客户多元化业务需求</p>
+          <h1>AI应用广场</h1>
+          <p>赋能制造业<br>适配客户多元化业务需求</p>
         </div>
         <div class="apps-hero-right">
           <video src="assets/videos/apps-show.mp4" autoplay muted loop playsinline preload="auto" onloadeddata="this.classList.add('loaded')"></video>
@@ -1452,9 +1476,8 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
 <!-- ── Footer ── -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">
-      <img src="assets/images/brand/huiyuan_logo1.png" alt="汇元科技">
-      <p>汇元科技 — 以AI驱动企业数字化转型新未来。从数据治理到智能决策，为企业提供全链路的智能化解决方案。</p>
+    <div class="footer-logo-col">
+      <img src="assets/images/brand/huiyuan_logo1.png" alt="汇元科技" style="height:48px;filter:brightness(0) saturate(100%) invert(55%) sepia(98%) saturate(1800%) hue-rotate(355deg);">
     </div>
     <div class="footer-col">
       <h4>快速导航</h4>
@@ -1473,10 +1496,12 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
       <a href="#" onclick="event.preventDefault();window.openSolDetail('computing-center')">智算中心规划与建设</a>
       <a href="#" onclick="event.preventDefault();window.openSolDetail('model-security')">模型安全评估</a>
     </div>
-    <div class="footer-wechat">
-      <h4 style="color:#e2e8f0;font-size:15px;margin-bottom:12px;">微信</h4>
-      <img src="assets/images/brand/weixin.png" alt="微信二维码" style="width:100px;height:100px;border-radius:8px;display:block;margin:0 auto 12px;box-shadow:none;">
-      <span>扫码关注</span>
+    <div class="footer-col">
+      <h4>联系我们</h4>
+      <a href="#" style="white-space:nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>广州市番禺区亚运大道华资产业园D栋1113室</a>
+      <a href="tel:13798063997" style="white-space:nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>13798063997</a>
+      <a href="https://www.intelldata.cc" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>www.intelldata.cc</a>
+      <div style="margin-top:10px;display:flex;align-items:center;gap:10px;"><img src="assets/images/brand/weixin.png" alt="微信" style="width:80px;height:80px;border-radius:4px;"><span style="font-size:11px;color:#94a3b8;">扫码加好友</span></div>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1636,58 +1661,58 @@ footer { background: var(--bg-dark); color: var(--lt); padding: 120px 0 48px; }
   // Scene modal
   var sceneData = {
     rd: {title:'研发域',img:'yanfa',items:[
-      {n:'01',t:'AI辅助编程',d:'智能代码补全、自动生成与Bug检测。',i:'电脑.jpg'},
-      {n:'02',t:'智能文档生成',d:'基于代码自动生成API文档与技术规范。',i:'ipad.jpg'},
-      {n:'03',t:'自动化测试',d:'AI驱动的测试用例生成与回归测试。',i:'电力数据计算.webp'},
-      {n:'04',t:'智能代码审查',d:'深度学习模型辅助代码Review。',i:'电脑分类.jpg'},
-      {n:'05',t:'知识管理平台',d:'企业级技术知识图谱，沉淀研发经验。',i:'电脑和手机.jpg'},
-      {n:'06',t:'项目管理看板',d:'AI辅助需求评估、排期优化与风险预警。',i:'010101.webp'},
-      {n:'07',t:'技术选型推荐',d:'基于项目需求自动匹配最优技术栈。',i:'点击数字.webp'}
+      {n:'01',t:'AI辅助编程',d:'基于大模型的智能代码补全与生成引擎，支持主流编程语言，自动识别代码上下文并推荐最优补全方案，同时集成静态分析能力，实时检测潜在Bug与安全漏洞，将开发效率提升50%以上。',i:'电脑.jpg'},
+      {n:'02',t:'智能文档生成',d:'从源代码中自动提取接口定义、参数说明与调用示例，生成结构化的API文档与技术规范，支持Java/Python/Go等多语言，文档更新与代码版本自动同步，消除手工维护文档的繁琐与滞后。',i:'ipad.jpg'},
+      {n:'03',t:'自动化测试',d:'基于代码变更与业务逻辑自动生成测试用例矩阵，智能识别边界条件与异常路径，执行回归测试并输出可视化报告，支持单元测试、集成测试与端到端测试的全场景覆盖，持续守护代码质量。',i:'电力数据计算.webp'},
+      {n:'04',t:'智能代码审查',d:'集成静态分析、语义理解与最佳实践库的深度代码审查引擎，自动识别代码坏味、架构违规与性能隐患，提交Pull Request时即时推送审查建议，帮助团队建立统一的代码规范与质量标准。',i:'电脑分类.jpg'},
+      {n:'05',t:'知识管理平台',d:'构建企业级技术知识图谱，自动抽取项目文档、技术方案与复盘报告中的核心知识点，建立关联索引与版本追溯，让每一次研发经验都能被检索、复用与传承，消除团队知识孤岛。',i:'电脑和手机.jpg'},
+      {n:'06',t:'项目管理看板',d:'基于历史项目数据与团队能力模型的智能项目管理工具，自动评估需求复杂度与工期，优化任务排期与资源分配，实时监控项目健康度并提前预警延期风险，让项目交付更有确定性。',i:'010101.webp'},
+      {n:'07',t:'技术选型推荐',d:'输入项目需求、团队能力与性能指标，系统自动从技术知识库中匹配最优技术栈与架构方案，提供对比分析、社区活跃度评估与落地风险提示，帮助企业做出理性的技术选型决策。',i:'点击数字.webp'}
     ]},
     prod: {title:'生产域',img:'produce',items:[
-      {n:'01',t:'智能生产排程',d:'基于约束优化与强化学习的排程引擎。',i:'厂房.jpg'},
-      {n:'02',t:'质量异常检测',d:'计算机视觉驱动的产品质量自动检测。',i:'吊机.jpg'},
-      {n:'03',t:'设备预测性维护',d:'IoT传感器数据+AI算法预测设备故障。',i:'齿轮.webp'},
-      {n:'04',t:'供应链智能优化',d:'需求预测、库存优化全链路智能化。',i:'工厂拉货.webp'},
-      {n:'05',t:'能耗智能管理',d:'AI驱动的能源消耗监控与优化。',i:'排烟口工厂.jpg'},
-      {n:'06',t:'安全生产监控',d:'基于视觉AI的安全行为识别。',i:'工厂物料.webp'},
-      {n:'07',t:'工艺参数优化',d:'基于历史生产数据的工艺参数自动调优。',i:'湖边装货.webp'}
+      {n:'01',t:'智能生产排程',d:'融合约束优化算法与强化学习的智能排程引擎，综合考虑设备产能、物料供应、交期优先级与切换成本等多维约束，动态生成最优排产方案，排产效率提升40%以上，订单准时交付率显著提升。',i:'厂房.jpg'},
+      {n:'02',t:'质量异常检测',d:'部署高精度计算机视觉模型，对产线产品进行实时质量检测与缺陷分类，支持外观瑕疵、尺寸偏差、装配异常等多种缺陷类型的自动识别，检出率达99.6%，替代人工目检，降低漏检风险与人力成本。',i:'吊机.jpg'},
+      {n:'03',t:'设备预测性维护',d:'融合振动、温度、电流等IoT传感器时序数据与设备运行历史，构建AI预测模型提前识别故障征兆，从计划维护升级为预测性维护，非计划停机减少62%，备件库存成本下降35%，延长设备使用寿命。',i:'齿轮.webp'},
+      {n:'04',t:'供应链智能优化',d:'覆盖需求预测、采购计划、库存优化到物流调度的全链路智能化，基于历史销售数据与市场趋势建立多级需求预测模型，动态优化安全库存水位与补货策略，在保障供应连续性的同时最大限度降低库存持有成本。',i:'工厂拉货.webp'},
+      {n:'05',t:'能耗智能管理',d:'实时采集全厂能源消耗数据，建立分车间、分产线、分工序的能耗基线模型，AI自动识别高耗能环节与异常波动，给出可操作的节能优化方案，帮助企业实现碳排放强度降低与能源成本节约的双重目标。',i:'排烟口工厂.jpg'},
+      {n:'06',t:'安全生产监控',d:'基于视觉AI的安全行为实时识别系统，覆盖员工安全帽佩戴、防护装备穿戴、危险区域闯入、违规操作等场景，检测到风险行为即时告警并记录，构建从预警到闭环整改的全链路安全管理体系。',i:'工厂物料.webp'},
+      {n:'07',t:'工艺参数优化',d:'聚合历史生产批次数据，运用机器学习的回归分析与优化算法，自动识别影响产品质量的关键工艺参数及其最优区间，推荐调优方案，持续迭代参数模型，实现从经验驱动到数据驱动的工艺管理升级。',i:'湖边装货.webp'}
     ]},
     sales: {title:'销售域',img:'sale',items:[
-      {n:'01',t:'智能客户画像',d:'多源数据融合的360°客户画像构建。',i:'卖衣服.webp'},
-      {n:'02',t:'销售预测',d:'基于历史数据与市场趋势的AI销售预测。',i:'零售.webp'},
-      {n:'03',t:'智能报价系统',d:'动态定价引擎，生成最优报价。',i:'数字各种医疗.webp'},
-      {n:'04',t:'商机评分与跟进',d:'AI自动评估商机质量。',i:'汽车加人.webp'},
-      {n:'05',t:'合同智能审核',d:'NLP自动审查合同条款。',i:'装修汽车.webp'},
-      {n:'06',t:'销售话术辅助',d:'实时推荐最优话术与应对策略。',i:'湖边装货.webp'},
-      {n:'07',t:'客户流失预警',d:'基于行为数据预测客户流失概率。',i:'湖边装货 copy.webp'}
+      {n:'01',t:'智能客户画像',d:'融合CRM、交易记录、客服交互、社交媒体行为等多源数据，运用知识图谱与机器学习构建360°客户全景画像，包含购买偏好、决策路径、信用评估与流失风险，为精准营销与个性化服务提供数据底座。',i:'卖衣服.webp'},
+      {n:'02',t:'销售预测',d:'整合历史销售数据、季节性因素、市场趋势与宏观经济指标，构建多层级AI销售预测模型，支持按区域、产品线、销售团队等多维度输出预测结果，辅助销售目标制定与资源精准配置，显著降低库存积压与缺货风险。',i:'零售.webp'},
+      {n:'03',t:'智能报价系统',d:'基于客户历史成交价、竞争对手报价、成本结构与市场供需关系的动态定价引擎，融合价格弹性模型与利润优化算法，为每一笔商机生成最优报价建议，平衡成交率与利润率，实现收益最大化。',i:'数字各种医疗.webp'},
+      {n:'04',t:'商机评分与跟进',d:'基于客户行为轨迹、交互频次、需求匹配度与历史赢单数据，AI自动为每条商机打分和分级，优先推荐高转化概率商机并生成个性化跟进建议，帮助销售团队聚焦最有价值的线索，提升整体赢单率。',i:'汽车加人.webp'},
+      {n:'05',t:'合同智能审核',d:'基于NLP与法律知识库的智能合同审查引擎，自动识别合同中的风险条款、责任漏洞与合规偏差，比对历史合同库给出修改建议与谈判策略，将人工审核时间从小时级压缩至分钟级，降低企业法务风险。',i:'装修汽车.webp'},
+      {n:'06',t:'销售话术辅助',d:'基于客户画像、对话上下文与成功案例库的实时话术推荐引擎，在销售与客户沟通过程中智能推送最优应答方案、异议处理策略与价值传递要点，帮助销售团队提升沟通效率与成交转化率。',i:'湖边装货.webp'},
+      {n:'07',t:'客户流失预警',d:'分析客户近期行为变化、采购频次下降、投诉增加等信号，构建客户流失预测模型，提前识别高流失风险客户并自动触发挽留策略，结合流失原因分析反哺产品改进与服务体系优化。',i:'湖边装货 copy.webp'}
     ]},
     cs: {title:'客服域',img:'custom',items:[
-      {n:'01',t:'智能在线客服',d:'大模型驱动的7×24小时智能客服。',i:'客服打电话.webp'},
-      {n:'02',t:'智能工单系统',d:'自动分类、优先级排序与智能派单。',i:'银行卡和电脑.jpg'},
-      {n:'03',t:'情感分析预警',d:'实时识别客户情绪波动。',i:'小孩呵护成长.webp'},
-      {n:'04',t:'知识库检索',d:'语义搜索驱动的智能知识库。',i:'拿着手机.webp'},
-      {n:'05',t:'智能质检',d:'全量自动质检，提升服务质量。',i:'万物互联.webp'},
-      {n:'06',t:'客户之声分析',d:'聚合多渠道反馈AI提炼洞察。',i:'呵护成长.webp'},
-      {n:'07',t:'自助服务门户',d:'AI引导的自助排查与问题解决。',i:'急救.webp'}
+      {n:'01',t:'智能在线客服',d:'基于大语言模型与RAG技术构建的智能客服系统，深度理解企业产品知识与业务规则，支持多轮对话、上下文记忆与意图识别，实现7×24小时高可用智能应答，解决率超过85%，大幅缩减人力成本与客户等待时间。',i:'客服打电话.webp'},
+      {n:'02',t:'智能工单系统',d:'收到客户请求后自动进行意图分类、紧急程度评估与优先级排序，基于工程师技能标签与当前负载匹配最优派单对象，全程跟踪工单处理进度，超时自动升级告警，实现工单全生命周期智能化管理。',i:'银行卡和电脑.jpg'},
+      {n:'03',t:'情感分析预警',d:'在客服对话过程中实时分析客户情绪状态，检测愤怒、失望、焦虑等负面情绪信号并即时预警，自动推荐安抚话术与升级策略，辅助客服人员妥善处理敏感场景，同时为服务质量评估与人员培训提供数据支撑。',i:'小孩呵护成长.webp'},
+      {n:'04',t:'知识库检索',d:'基于语义理解与向量搜索的智能知识库系统，支持自然语言问答与模糊查询，自动从海量产品手册、FAQ与历史工单中检索最相关答案，知识条目持续更新与自动去重，成为客服人员与终端客户共同依赖的知识中枢。',i:'拿着手机.webp'},
+      {n:'05',t:'智能质检',d:'对全量客服会话进行自动质检评分，覆盖服务态度、专业准确度、合规性、解决效率等多维度评估标准，自动标记异常会话与优秀案例，从抽样检查升级为全量覆盖，切实提升服务质量管理水平。',i:'万物互联.webp'},
+      {n:'06',t:'客户之声分析',d:'聚合在线客服、电话录音、社交媒体、评价问卷等多渠道客户反馈，运用NLP与情感分析提炼高频话题、产品痛点与改进建议，自动生成客户之声洞察报告，驱动产品迭代与服务体验优化。',i:'呵护成长.webp'},
+      {n:'07',t:'自助服务门户',d:'面向终端客户的AI自助服务门户，通过交互式引导诊断问题根源，自动匹配解决方案与操作指南，支持常见问题的自动处理与复杂问题的一键升级，让客户在联系人工客服之前快速自助解决大部分问题。',i:'急救.webp'}
     ]},
     hr: {title:'HR域',img:'hr',items:[
-      {n:'01',t:'智能简历筛选',d:'AI自动解析简历，匹配岗位要求。',i:'拿着手机.webp'},
-      {n:'02',t:'员工画像与人才盘点',d:'多维数据构建员工能力图谱。',i:'图表.webp'},
-      {n:'03',t:'智能培训推荐',d:'个性化推荐学习课程与发展路径。',i:'制作饼干.webp'},
-      {n:'04',t:'离职风险预警',d:'AI模型提前识别高离职风险人员。',i:'数据湖.webp'},
-      {n:'05',t:'智能排班',d:'基于业务波峰波谷的智能排班引擎。',i:'办公楼.webp'},
-      {n:'06',t:'绩效数据分析',d:'自动化绩效数据采集与分析。',i:'各种建筑物.jpg'},
-      {n:'07',t:'薪酬对标分析',d:'行业薪酬数据智能采集与对标。',i:'各种建筑物-办公楼.jpg'}
+      {n:'01',t:'智能简历筛选',d:'自动解析海量简历中的教育背景、工作经历、技能标签与项目经验，基于岗位JD进行语义级匹配评分，按匹配度排序推送优质候选人，大幅缩短筛选时间，让HR聚焦于高价值的面谈与评估环节。',i:'拿着手机.webp'},
+      {n:'02',t:'员工画像与人才盘点',d:'聚合绩效数据、项目经历、培训记录与测评结果，构建多维度的员工能力图谱与人才九宫格，支持按技能、潜力、绩效等维度动态盘点，为人才梯队建设、关键岗位继任规划提供数据化决策支撑。',i:'图表.webp'},
+      {n:'03',t:'智能培训推荐',d:'基于员工岗位能力模型、职业发展目标与技能短板，个性化推荐内外部培训课程与学习路径，自动追踪学习进度与效果评估，构建从能力诊断到学习提升再到效果验证的完整人才发展闭环。',i:'制作饼干.webp'},
+      {n:'04',t:'离职风险预警',d:'综合分析员工绩效波动、出勤变化、社交网络活跃度与外部市场机会等多元信号，构建离职风险预测模型，提前识别高离职倾向人员，支持HR与管理层主动干预，降低核心人才流失率。',i:'数据湖.webp'},
+      {n:'05',t:'智能排班',d:'综合考虑业务量预测、员工技能匹配、工时法规约束与个人偏好，自动生成最优排班方案，支持多班次、多区域、多技能维度的复杂排班场景，平衡人力成本与服务质量，提升员工排班满意度。',i:'办公楼.webp'},
+      {n:'06',t:'绩效数据分析',d:'自动采集多维度绩效数据，构建指标仪表盘与趋势分析看板，识别高绩效团队特征与低绩效根因，辅助制定针对性的绩效改善计划，让绩效管理从主观评价走向数据驱动的持续改进。',i:'各种建筑物.jpg'},
+      {n:'07',t:'薪酬对标分析',d:'自动采集行业薪酬报告与招聘平台数据，按地区、岗位、职级多维度进行薪酬对标，输出薪酬竞争力分析与调薪建议，帮助企业制定具有市场竞争力的薪酬策略，在控本与引才之间找到最优平衡点。',i:'各种建筑物-办公楼.jpg'}
     ]},
     media: {title:'新媒体域',img:'media',items:[
-      {n:'01',t:'AI内容创作',d:'大模型驱动的图文短视频脚本生成。',i:'新媒体展示各种场景.webp'},
-      {n:'02',t:'智能排期发布',d:'基于粉丝活跃时段的最优发布排期。',i:'电脑分类.jpg'},
-      {n:'03',t:'舆情监控',d:'全网品牌声量实时监控与情感分析。',i:'计算机chatgpt.jpg'},
-      {n:'04',t:'数据分析看板',d:'多平台数据聚合分析。',i:'纽带.webp'},
-      {n:'05',t:'竞品新媒体分析',d:'自动追踪竞品账号动态。',i:'办公楼.webp'},
-      {n:'06',t:'热点追踪',d:'实时捕捉全网热点话题。',i:'高耸入云.webp'},
-      {n:'07',t:'粉丝画像分析',d:'多维度粉丝特征分析与人群聚类。',i:'各种高压电线.jpg'}
+      {n:'01',t:'AI内容创作',d:'基于品牌调性、热点趋势与目标受众画像的大模型内容创作引擎，支持小红书、抖音、公众号等多平台内容的智能化生成，覆盖图文、短视频脚本与直播话术等多种形式，保持品牌风格统一的同时大幅提升内容产出效率。',i:'新媒体展示各种场景.webp'},
+      {n:'02',t:'智能排期发布',d:'分析各平台粉丝活跃时段、历史内容互动数据与竞品发布节奏，AI自动推荐最优发布时间与发布频次，支持多平台内容的一键排期与定时发布，让每一条内容都在最佳时机触达目标受众。',i:'电脑分类.jpg'},
+      {n:'03',t:'舆情监控',d:'实时抓取全网新闻、社交媒体、评论区与论坛的品牌相关讨论，运用NLP进行情感分析与话题聚类，识别负面舆情趋势与潜在危机信号即时预警，生成舆情日报与趋势洞察报告，守护品牌声誉安全。',i:'计算机chatgpt.jpg'},
+      {n:'04',t:'数据分析看板',d:'聚合微信、抖音、小红书、B站等多平台内容数据的一站式分析看板，覆盖粉丝增长、内容互动、转化漏斗与竞品对比等多维指标，可视化呈现运营全貌，辅助数据驱动的内容策略优化与资源分配决策。',i:'纽带.webp'},
+      {n:'05',t:'竞品新媒体分析',d:'自动追踪竞品在各新媒体平台的账号动态、内容策略、互动表现与粉丝增长趋势，运用对比分析识别竞品优势内容与打法特征，挖掘差异化机会点，为企业自身的新媒体运营策略提供对标参考。',i:'办公楼.webp'},
+      {n:'06',t:'热点追踪',d:'实时抓取全网热搜、新闻头条与社交媒体话题榜，运用NLP自动识别与品牌相关的热点事件，评估热度趋势与借势价值，智能推荐热点营销切入点，帮助品牌在信息洪流中快速捕捉传播机遇，抢占流量窗口。',i:'高耸入云.webp'},
+      {n:'07',t:'粉丝画像分析',d:'聚合粉丝互动行为、消费偏好、内容兴趣与人口属性等多维数据，运用聚类算法构建精细化粉丝分层模型，输出各层粉丝特征卡片与内容偏好洞察，为精准内容运营与粉丝增长策略提供数据支撑。',i:'各种高压电线.jpg'}
     ]}
   };
   document.querySelectorAll('.apps-cat-item').forEach(function(item) {
